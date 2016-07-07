@@ -13,6 +13,11 @@
   }, {
     "fileId": "1EACmSpajC1V7nJtwIxfA9aR-HAbTSDugSjStSSKWEaE",
     "type": "sheet",
-    "name": "meta"
+    "name": "meta",
+    "copytext": {
+      "overrides": {
+        "objectlist": "table"
+      }
+    }
   }]
 }
