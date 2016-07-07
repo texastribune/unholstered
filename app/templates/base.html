@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block project_title %}IDV Kit{% endblock project_title %} | The Texas Tribune</title>
+  <link rel="stylesheet" href="{{ static('styles/main.css') }}">
+</head>
+<body>
+
+{% block content %}{% endblock content %}
+
+<script src="{{ static('scripts/commons.js') }}"></script>
+<script src="{{ static('scripts/main.js') }}"></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-9827490-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
