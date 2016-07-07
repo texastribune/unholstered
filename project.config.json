@@ -1,6 +1,6 @@
 {
   "bucket": "moose.texastribune.org",
-  "folder": "corgis",
+  "folder": "unholstered",
   "rawAssetsFolder": "raw_assets",
   "dataDir": "./data",
   "assetsDir": "./app/assets",
