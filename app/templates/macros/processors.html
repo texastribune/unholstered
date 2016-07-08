@@ -6,6 +6,14 @@
 <p class="first">{{ value }}</p>
 {% endmacro %}
 
-{% macro subhead(value) %}
-<h3 class="subhead">{{ value }}</h3>
+{% macro headline(value) %}
+<h2 class="header">{{ value }}</h2>
+{% endmacro %}
+
+{% macro head(value) %}
+<h3 class="slide-header">{{ value }}</h3>
+{% endmacro %}
+
+{% macro link(value) %}
+<p><a href="">{{ value }}</a></p>
 {% endmacro %}

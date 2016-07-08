@@ -3,5 +3,13 @@
 {% from 'macros/prose.html' import prose %}
 
 {% block content %}
-{{ prose(data.story.prose) }}
+{{ prose(data.story.intro) }}
+
+{% for slide in data.story.slides %}
+<h3>{{ slide.head }}</h3>
+
+{% endfor %}
+
+
+{{ prose(data.story.closer) }}
 {% endblock content %}
