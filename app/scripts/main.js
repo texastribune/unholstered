@@ -1,3 +1,4 @@
 'use strict'
+/* global d3, stack */
 
-console.log('hello world!')
+var mystack = stack();

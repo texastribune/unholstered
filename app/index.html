@@ -3,7 +3,9 @@
 {% from 'macros/prose.html' import prose %}
 
 {% block content %}
+<section class="intro">
 {{ prose(data.story.intro) }}
+</section>
 
 {% for slide in data.story.slides %}
   <section class="slide">
@@ -14,5 +16,12 @@
   </section>
 {% endfor %}
 
-{{ prose(data.story.closer) }}
+<section class="close">
+  {{ prose(data.story.closer) }}
+</section>
 {% endblock content %}
+
+{% block scripts %}
+<script src="{{ static('scripts/libs/d3.v3.min.js') }}"></script>
+<script src="{{ static('scripts/libs/stack.v1.min.js') }}"></script>
+{% endblock scripts %}
