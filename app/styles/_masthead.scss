@@ -1,0 +1,80 @@
+.masthead {
+  background-color: $black;
+  height: 2em;
+
+  .trib-logo {
+    height: 1.2em;
+    padding: .4em;
+  }
+
+  .sections {
+    color: $white;
+    float: right;
+    font-family: 'Chathura', sans-serif;
+    font-size: 1.6em;
+    letter-spacing: .05em;
+    line-height: 1.25em;
+    padding: 0 .5em 0 1em;
+    text-transform: uppercase;
+
+    ul {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline-block;
+      padding: 0 .15em;
+      text-align: center;
+      width: 15px;
+
+      &:hover {
+        background-color: $white;
+      }
+    }
+
+    a {
+      color: $white;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  .header-title {
+    background-color: $beige;
+    float: right;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: .02em;
+    padding: .35em .7em;
+    position: relative;
+    text-transform: uppercase;
+
+    &:before {
+      background-color: $beige;
+      content: '';
+      display: block;
+      height: 1.8em;
+      position: absolute;
+      left: -10px;
+      top: 0;
+      transform: skewX(-30deg);
+      width: 20px;
+    }
+
+    &:after {
+      background-color: $beige;
+      content: '';
+      display: block;
+      height: 1.8em;
+      position: absolute;
+      right: -10px;
+      top: 0;
+      transform: skewX(30deg);
+      width: 20px;
+    }
+  }
+}

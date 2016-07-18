@@ -1,7 +1,19 @@
-.first {
-  font-weight: 700;
+//fonts
+@import url(https://fonts.googleapis.com/css?family=Chathura:800);
+@import url(https://fonts.googleapis.com/css?family=Rubik:400,500);
+@import url(https://fonts.googleapis.com/css?family=PT+Serif);
+
+//imports
+@import 'grid';
+@import 'colors';
+@import 'masthead';
+
+a {
+  color: $black;
+  text-decoration: none;
 }
 
-.subhead {
-  color: red;
+.first {
+  color: $olive;
+  font-weight: 700;
 }

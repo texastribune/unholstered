@@ -6,10 +6,13 @@
 {{ prose(data.story.intro) }}
 
 {% for slide in data.story.slides %}
-<h3>{{ slide.head }}</h3>
-
+  <section class="slide">
+    <h3 class="slide-head">{{ slide.head }}</h3>
+    <div class="slide-text">
+      {{ prose(slide.prose) }}
+    </div>
+  </section>
 {% endfor %}
-
 
 {{ prose(data.story.closer) }}
 {% endblock content %}
