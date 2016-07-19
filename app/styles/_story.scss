@@ -1,0 +1,49 @@
+.wrapper {
+  a {
+    border-bottom: 2px solid $light-blue;
+    color: $black;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  p {
+    font-family: 'PT Serif', serif;
+    font-size: 1.1em;
+    line-height: 1.4em;
+  }
+}
+
+.story-header {
+  margin-top: 4em;
+
+  .section-bar {
+    background: $light-blue;
+    color: $white;
+    font-family: 'Chathura', sans-serif;
+    font-size: 1.875em;
+    letter-spacing: .05em;
+    line-height: 1;
+    padding: 0 .5em;
+    text-transform: uppercase;
+  }
+
+  .story-headline {
+    font-family: 'Rubik', sans-serif;
+    font-size: 2.5em;
+    margin: .5em 0;
+  }
+
+  .byline {
+    color: $gray;
+    font-family: 'Chathura', sans-serif;
+    font-size: 1.75em;
+    letter-spacing: .05em;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+
+    a {
+      color: $gray;
+    }
+  }
+}

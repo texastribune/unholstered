@@ -7,19 +7,17 @@
 @import 'grid';
 @import 'colors';
 @import 'masthead';
+@import 'story';
 
 .first {
   color: $olive;
   font-weight: 700;
 }
 
-body.mainbar {
+.mainbar-body {
   background: $beige;
 }
 
 section {
   padding-top: 2em;
 }
-
-
-.story-header { margin-top: 2em; }

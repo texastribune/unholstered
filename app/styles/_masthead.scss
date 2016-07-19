@@ -14,52 +14,89 @@
     height: 1.2em;
     padding: .4em;
   }
+}
 
-  .sections {
+.masthead-sections {
+  color: $white;
+  float: right;
+  font-family: 'Chathura', sans-serif;
+  font-size: 1.6em;
+  letter-spacing: .05em;
+  line-height: 1.25em;
+  padding: 0 .5em 0 1em;
+  text-transform: uppercase;
+
+  a {
     color: $white;
-    float: right;
-    font-family: 'Chathura', sans-serif;
-    font-size: 1.6em;
-    letter-spacing: .05em;
-    line-height: 1.25em;
-    padding: 0 .5em 0 1em;
-    text-transform: uppercase;
 
-    ul {
-      display: inline;
-      margin: 0;
-      padding: 0;
-    }
+    &:hover {
+      color: $black;
 
-    li {
-      display: inline-block;
-      padding: 0 .15em;
-      text-align: center;
-      width: 15px;
-
-      &:hover {
-        background-color: $white;
-      }
-    }
-
-    a {
-      color: $white;
-
-      &:hover {
-        color: $black;
+      li {
+        background: $white;
       }
     }
   }
 
-  .header-title {
-    background-color: $beige;
-    float: right;
-    font-family: 'Rubik', sans-serif;
-    font-size: 1.1em;
-    letter-spacing: .02em;
-    padding: .35em .7em;
+  ul {
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    line-height: 1;
+    margin: .1em 0;
+    padding: 0 .15em;
+    text-align: center;
+    width: 15px;
+  }
+
+  &.story {
+    background: $white;
+    color: $black;
     position: relative;
-    text-transform: uppercase;
+    padding: 0 .5em;
+
+    a {
+      color: $black;
+
+      &:hover {
+        color: $white;
+
+        li {
+          background: $orange-red;
+        }
+      }
+    }
+
+    &:before {
+      background-color: $white;
+      content: '';
+      display: block;
+      height: 1.25em;
+      position: absolute;
+      left: -7px;
+      top: 0;
+      transform: skewX(-20deg);
+      width: 15px;
+    }
+  }
+}
+
+.masthead-title {
+  float: right;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1em;
+  letter-spacing: .02em;
+  padding: .35em .7em;
+  position: relative;
+  text-transform: uppercase;
+
+
+  &.mainbar {
+    background-color: $beige;
 
     &:before {
       background-color: $beige;
@@ -83,6 +120,13 @@
       top: 0;
       transform: skewX(30deg);
       width: 20px;
+    }
+  }
+
+  &.story {
+    padding-right: 1em;
+    a {
+      color: $white;
     }
   }
 }
