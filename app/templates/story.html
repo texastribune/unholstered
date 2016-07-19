@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% from 'macros/prose.html' import prose %}
+{% from 'macros/authors.html' import authors %}
 
 {% block body_class %}story{% endblock %}
 
@@ -28,6 +29,12 @@
 
 {% block content %}
 <header class="story-header">
+  <div class="section-bar">
+    {{ context.section_title }}, Section {{ context.section_number }}
+  </div>
   <h1>{{ context.headline }}</h1>
+  <p class="bylines">By {{ authors(context.authors) }} | {{ context.pub_date }}</p>
 </header>
+
+{{ prose(context.prose) }}
 {% endblock %}
