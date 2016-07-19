@@ -18,10 +18,13 @@ a {
   font-weight: 700;
 }
 
-body {
+body.mainbar {
   background: $beige;
 }
 
 section {
   padding-top: 2em;
 }
+
+
+.story-header { margin-top: 2em; }
