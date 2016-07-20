@@ -47,3 +47,43 @@
     }
   }
 }
+
+.subhead {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1em;
+  letter-spacing: .02em;
+  margin: 1.5em 0;
+}
+
+.inline {
+  &--left {
+    width: 50%;
+    float: left;
+  }
+}
+
+.blockquote {
+  margin: 1em 1em 1em -3em;
+
+  .quote {
+    color: $orange-red;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.75em;
+    line-height: 1.25;
+    margin: 0 0 .5em;
+  }
+
+  &__credit {
+    font-family: 'Chathura', sans-serif;
+    font-size: 1.5em;
+    font-style: normal;
+    letter-spacing: .05em;
+    line-height: .75;
+    text-transform: uppercase;
+
+    &:before {
+      content: '—';
+      padding-right: .2em;
+    }
+  }
+}
