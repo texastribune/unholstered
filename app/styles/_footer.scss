@@ -1,0 +1,69 @@
+.footer {
+  background: $dark-gray;
+
+  .footer-wrapper {
+    margin: 0 auto;
+    max-width: 980px;
+  }
+
+  .footer-section {
+    float: left;
+    margin: 0 5%;
+    width: 40%;
+  }
+
+  .footer-title {
+    color: $goldenbrown;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: .03em;
+    margin: 1.5em 0;
+  }
+
+  .footer-text {
+    color: $white;
+    font-family: 'PT Serif', serif;
+    font-size: .95em;
+    line-height: 1.6;
+  }
+
+  .contribs {
+    color: $white;
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 1em 0;
+    }
+
+    a {
+      border-bottom: 2px solid $light-blue;
+      color: $white;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .contrib-name {
+      display: block;
+      font-family: 'Rubik', sans-serif;
+      font-size: .95em;
+    }
+
+    .contrib-info {
+      font-family: 'Chathura', sans-serif;
+      font-size: 1.5em;
+      letter-spacing: .05em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+  }
+
+  &:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
