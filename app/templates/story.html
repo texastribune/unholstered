@@ -13,12 +13,11 @@
     <div class="masthead-sections story">
       Section:
         <ul>
-          <a href="{{ static('mental-illness') }}"><li>I</li></a>
-          <a href="{{ static('race') }}"><li>II</li></a>
-          <a href="{{ static('unarmed') }}"><li>III</li></a>
-          <a href="{{ static('off-duty') }}"><li>IV</li></a>
-          <a href="{{ static('outcomes') }}"><li>V</li></a>
-          <a href="{{ static('recordkeepers') }}"><li>VI</li></a>
+          {% for story in data.meta.storylist %}
+          <a href="{{ static( story.slug ) }}">
+            <li class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
+          </a>
+          {% endfor %}
         </ul>
     </div>
     <div class="masthead-title story">
@@ -36,6 +35,12 @@
     <h1 class="story-headline">{{ context.headline }}</h1>
     <p class="byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</p>
   </header>
-  {{ prose(context.prose) }}
+  <figure class="image image--lead-art">
+    <img class="image__img" src="{{ static('assets/images/')}}{{ context.lead_art.photo_url }}">
+    <figcaption class="image__caption">{{context.lead_art.caption}}{% if context.lead_art.credit %} | {{ context.lead_art.credit }}{% endif %}</figcaption>
+  </figure>
+  <article>
+    {{ prose(context.prose) }}
+  </article>
 </div>
 {% endblock %}

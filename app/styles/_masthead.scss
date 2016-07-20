@@ -28,6 +28,7 @@
 
   a {
     color: $white;
+    display: inline-block;
 
     &:hover {
       color: $black;
@@ -48,9 +49,9 @@
     display: inline-block;
     line-height: 1;
     margin: .1em 0;
-    padding: 0 .15em;
+    padding: 0 .2em;
     text-align: center;
-    width: 15px;
+    width: .5em;
   }
 
   &.story {
@@ -82,6 +83,10 @@
       transform: skewX(-20deg);
       width: 15px;
     }
+  }
+
+  .active-story {
+    border: 1px solid $orange-red;
   }
 }
 

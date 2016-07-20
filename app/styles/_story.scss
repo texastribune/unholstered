@@ -48,6 +48,18 @@
   }
 }
 
+.image {
+  margin: 1em 0 1.5em;
+
+  &__caption {
+    color: $gray;
+    font-family: 'Chathura', sans-serif;
+    font-size: 1.5em;
+    letter-spacing: .02em;
+    line-height: 1em;
+  }
+}
+
 .subhead {
   font-family: 'Rubik', sans-serif;
   font-size: 1.1em;
@@ -59,11 +71,18 @@
   &--left {
     width: 50%;
     float: left;
+    margin-left: -3em;
+  }
+
+  &--right {
+    width: 50%;
+    float: right;
+    margin-right: -3em;
   }
 }
 
 .blockquote {
-  margin: 1em 1em 1em -3em;
+  margin: 1em;
 
   .quote {
     color: $orange-red;
