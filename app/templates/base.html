@@ -13,27 +13,31 @@
 
 {% block content %}{% endblock %}
 
-<!-- <section class="read-more">
+<section class="read-more">
   <h3 class="read-more__title">More in this series</h3>
   <div class="read-more__stories">
-    {% for story in data.meta.storylist %}
-      {% if context.id != story.id %}
-      <div class="read-more__story">
+  {% for story in data.meta.storylist %}
+    {% if story.id != context.id %}
+    <div class="read-more__story">
+      <a href="{{ static( story.slug ) }}">
+        <figure class="image thumbnail">
+          <img class="image__img" src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
+        </figure>
+      </a>
+      <div class="read-more__section">
         <a href="{{ static( story.slug ) }}">
-          <figure class="image image--thumbnail">
-            <img class="image__img" src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
-          </figure>
-          <div class="read-more__section">{{ data[story.id].section_title }}, Section {{ data[story.id].section_number }}</div>
-          <div class="read-more__text">
-            <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
-            <p>{{ data[story.id].subhead }}</p>
-          </div>
+          {% if data[story.id].section_number %}Section {{ data[story.id].section_number }} {% else %}Data{% endif %}
         </a>
       </div>
-      {% endif %}
-    {% endfor %}
-  </ul>
-</section> -->
+      <a href="{{ static( story.slug ) }}">
+        <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
+      </a>
+      <p>{{ data[story.id].summary }}</p>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+</section>
 
 <footer class="footer">
   <div class="footer-wrapper">

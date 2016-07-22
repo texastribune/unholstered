@@ -14,9 +14,11 @@
       Section:
         <ul>
           {% for story in data.meta.storylist %}
-          <a href="{{ static( story.slug ) }}">
-            <li class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
-          </a>
+            {% if story.id != "mainbar" %}
+              <a href="{{ static( story.slug ) }}">
+                <li class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
+              </a>
+            {% endif %}
           {% endfor %}
         </ul>
     </div>

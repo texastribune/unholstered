@@ -3,18 +3,29 @@
 @import url(https://fonts.googleapis.com/css?family=Rubik:400,500);
 @import url(https://fonts.googleapis.com/css?family=PT+Serif);
 
+//helpers
+@import 'grid';
+@import 'colors';
+
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-//imports
-@import 'grid';
-@import 'colors';
+a {
+  color: $black;
+  text-decoration: none;
+}
+
+//sections
 @import 'masthead';
 @import 'story';
+@import 'readmore';
 @import 'footer';
 
 .first {
@@ -36,8 +47,4 @@ img {
 
 .mainbar-body {
   background: $beige;
-}
-
-section {
-  padding-top: 2em;
 }

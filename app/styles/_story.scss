@@ -1,4 +1,6 @@
 .wrapper {
+  margin-bottom: 4em;
+
   a {
     border-bottom: 2px solid $light-blue;
     color: $black;
@@ -69,15 +71,15 @@
 
 .inline {
   &--left {
-    width: 50%;
     float: left;
     margin-left: -3em;
+    width: 50%;
   }
 
   &--right {
-    width: 50%;
     float: right;
     margin-right: -3em;
+    width: 50%;
   }
 }
 
@@ -101,7 +103,7 @@
     text-transform: uppercase;
 
     &:before {
-      content: '—';
+      content: '-';
       padding-right: .2em;
     }
   }
