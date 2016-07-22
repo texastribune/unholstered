@@ -12,7 +12,7 @@
 
   .trib-logo {
     height: 1.2em;
-    padding: .4em;
+    margin: .4em;
   }
 }
 
@@ -49,16 +49,15 @@
     display: inline-block;
     line-height: 1;
     margin: .1em 0;
-    padding: 0 .2em;
     text-align: center;
-    width: .5em;
+    width: 1em;
   }
 
   &.story {
     background: $white;
     color: $black;
     position: relative;
-    padding: 0 .5em;
+    padding: 0 .25em 0 .5em;
 
     a {
       color: $black;

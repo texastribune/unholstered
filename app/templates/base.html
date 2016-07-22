@@ -13,7 +13,27 @@
 
 {% block content %}{% endblock %}
 
-{% block readmore %}{% endblock %}
+<!-- <section class="read-more">
+  <h3 class="read-more__title">More in this series</h3>
+  <div class="read-more__stories">
+    {% for story in data.meta.storylist %}
+      {% if context.id != story.id %}
+      <div class="read-more__story">
+        <a href="{{ static( story.slug ) }}">
+          <figure class="image image--thumbnail">
+            <img class="image__img" src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
+          </figure>
+          <div class="read-more__section">{{ data[story.id].section_title }}, Section {{ data[story.id].section_number }}</div>
+          <div class="read-more__text">
+            <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
+            <p>{{ data[story.id].subhead }}</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section> -->
 
 <footer class="footer">
   <div class="footer-wrapper">
@@ -59,8 +79,8 @@
           <span class="contrib-info">Senior Developer / <a href="http://www.twitter.com/rdmurphy">@rdmurphy</a></span>
         </li>
         <li>
-          <span class="contrib-name">Jacob Villanueva</span>
-          <span class="contrib-info">Creative Director / <a href="http://www.twitter.com/jacobvillanueva">@jacobvillanueva</a></span>
+          <span class="contrib-name">Todd Wiseman</span>
+          <span class="contrib-info">Multimedia Producer / <a href="http://www.twitter.com/wisemeister">@wisemeister</a></span>
         </li>
       </ul>
     </div>
