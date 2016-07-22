@@ -1,7 +1,7 @@
 .read-more {
   border-top: 2px solid $black;
   font-family: 'Rubik', sans-serif;
-  margin: 0 auto;
+  margin: 0 auto 2em;
   max-width: $wide-width;
   width: 100%;
 
@@ -32,6 +32,7 @@
     font-style: normal;
     letter-spacing: .05em;
     line-height: .6;
+    margin: .25em 0;
     padding: .25em;
     text-transform: uppercase;
 

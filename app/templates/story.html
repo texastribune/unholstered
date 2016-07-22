@@ -32,7 +32,7 @@
 <div class="wrapper">
   <header class="story-header">
     <div class="section-bar">
-      {{ context.section_title }}, Section {{ context.section_number }}
+      Section {{ context.section_number }}, {{ context.section_title }}
     </div>
     <h1 class="story-headline">{{ context.headline }}</h1>
     <p class="byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</p>

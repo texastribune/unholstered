@@ -2,22 +2,23 @@
   background: $dark-gray;
   padding: 2em 0;
 
-  .footer-wrapper {
+  &__wrapper {
     margin: 0 auto;
     max-width: $wide-width;
   }
 
-  .footer-section {
+  &__section {
     float: left;
-    padding: 0 5%;
+    padding-right: 5%;
     width: 50%;
 
     &:last-child {
       border-left: 1px solid $black;
+      padding: 0 0 0 5%;
     }
   }
 
-  .footer-title {
+  &__title {
     color: $goldenbrown;
     font-family: 'Rubik', sans-serif;
     font-size: 1.1em;
@@ -25,7 +26,7 @@
     margin: 0 0 1.5em;
   }
 
-  .footer-text {
+  &__text {
     color: $white;
     font-family: 'PT Serif', serif;
     font-size: .95em;
@@ -48,13 +49,13 @@
       text-decoration: none;
     }
 
-    .contrib-name {
+    &__name {
       display: block;
       font-family: 'Rubik', sans-serif;
       font-size: .95em;
     }
 
-    .contrib-info {
+    &__info {
       font-family: 'Chathura', sans-serif;
       font-size: 1.5em;
       letter-spacing: .05em;
@@ -93,13 +94,13 @@
   }
 
   li {
+    border-right: 1px solid $white;
     display: inline;
     padding: 0 .5em;
-    border-right: 1px solid $white;
   }
 
   .donate {
-    border-right: 0px;
+    border-right: 0;
 
     a {
       color: $light-blue;
