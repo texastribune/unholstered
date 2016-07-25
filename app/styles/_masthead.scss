@@ -56,8 +56,9 @@
   &.story {
     background: $white;
     color: $black;
+    margin-right: .75em;
+    padding: 0 .5em;
     position: relative;
-    padding: 0 .25em 0 .5em;
 
     a {
       color: $black;
@@ -76,10 +77,22 @@
       content: '';
       display: block;
       height: 1.25em;
-      position: absolute;
       left: -7px;
+      position: absolute;
       top: 0;
       transform: skewX(-20deg);
+      width: 15px;
+    }
+
+    &:after {
+      background-color: $white;
+      content: '';
+      display: block;
+      height: 1.25em;
+      position: absolute;
+      right: -7px;
+      top: 0;
+      transform: skewX(20deg);
       width: 15px;
     }
   }
@@ -107,8 +120,8 @@
       content: '';
       display: block;
       height: 1.8em;
-      position: absolute;
       left: -10px;
+      position: absolute;
       top: 0;
       transform: skewX(-30deg);
       width: 20px;
@@ -129,6 +142,7 @@
 
   &.story {
     padding-right: 1em;
+
     a {
       color: $white;
     }

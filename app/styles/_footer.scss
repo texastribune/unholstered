@@ -9,12 +9,16 @@
 
   &__section {
     float: left;
-    padding-right: 5%;
-    width: 50%;
+
+    &.about {
+      border-right: 1px solid $black;
+      padding-right: 5%;
+      width: 35%;
+    }
 
     &:last-child {
-      border-left: 1px solid $black;
-      padding: 0 0 0 5%;
+      padding-left: 5%;
+      width: 65%;
     }
   }
 
@@ -70,7 +74,9 @@
     padding: 0;
 
     li {
-      margin: 1em 0;
+      display: inline-block;
+      margin-bottom: 1.5em;
+      width: 49%;
     }
 
     a {
@@ -88,7 +94,7 @@
 
     &__info {
       font-family: 'Chathura', sans-serif;
-      font-size: 1.5em;
+      font-size: 1.35em;
       letter-spacing: .05em;
       line-height: 1;
       text-transform: uppercase;

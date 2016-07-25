@@ -28,27 +28,6 @@ a {
 @import 'readmore';
 @import 'footer';
 
-.first {
-  color: $olive;
-  font-weight: 700;
-}
-
-img {
-  max-width: 100%;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
 .mainbar-body {
   background: $beige;
-}
-
-.twitter-button path {
-  fill: blue;
 }

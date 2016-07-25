@@ -10,3 +10,15 @@ body {
   max-width: $text-width;
   width: 100%;
 }
+
+img {
+  max-width: 100%;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
