@@ -39,6 +39,8 @@
 </div>
 </section>
 
+{% import 'macros/shares.html' as shares %}
+
 <footer class="footer">
   <div class="footer__wrapper">
     <div class="footer__section about">
@@ -48,8 +50,15 @@
       The Texas Tribune spent just under a year investigating police shootings in Texas' largest cities.
       The Texas Tribune spent just under a year investigating police shootings in Texas' largest cities.
       The Texas Tribune spent just under a year investigating police shootings in Texas' largest cities.</p>
-      <h4 class="footer__title">Share</h4>
-
+      <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
+      <ul class="share-links">
+        <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), context.twitter_text, 'roadfromrita') }}">
+          {{ inject('assets/twitter.svg') }}
+        </a></li>
+        <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
+          {{ inject('assets/facebook.svg') }}
+        </a></li>
+      </ul>
     </div>
     <div class="footer__section">
       <h4 class="footer__title">Contributors</h4>

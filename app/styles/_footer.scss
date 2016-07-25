@@ -22,6 +22,7 @@
     color: $goldenbrown;
     font-family: 'Rubik', sans-serif;
     font-size: 1.1em;
+    font-weight: normal;
     letter-spacing: .03em;
     margin: 0 0 1.5em;
   }
@@ -31,6 +32,36 @@
     font-family: 'PT Serif', serif;
     font-size: .95em;
     line-height: 1.6;
+  }
+
+  &__hashtag {
+    font-family: 'Rubik', serif;
+    font-size: 1.35em;
+    text-align: center;
+    text-transform: uppercase;
+
+    a {
+      color: $goldenbrown;
+    }
+  }
+
+  .share-links {
+    padding: 0;
+    text-align: center;
+
+    &__icon {
+      display: inline-block;
+      width: 2em;
+      margin: 0 1em;
+    }
+
+    svg {
+      width: 1.5em;
+    }
+
+    path {
+      fill: $light-blue;
+    }
   }
 
   .contribs {
