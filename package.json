@@ -23,7 +23,7 @@
     "copytext": "^2.1.0",
     "del": "^2.2.0",
     "globby": "^5.0.0",
-    "googleapis": "^9.0.0",
+    "googleapis": "^12.0.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.9",
     "gulp-htmlmin": "^2.0.0",
