@@ -17,12 +17,14 @@
 }
 
 .masthead-sections {
+  border-radius: .625rem .625rem 0 0;
   color: $white;
   float: right;
   font-family: 'Chathura', sans-serif;
   font-size: 1.6em;
   letter-spacing: .05em;
   line-height: 1.25em;
+  margin-right: 1.5rem;
   padding: 0 .5em 0 1em;
   text-transform: uppercase;
 
@@ -74,13 +76,27 @@
 
     &:before {
       background-color: $white;
+      border-radius: .25rem .625rem 0 0;
       content: '';
       display: block;
-      height: 1.25em;
-      left: -7px;
+      height: 1.8em;
       position: absolute;
+      left: -10px;
       top: 0;
-      transform: skewX(-20deg);
+      transform: skewX(-30deg);
+      width: 15px;
+    }
+
+    &:after {
+      background-color: $white;
+      border-radius: .625rem .25rem 0 0;
+      content: '';
+      display: block;
+      height: 1.8em;
+      position: absolute;
+      right: -10px;
+      top: 0;
+      transform: skewX(30deg);
       width: 15px;
     }
 
@@ -103,6 +119,7 @@
 }
 
 .masthead-title {
+  border-radius: .625rem .625rem 0 0;
   float: right;
   font-family: 'Rubik', sans-serif;
   font-size: 1.1em;
@@ -117,6 +134,7 @@
 
     &:before {
       background-color: $beige;
+      border-radius: .25rem .625rem 0 0;
       content: '';
       display: block;
       height: 1.8em;
@@ -129,6 +147,7 @@
 
     &:after {
       background-color: $beige;
+      border-radius: .625rem .25rem 0 0;
       content: '';
       display: block;
       height: 1.8em;
