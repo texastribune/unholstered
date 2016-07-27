@@ -50,7 +50,7 @@
   li {
     display: inline-block;
     line-height: 1;
-    margin: .1em 0;
+    margin: 0;
     text-align: center;
     width: 1em;
   }
@@ -83,8 +83,9 @@
       position: absolute;
       left: -10px;
       top: 0;
-      transform: skewX(-30deg);
-      width: 15px;
+      transform: skewX(-20deg);
+      width: 20px;
+      z-index: -2;
     }
 
     &:after {
@@ -92,24 +93,13 @@
       border-radius: .625rem .25rem 0 0;
       content: '';
       display: block;
-      height: 1.8em;
-      position: absolute;
-      right: -10px;
-      top: 0;
-      transform: skewX(30deg);
-      width: 15px;
-    }
-
-    &:after {
-      background-color: $white;
-      content: '';
-      display: block;
       height: 1.25em;
       position: absolute;
-      right: -7px;
+      right: -5px;
       top: 0;
       transform: skewX(20deg);
-      width: 15px;
+      width: 20px;
+      z-index: -2;
     }
   }
 
@@ -131,6 +121,7 @@
 
   &.mainbar {
     background-color: $beige;
+    margin-right: .25em;
 
     &:before {
       background-color: $beige;
@@ -138,11 +129,12 @@
       content: '';
       display: block;
       height: 1.8em;
-      left: -10px;
+      left: -5px;
       position: absolute;
       top: 0;
-      transform: skewX(-30deg);
+      transform: skewX(-20deg);
       width: 20px;
+      z-index: -2;
     }
 
     &:after {
@@ -152,15 +144,16 @@
       display: block;
       height: 1.8em;
       position: absolute;
-      right: -10px;
+      right: -5px;
       top: 0;
-      transform: skewX(30deg);
+      transform: skewX(20deg);
       width: 20px;
+      z-index: -2;
     }
   }
 
   &.story {
-    padding-right: 1em;
+    padding-right: 1.9em;
 
     a {
       color: $white;
