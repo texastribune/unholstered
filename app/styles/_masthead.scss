@@ -25,7 +25,8 @@
   letter-spacing: .05em;
   line-height: 1.25em;
   margin-right: 1.5rem;
-  padding: 0 .5em 0 1em;
+  padding: 0 .5em;
+  position: relative;
   text-transform: uppercase;
 
   a {
@@ -55,12 +56,35 @@
     width: 1em;
   }
 
+  &:before {
+    border-radius: .25rem .625rem 0 0;
+    content: '';
+    display: block;
+    height: 1.25em;
+    position: absolute;
+    left: -5px;
+    top: 0;
+    transform: skewX(-20deg);
+    width: 20px;
+    z-index: -2;
+  }
+
+  &:after {
+    border-radius: .625rem .25rem 0 0;
+    content: '';
+    display: block;
+    height: 1.25em;
+    position: absolute;
+    right: -5px;
+    top: 0;
+    transform: skewX(20deg);
+    width: 20px;
+    z-index: -2;
+  }
+
   .story & {
     background: $white;
     color: $black;
-    margin-right: .75em;
-    padding: 0 .5em;
-    position: relative;
 
     a {
       color: $black;
@@ -74,32 +98,9 @@
       }
     }
 
-    &:before {
-      background-color: $white;
-      border-radius: .25rem .625rem 0 0;
-      content: '';
-      display: block;
-      height: 1.8em;
-      position: absolute;
-      left: -10px;
-      top: 0;
-      transform: skewX(-20deg);
-      width: 20px;
-      z-index: -2;
-    }
-
+    &:before,
     &:after {
       background-color: $white;
-      border-radius: .625rem .25rem 0 0;
-      content: '';
-      display: block;
-      height: 1.25em;
-      position: absolute;
-      right: -5px;
-      top: 0;
-      transform: skewX(20deg);
-      width: 20px;
-      z-index: -2;
     }
   }
 
@@ -114,46 +115,49 @@
   font-family: 'Rubik', sans-serif;
   font-size: 1.1em;
   letter-spacing: .02em;
+  margin-right: .5em;
   padding: .35em .7em;
   position: relative;
   text-transform: uppercase;
 
+  &:before {
+    border-radius: .25rem .625rem 0 0;
+    content: '';
+    display: block;
+    height: 1.8em;
+    left: -5px;
+    position: absolute;
+    top: 0;
+    transform: skewX(-20deg);
+    width: 20px;
+    z-index: -2;
+  }
+
+  &:after {
+    border-radius: .625rem .25rem 0 0;
+    content: '';
+    display: block;
+    height: 1.8em;
+    position: absolute;
+    right: -5px;
+    top: 0;
+    transform: skewX(20deg);
+    width: 20px;
+    z-index: -2;
+  }
+
 
   .mainbar & {
     background-color: $beige;
-    margin-right: .25em;
 
-    &:before {
-      background-color: $beige;
-      border-radius: .25rem .625rem 0 0;
-      content: '';
-      display: block;
-      height: 1.8em;
-      left: -5px;
-      position: absolute;
-      top: 0;
-      transform: skewX(-20deg);
-      width: 20px;
-      z-index: -2;
-    }
-
+    &:before,
     &:after {
       background-color: $beige;
-      border-radius: .625rem .25rem 0 0;
-      content: '';
-      display: block;
-      height: 1.8em;
-      position: absolute;
-      right: -5px;
-      top: 0;
-      transform: skewX(20deg);
-      width: 20px;
-      z-index: -2;
     }
+
   }
 
   .story & {
-    padding-right: 1.9em;
 
     a {
       color: $white;
