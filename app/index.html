@@ -8,6 +8,8 @@
 
 {% block masthead_class %}mainbar{% endblock %}
 
+{% set context = data.mainbar %}
+
 {% block content %}
 <section class="intro">
 {{ prose(data.mainbar.intro) }}

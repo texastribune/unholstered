@@ -17,11 +17,11 @@
         Section:
           <ul>
             {% for story in data.meta.storylist %}
-              <!-- {% if story.id != "mainbar" %} -->
+              {% if story.id != "mainbar" %}
                 <a href="{{ static( story.slug ) }}">
                   <li class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
                 </a>
-              <!-- {% endif %} -->
+              {% endif %}
             {% endfor %}
           </ul>
       </div>
@@ -31,118 +31,118 @@
     </div>
   </header>
 
-{% block content %}{% endblock %}
+  {% block content %}{% endblock %}
 
-<section class="read-more">
-  <h3 class="read-more__title">More in this series</h3>
-  <div class="read-more__stories">
-  {% for story in data.meta.storylist %}
-    {% if story.id != context.id %}
-    <div class="read-more__story">
-      <a href="{{ static( story.slug ) }}">
-        <figure class="image thumbnail">
-          <img class="image__img" src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
-        </figure>
-      </a>
-      <div class="read-more__section">
+  <section class="read-more">
+    <h3 class="read-more__title">More in this series</h3>
+    <div class="read-more__stories">
+    {% for story in data.meta.storylist %}
+      {% if story.id != context.id %}
+      <div class="read-more__story">
         <a href="{{ static( story.slug ) }}">
-          {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
+          <figure class="image thumbnail">
+            <img class="image__img" src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
+          </figure>
         </a>
+        <div class="read-more__section">
+          <a href="{{ static( story.slug ) }}">
+            {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
+          </a>
+        </div>
+        <a href="{{ static( story.slug ) }}">
+          <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
+        </a>
+        <p>{{ data[story.id].summary }}</p>
       </div>
-      <a href="{{ static( story.slug ) }}">
-        <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
-      </a>
-      <p>{{ data[story.id].summary }}</p>
-    </div>
-    {% endif %}
-  {% endfor %}
-</div>
-</section>
-
-{% import 'macros/shares.html' as shares %}
-
-<footer class="footer">
-  <div class="footer__wrapper">
-    <div class="footer__section about">
-      <h4 class="footer__title">About this project</h4>
-      <p class="footer__text">
-        The Texas Tribune spent almost a year investigating police shootings in
-        Texas’ largest cities. We worked to obtain official records — primarily
-        through open records requests — from police departments in the state’s 36
-        cities with a population of 100,000 or more residents. We worked to
-        independently confirm details related to those shootings, and pored over
-        hundreds of incident reports. The Tribune’s Unholstered project offers
-        the most detailed look at the state of police shootings in Texas. </p>
-      <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
-      <ul class="share-links">
-        <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), context.twitter_text, 'roadfromrita') }}">
-          {{ inject('assets/twitter.svg') }}
-        </a></li>
-        <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
-          {{ inject('assets/facebook.svg') }}
-        </a></li>
-      </ul>
-    </div>
-    <div class="footer__section">
-      <h4 class="footer__title">Contributors</h4>
-      <ul class="contribs">
-        <li>
-          <span class="contribs__name">Jolie McCullough</span>
-          <span class="contribs__info">Reporter, Developer / <a href="http://www.twitter.com/jsmccullou">@jsmccullou</a></span>
-        </li>
-        <li>
-          <span class="contribs__name">Alexa Ura</span>
-          <span class="contribs__info">Reporter / <a href="http://www.twitter.com/alexazura">@alexazura</a></span>
-        </li>
-        <li>
-          <span class="contribs__name">Johnathan Silver</span>
-          <span class="contribs__info">Reporter / <a href="http://www.twitter.com/johnathansilver">@johnathansilver</a></span>
-        </li>
-        <li>
-          <span class="contribs__name">Justin Dehn</span>
-          <span class="contribs__info">Multimedia Producer / <a href="http://www.twitter.com/jdehn">@jdehn</a></span>
-        </li>
-        <li>
-          <span class="contribs__name">Ben Hasson</span>
-          <span class="contribs__info">Senior Designer / <a href="http://www.twitter.com/been_hussln">@been_hussln</a></span>
-        </li>
-        <li>
-          <span class="contribs__name">Emily Albracht</span>
-          <span class="contribs__info">Junior Designer / <a href="http://www.twitter.com/emilyalbracht">@emilyalbracht</a></span>
-        </li>
-        <li>
-          <span class="contribs__name">Ryan Murphy</span>
-          <span class="contribs__info">Senior Developer / <a href="http://www.twitter.com/rdmurphy">@rdmurphy</a></span>
-        </li>
-        <li>
-          <span class="contribs__name">Todd Wiseman</span>
-          <span class="contribs__info">Multimedia Producer / <a href="http://www.twitter.com/wisemeister">@wisemeister</a></span>
-        </li>
-      </ul>
-    </div>
+      {% endif %}
+    {% endfor %}
   </div>
-</footer>
-<footer class="footer-links">
-  <div class="left">&#xa9; <script>document.write(new Date().getFullYear())</script> The Texas Tribune</div>
-  <ul class="links">
-    <li><a href="">About Us</a></li>
-    <li><a href="">Contact Us</a></li>
-    <li><a href="">Who Funds Us?</a></li>
-    <li><a href="">Terms of Service</a></li>
-    <li><a href="">Code of Ethics</a></li>
-    <li><a href="">Privacy Policy</a></li>
-    <li class="donate"><a href="">Donate</a></li>
-  </ul>
-</footer>
+  </section>
 
-{% block scripts %}{% endblock %}
-<script src="{{ static('scripts/commons.js') }}"></script>
-<script src="{{ static('scripts/main.js') }}"></script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-<script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-9827490-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  {% import 'macros/shares.html' as shares %}
+
+  <footer class="footer">
+    <div class="footer__wrapper">
+      <div class="footer__section about">
+        <h4 class="footer__title">About this project</h4>
+        <p class="footer__text">
+          The Texas Tribune spent almost a year investigating police shootings in
+          Texas’ largest cities. We worked to obtain official records — primarily
+          through open records requests — from police departments in the state’s 36
+          cities with a population of 100,000 or more residents. We worked to
+          independently confirm details related to those shootings, and pored over
+          hundreds of incident reports. The Tribune’s Unholstered project offers
+          the most detailed look at the state of police shootings in Texas. </p>
+        <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
+        <ul class="share-links">
+          <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), context.twitter_text, 'roadfromrita') }}">
+            {{ inject('assets/twitter.svg') }}
+          </a></li>
+          <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
+            {{ inject('assets/facebook.svg') }}
+          </a></li>
+        </ul>
+      </div>
+      <div class="footer__section">
+        <h4 class="footer__title">Contributors</h4>
+        <ul class="contribs">
+          <li>
+            <span class="contribs__name">Jolie McCullough</span>
+            <span class="contribs__info">Reporter, Developer / <a href="http://www.twitter.com/jsmccullou">@jsmccullou</a></span>
+          </li>
+          <li>
+            <span class="contribs__name">Alexa Ura</span>
+            <span class="contribs__info">Reporter / <a href="http://www.twitter.com/alexazura">@alexazura</a></span>
+          </li>
+          <li>
+            <span class="contribs__name">Johnathan Silver</span>
+            <span class="contribs__info">Reporter / <a href="http://www.twitter.com/johnathansilver">@johnathansilver</a></span>
+          </li>
+          <li>
+            <span class="contribs__name">Justin Dehn</span>
+            <span class="contribs__info">Multimedia Producer / <a href="http://www.twitter.com/jdehn">@jdehn</a></span>
+          </li>
+          <li>
+            <span class="contribs__name">Ben Hasson</span>
+            <span class="contribs__info">Senior Designer / <a href="http://www.twitter.com/been_hussln">@been_hussln</a></span>
+          </li>
+          <li>
+            <span class="contribs__name">Emily Albracht</span>
+            <span class="contribs__info">Junior Designer / <a href="http://www.twitter.com/emilyalbracht">@emilyalbracht</a></span>
+          </li>
+          <li>
+            <span class="contribs__name">Ryan Murphy</span>
+            <span class="contribs__info">Senior Developer / <a href="http://www.twitter.com/rdmurphy">@rdmurphy</a></span>
+          </li>
+          <li>
+            <span class="contribs__name">Todd Wiseman</span>
+            <span class="contribs__info">Multimedia Producer / <a href="http://www.twitter.com/wisemeister">@wisemeister</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="left">&#xa9; <script>document.write(new Date().getFullYear())</script> The Texas Tribune</div>
+      <ul class="links">
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contact Us</a></li>
+        <li><a href="">Who Funds Us?</a></li>
+        <li><a href="">Terms of Service</a></li>
+        <li><a href="">Code of Ethics</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li class="donate"><a href="">Donate</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+  <script src="{{ static('scripts/commons.js') }}"></script>
+  <script src="{{ static('scripts/main.js') }}"></script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-9827490-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 </body>
 </html>

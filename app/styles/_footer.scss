@@ -1,10 +1,19 @@
 .footer {
   background: $dark-gray;
-  padding: 2em 0;
 
   &__wrapper {
     margin: 0 auto;
     max-width: $wide-width;
+    padding: 2em 0;
+
+    &:after {
+      clear: both;
+      content: ' ';
+      display: block;
+      font-size: 0;
+      height: 0;
+      visibility: hidden;
+    }
   }
 
   &__section {
@@ -55,8 +64,8 @@
 
     &__icon {
       display: inline-block;
-      width: 2em;
       margin: 0 1em;
+      width: 2em;
     }
 
     svg {
@@ -99,15 +108,6 @@
       line-height: 1;
       text-transform: uppercase;
     }
-  }
-
-  &:after {
-    clear: both;
-    content: ' ';
-    display: block;
-    font-size: 0;
-    height: 0;
-    visibility: hidden;
   }
 }
 
