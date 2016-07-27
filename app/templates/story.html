@@ -6,28 +6,7 @@
 
 {% block body_class %}story-body{% endblock %}
 
-{% block header %}
-<header class="masthead">
-    <a href="https://www.texastribune.org">
-      <img class="trib-logo" alt="The Texas Tribune" src="https://s3.amazonaws.com/apps.texastribune.org/branding/TxTrib-logo-white500x55.png">
-    </a>
-    <div class="masthead-sections story">
-      Section:
-        <ul>
-          {% for story in data.meta.storylist %}
-            {% if story.id != "mainbar" %}
-              <a href="{{ static( story.slug ) }}">
-                <li class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
-              </a>
-            {% endif %}
-          {% endfor %}
-        </ul>
-    </div>
-    <div class="masthead-title story">
-      <a href="{{ static('index.html') }}">Unholstered</a>
-    </div>
-</header>
-{% endblock %}
+{% block masthead_class %}story{% endblock %}
 
 {% block content %}
 <div class="wrapper">

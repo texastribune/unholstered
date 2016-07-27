@@ -55,7 +55,7 @@
     width: 1em;
   }
 
-  &.story {
+  .story & {
     background: $white;
     color: $black;
     margin-right: .75em;
@@ -119,7 +119,7 @@
   text-transform: uppercase;
 
 
-  &.mainbar {
+  .mainbar & {
     background-color: $beige;
     margin-right: .25em;
 
@@ -152,7 +152,7 @@
     }
   }
 
-  &.story {
+  .story & {
     padding-right: 1.9em;
 
     a {
