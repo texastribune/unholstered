@@ -9,6 +9,7 @@
 
 html {
   box-sizing: border-box;
+  margin-top: 2em; /*offsets fixed header*/
 }
 
 *,
@@ -24,6 +25,7 @@ a {
 
 //sections
 @import 'masthead';
+@import 'navbar';
 @import 'story';
 @import 'readmore';
 @import 'footer';

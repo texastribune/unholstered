@@ -1,0 +1,32 @@
+.navbar {
+  background: $white;
+  border-bottom: .25em solid $black;
+  border-left: .25em solid $black;
+  border-right: .25em solid $black;
+  // display: none;
+
+  &__title {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__story {
+    // display: inline-block;
+    // float: left;
+    // padding: .25em;
+    // width: 16.66%;
+  }
+
+  &:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}

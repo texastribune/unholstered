@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
 </head>
 <body class="{% block body_class %}{% endblock %}">
-  <header>
+  <header class="header">
     <div class="masthead {% block masthead_class %}{% endblock %}">
       <a href="https://www.texastribune.org">
         <img class="trib-logo" alt="The Texas Tribune" src="https://s3.amazonaws.com/apps.texastribune.org/branding/TxTrib-logo-white500x55.png">
@@ -29,6 +29,27 @@
         <a href="{{ static('index.html') }}">Unholstered</a>
       </div>
     </div>
+    <nav class="navbar">
+      <h4 class="navbar__title">Sections</h4>
+      <ul>
+        {% for story in data.meta.storylist %}
+          {% if story.id != context.id %}
+          <li class="navbar__story">
+            <span class="navbar__tag">
+              <a href="{{ static( story.slug ) }}">
+                {% if data[story.id].section_number %}{{ data[story.id].section_number }}{% else %}Data{% endif %}
+              </a>
+            </span>
+            <span class="navbar__headline">
+              <a href="{{ static( story.slug ) }}">
+                <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
+              </a>
+            </span>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
   </header>
 
   {% block content %}{% endblock %}

@@ -1,9 +1,12 @@
-.masthead {
-  background-color: $black;
-  height: 2em;
+.header {
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+.masthead {
+  background-color: $black;
+  height: 2em;
 
   a {
     color: $black;
