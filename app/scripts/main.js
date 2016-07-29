@@ -7,7 +7,7 @@ import d3 from 'd3';
 
 
 // var mystack = stack();
-$('.masthead-sections ul li').mouseover(function() {
+$('.masthead-sections ul li').mouseenter(function() {
   $('.navbar__story').hide();
 
   $('#nav-' + this.id).show();
@@ -15,6 +15,6 @@ $('.masthead-sections ul li').mouseover(function() {
 });
 
 
-$('.container').mouseover(function() {
+$('.navbar').mouseleave(function() {
   $('.navbar').hide();
 });

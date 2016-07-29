@@ -33,7 +33,20 @@
       <ul>
         {% for story in data.meta.storylist %}
           <li id="nav-{{ story.id }}" class="navbar__story">
-            <span class="navbar__tag">
+            <a href="{{ static( story.slug ) }}">
+              <figure class="image thumbnail">
+                <img src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
+              </figure>
+            </a>
+            <span class="read-more__section">
+              <a href="{{ static( story.slug ) }}">
+                {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
+              </a>
+            </span>
+            <a href="{{ static( story.slug ) }}">
+              <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
+            </a>
+            <!-- <span class="navbar__tag">
               <a href="{{ static( story.slug ) }}">
                 {% if data[story.id].section_number %}{{ data[story.id].section_number }}{% else %}Data{% endif %}
               </a>
@@ -42,16 +55,14 @@
               <a href="{{ static( story.slug ) }}">
                 <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
               </a>
-            </span>
+            </span> -->
           </li>
         {% endfor %}
       </ul>
     </nav>
   </header>
 
-  <div class="container">
-    {% block content %}{% endblock %}
-  </div>
+  {% block content %}{% endblock %}
 
   <section class="read-more">
     <h3 class="read-more__title">More in this series</h3>
