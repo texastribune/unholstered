@@ -19,7 +19,7 @@
             {% for story in data.meta.storylist %}
               {% if story.id != "mainbar" %}
                 <a href="{{ static( story.slug ) }}">
-                  <li class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
+                  <li id="{{ story.id }}" class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
                 </a>
               {% endif %}
             {% endfor %}
@@ -30,11 +30,9 @@
       </div>
     </div>
     <nav class="navbar">
-      <h4 class="navbar__title">Sections</h4>
       <ul>
         {% for story in data.meta.storylist %}
-          {% if story.id != context.id %}
-          <li class="navbar__story">
+          <li id="nav-{{ story.id }}" class="navbar__story">
             <span class="navbar__tag">
               <a href="{{ static( story.slug ) }}">
                 {% if data[story.id].section_number %}{{ data[story.id].section_number }}{% else %}Data{% endif %}
@@ -46,13 +44,14 @@
               </a>
             </span>
           </li>
-          {% endif %}
         {% endfor %}
       </ul>
     </nav>
   </header>
 
-  {% block content %}{% endblock %}
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
 
   <section class="read-more">
     <h3 class="read-more__title">More in this series</h3>

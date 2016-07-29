@@ -7,10 +7,14 @@ import d3 from 'd3';
 
 
 // var mystack = stack();
-$('.masthead-sections').mouseover(function() {
+$('.masthead-sections ul li').mouseover(function() {
+  $('.navbar__story').hide();
+
+  $('#nav-' + this.id).show();
   $('.navbar').show();
 });
 
-$('.navbar').mouseout(function() {
+
+$('.container').mouseover(function() {
   $('.navbar').hide();
 });
