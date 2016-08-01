@@ -9,7 +9,7 @@
   }
 
   p {
-    font-family: 'PT Serif', serif;
+    font-family: $pt;
     font-size: 1.1em;
     line-height: 1.4em;
   }
@@ -21,7 +21,7 @@
   .section-bar {
     background: $light-blue;
     color: $white;
-    font-family: 'Chathura', sans-serif;
+    font-family: $chathura;
     font-size: 1.875em;
     letter-spacing: .05em;
     line-height: 1;
@@ -30,14 +30,14 @@
   }
 
   .story-headline {
-    font-family: 'Rubik', sans-serif;
+    font-family: $rubik;
     font-size: 2.5em;
     margin: .5em 0;
   }
 
   .byline {
     color: $gray;
-    font-family: 'Chathura', sans-serif;
+    font-family: $chathura;
     font-size: 1.75em;
     letter-spacing: .05em;
     line-height: 1;
@@ -55,7 +55,7 @@
 
   &__caption {
     color: $gray;
-    font-family: 'Chathura', sans-serif;
+    font-family: $chathura;
     font-size: 1.5em;
     letter-spacing: .02em;
     line-height: 1em;
@@ -63,7 +63,7 @@
 }
 
 .subhead {
-  font-family: 'Rubik', sans-serif;
+  font-family: $rubik;
   font-size: 1.1em;
   letter-spacing: .02em;
   margin: 1.5em 0;
@@ -88,14 +88,14 @@
 
   .quote {
     color: $orange-red;
-    font-family: 'Rubik', sans-serif;
+    font-family: $rubik;
     font-size: 1.75em;
     line-height: 1.25;
     margin: 0 0 .5em;
   }
 
   &__credit {
-    font-family: 'Chathura', sans-serif;
+    font-family: $chathura;
     font-size: 1.5em;
     font-style: normal;
     letter-spacing: .05em;

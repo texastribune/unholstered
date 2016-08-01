@@ -18,21 +18,18 @@
     padding: 0;
   }
 
+  &__section.read-more__section {
+    margin: 0;
+  }
+
   &__story {
     display: none;
     padding: 1em;
-    // display: inline-block;
-    // float: left;
-    // padding: .25em;
-    // width: 16.66%;
 
     .image {
-      width: 20%;
-      margin: 0 1em 0 0;
       float: left;
-    }
-
-    li {
+      margin: 0 1em 0 0;
+      width: 20%;
     }
 
     &:after {

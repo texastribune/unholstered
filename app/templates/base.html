@@ -38,7 +38,7 @@
                 <img src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
               </figure>
             </a>
-            <span class="read-more__section">
+            <span class="read-more__section navbar__section">
               <a href="{{ static( story.slug ) }}">
                 {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
               </a>
@@ -46,16 +46,6 @@
             <a href="{{ static( story.slug ) }}">
               <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
             </a>
-            <!-- <span class="navbar__tag">
-              <a href="{{ static( story.slug ) }}">
-                {% if data[story.id].section_number %}{{ data[story.id].section_number }}{% else %}Data{% endif %}
-              </a>
-            </span>
-            <span class="navbar__headline">
-              <a href="{{ static( story.slug ) }}">
-                <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
-              </a>
-            </span> -->
           </li>
         {% endfor %}
       </ul>

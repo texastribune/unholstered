@@ -24,7 +24,7 @@
   border-radius: .625rem .625rem 0 0;
   color: $white;
   float: right;
-  font-family: 'Chathura', sans-serif;
+  font-family: $chathura;
   font-size: 1.6em;
   letter-spacing: .05em;
   line-height: 1.25em;
@@ -114,7 +114,7 @@
 .masthead-title {
   border-radius: .625rem .625rem 0 0;
   float: right;
-  font-family: 'Rubik', sans-serif;
+  font-family: $rubik;
   font-size: 1.1em;
   letter-spacing: .02em;
   margin-right: .5em;
