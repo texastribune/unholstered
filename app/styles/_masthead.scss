@@ -84,7 +84,7 @@
     width: 20px;
   }
 
-  .story & {
+  .masthead-story & {
     background: $white;
     color: $black;
 
@@ -147,7 +147,7 @@
   }
 
 
-  .mainbar & {
+  .masthead-mainbar & {
     background-color: $beige;
 
     &:before,
@@ -157,7 +157,7 @@
 
   }
 
-  .story & {
+  .masthead-story & {
 
     a {
       color: $white;

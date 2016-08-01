@@ -15,6 +15,6 @@ $('.masthead-sections ul li').mouseenter(function() {
 });
 
 
-// $('.navbar').mouseleave(function() {
-//   $('.navbar').hide();
-// });
+$('.navbar').mouseleave(function() {
+  $('.navbar').hide();
+});

@@ -6,23 +6,24 @@
 
 {% block body_class %}story-body{% endblock %}
 
-{% block masthead_class %}story{% endblock %}
+{% block masthead_class %}masthead-story{% endblock %}
 
 {% block content %}
-<div class="wrapper">
-  <header class="story-header">
-    <div class="section-bar">
+<section class="sty-header {{ context.id }}">
+  <div class="sty-header__wrapper wrapper">
+    <div class="sty-header__bar">
       Section {{ context.section_number }}, {{ context.section_title }}
     </div>
-    <h1 class="story-headline">{{ context.headline }}</h1>
-    <p class="byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</p>
-  </header>
-  <figure class="image image--lead-art">
-    <img class="image__img" src="{{ static('assets/images/')}}{{ context.lead_art.photo_url }}">
-    <figcaption class="image__caption">{{context.lead_art.caption}}{% if context.lead_art.credit %} | {{ context.lead_art.credit }}{% endif %}</figcaption>
-  </figure>
-  <article>
+    <h1 class="sty-header__headline">{{ context.headline }}</h1>
+    <figure class="sty-header__art image">
+      {{ inject('assets/images/illustrations/records.svg') }}
+    </figure>
+    <div class="sty-header__byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</div>
+  </div>
+</section>
+<section class="wrapper">
+  <article class="story">
     {{ prose(context.prose) }}
   </article>
-</div>
+</section>
 {% endblock %}
