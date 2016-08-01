@@ -113,6 +113,30 @@
   font-size: 1.2em;
   letter-spacing: .02em;
   margin: 1.5em 0;
+  padding-left: 1em;
+  position: relative;
+
+  &:before {
+    background-color: $orange-red;
+    content: '';
+    display: block;
+    height: .5em;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: .5em;
+  }
+
+  &:after {
+    background-color: $orange-red;
+    content: '';
+    display: block;
+    height: .5em;
+    left: 0;
+    position: absolute;
+    top: .75em;
+    width: .5em;
+  }
 }
 
 .inline {
