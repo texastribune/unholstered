@@ -4,12 +4,8 @@
   &__wrapper {
     margin: 0 auto;
     max-width: $wide-width;
-    padding: 2em 1em;
+    padding: 2em 1em 0;
     @include clearfix();
-
-    @include breakpoint(phablet) {
-      padding: 2em;
-    }
   }
 
   &__title {
@@ -28,6 +24,12 @@
     line-height: 1.6;
   }
 
+  &__social {
+    margin-bottom: 1em;
+
+    @include clearfix();
+  }
+
   &__hashtag {
     font-family: 'Rubik', serif;
     font-size: 1.35em;
@@ -37,9 +39,16 @@
     a {
       color: $light-blue;
     }
+
+    @include breakpoint(nonmobile) {
+      float: left;
+      line-height: 1.6;
+      width: 50%;
+    }
   }
 
   .share-links {
+    margin: 1em 0;
     padding: 0;
     text-align: center;
 
@@ -56,17 +65,24 @@
     path {
       fill: $light-blue;
     }
+
+    @include breakpoint(nonmobile) {
+      float: right;
+      margin: 0;
+      width: 50%;
+    }
   }
 
   .contribs {
     color: $white;
     list-style: none;
+    margin: 0;
     padding: 0;
 
     li {
       margin-bottom: 1.5em;
 
-      @include breakpoint(tablet) {
+      @include breakpoint(phablet) {
         display: inline-block;
         width: 49%;
       }
@@ -78,7 +94,7 @@
     }
 
     a {
-      border-bottom: 2px solid $light-blue;
+      box-shadow: $light-blue 0 -2px 0 inset;
       color: $white;
       display: inline-block;
       text-decoration: none;

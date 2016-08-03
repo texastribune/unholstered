@@ -36,7 +36,7 @@
         <a href="{{ static('index.html') }}">Unholstered</a>
       </div>
     </div>
-    <nav class="navbar">
+    <nav class="navbar navbar--desktop">
       <ul>
         {% for story in data.meta.storylist %}
           <li id="nav-{{ story.id }}" class="navbar__story">
@@ -52,6 +52,17 @@
             </span>
             <a href="{{ static( story.slug ) }}">
               <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <nav class="navbar navbar--mobile">
+      <ul>
+        {% for story in data.meta.storylist %}
+          <li id="nav-{{ story.id }}" class="navbar__story">
+            <a href="{{ static( story.slug ) }}">
+              {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
             </a>
           </li>
         {% endfor %}
@@ -99,15 +110,17 @@
           independently confirm details related to those shootings, and pored over
           hundreds of incident reports. The Tribune’s Unholstered project offers
           the most detailed look at the state of police shootings in Texas. </p>
-        <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
-        <ul class="share-links">
-          <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), context.twitter_text, 'roadfromrita') }}">
-            {{ inject('assets/twitter.svg') }}
-          </a></li>
-          <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
-            {{ inject('assets/facebook.svg') }}
-          </a></li>
-        </ul>
+        <div class="footer__social">
+          <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
+          <ul class="share-links">
+            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), context.twitter_text, 'roadfromrita') }}">
+              {{ inject('assets/twitter.svg') }}
+            </a></li>
+            <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
+              {{ inject('assets/facebook.svg') }}
+            </a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer__section">
         <h4 class="footer__title">Contributors</h4>

@@ -1,5 +1,4 @@
 .read-more {
-  margin-bottom: 2em;
 
   &__title {
     border-top: 2px solid $black;
@@ -57,13 +56,13 @@
 
   &__headline {
     font-family: $rubik;
-    font-size: 1.2em; //1.25em
+    font-size: 1.2em;
     font-weight: normal;
-    line-height: 1.2;
+    line-height: 1.4;
     margin: .0 0 .5em;
 
     a {
-      border-bottom: 2px solid $light-blue;
+      box-shadow: $light-blue 0 -2px 0 inset;
     }
   }
 

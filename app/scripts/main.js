@@ -7,14 +7,18 @@ import d3 from 'd3';
 
 
 // var mystack = stack();
-$('.masthead-sections ul li').mouseenter(function() {
-  $('.navbar__story').hide();
+$('.masthead-sections__desktop ul li').mouseenter(function() {
+  $('.navbar--desktop .navbar__story').hide();
 
-  $('#nav-' + this.id).show();
-  $('.navbar').show();
+  $('.navbar--desktop #nav-' + this.id).show();
+  $('.navbar--desktop').show();
 });
 
+$('.navbar--desktop').mouseleave(function() {
+  $('.navbar--desktop').hide();
+});
 
-$('.navbar').mouseleave(function() {
-  $('.navbar').hide();
+$('.masthead-sections__mobile').click(function() {
+  $('.navbar--mobile .navbar__story').toggle();
+  $('.navbar--mobile').toggle();
 });

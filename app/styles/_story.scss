@@ -1,11 +1,11 @@
 .wrapper {
   &__story {
-    margin: 0 auto;
+    margin: 2em auto;
     max-width: $text-width;
     width: 100%;
 
     a {
-      border-bottom: 2px solid $light-blue;
+      box-shadow: $light-blue 0 -2px 0 inset;
       color: $black;
       display: inline-block;
       text-decoration: none;
@@ -13,12 +13,8 @@
 
     p {
       font-family: $pt;
-      font-size: 1em;
+      font-size: 1.1em;
       line-height: 1.4em;
-
-      @include breakpoint(tablet) {
-        font-size: 1.1em;
-      }
     }
   }
 }
@@ -40,7 +36,7 @@
     padding: 0 1em;
 
     a {
-      border-bottom: 2px solid $light-blue;
+      box-shadow: $light-blue 0 -2px 0 inset;
       color: $black;
       display: inline-block;
       text-decoration: none;
@@ -60,10 +56,6 @@
 
     @include breakpoint(phablet) {
       font-size: 1.75em;
-    }
-
-    @include breakpoint(tablet) {
-      font-size: 1.875em;
     }
   }
 
@@ -164,14 +156,13 @@
 
 .subhead {
   font-family: $rubik;
-  font-size: 1.1em;
+  font-size: 1.2em;
   letter-spacing: .02em;
   margin: 1em 0;
   padding-left: 1em;
   position: relative;
 
   @include breakpoint(phablet) {
-    font-size: 1.2em;
     margin: 1.5em 0;
   }
 
