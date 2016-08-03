@@ -7,12 +7,13 @@ $chathura: 'Chathura', sans-serif;
 $pt: 'PT Serif', serif;
 
 //helpers
-@import 'grid';
+@import 'mixins';
+@import 'layout';
 @import 'colors';
 
 html {
   box-sizing: border-box;
-  margin-top: 2em; /*offsets fixed header*/
+  margin-top: 2em; //offsets fixed header
 }
 
 *,
@@ -21,7 +22,12 @@ html {
   box-sizing: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
 }
 

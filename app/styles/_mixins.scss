@@ -1,0 +1,26 @@
+@mixin clearfix() {
+  &:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+@mixin breakpoint($point) {
+  @if $point == bigdesktop {
+    @media (min-width: 870px) { @content ; }
+  } @else if $point == desktop {
+    @media (min-width: 740px) { @content ; }
+  } @else if $point == nondesktop {
+    @media (max-width: 739px) { @content ; }
+  } @else if $point == tablet {
+    @media (min-width: 550px) { @content ; }
+  } @else if $point == nonmobile {
+    @media (min-width: 481px) { @content ; }
+  } @else if $point == mobile {
+    @media (max-width: 480px)  { @content ; }
+  }
+}

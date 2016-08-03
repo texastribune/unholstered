@@ -1,25 +1,39 @@
 .read-more {
-  border-top: 2px solid $black;
-  margin: 0 auto 2em;
-  max-width: $wide-width;
-  width: 100%;
+  margin-bottom: 2em;
 
   &__title {
+    border-top: 2px solid $black;
     font-family: $rubik;
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: .02em;
     margin: .5em 0;
+    padding-top: .5em;
   }
 
   &__story {
-    float: left;
-    margin-right: 2%;
-    width: 32%;
+    margin-bottom: 2em;
 
-    &:nth-child(3n+3) {
-      margin-right: 0;
+    @include breakpoint(nonmobile) {
+      float: left;
+      margin-right: 2%;
+      width: 49%;
+
+      &:nth-child(2n+2) {
+        margin-right: 0;
+      }
     }
 
-    &:nth-child(4n+4) {
-      clear: both;
+    @include breakpoint(desktop) {
+      width: 32%;
+
+      &:nth-child(2n+2) {
+        margin-right: 2%;
+      }
+
+      &:nth-child(3n+3) {
+        margin-right: 0;
+      }
     }
   }
 
@@ -28,7 +42,7 @@
     color: $white;
     display: inline-block;
     font-family: $chathura;
-    font-size: 1.5em;
+    font-size: 1.4em; //1.5em
     font-style: normal;
     letter-spacing: .05em;
     line-height: .6;
@@ -43,9 +57,14 @@
 
   &__headline {
     font-family: $rubik;
-    font-size: 1.25em;
+    font-size: 1.2em; //1.25em
     font-weight: normal;
-    margin: .25em 0;
+    line-height: 1.2;
+    margin: .0 0 .5em;
+
+    a {
+      border-bottom: 2px solid $light-blue;
+    }
   }
 
   .thumbnail {

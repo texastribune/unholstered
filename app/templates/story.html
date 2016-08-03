@@ -16,13 +16,14 @@
     </div>
     <h1 class="sty-header__headline">{{ context.headline }}</h1>
     <figure class="sty-header__art image">
-      {{ inject('assets/images/illustrations/records.svg') }}
+      <!-- Don't do it this way, figure out how to inject -->
+      <img src="{{ static('assets/images/illustrations/')}}{{ context.illustration.svg_url }}" class="svg">
     </figure>
     <div class="sty-header__byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</div>
   </div>
 </section>
 <section class="wrapper">
-  <article class="story">
+  <article class="wrapper__story">
     {{ prose(context.prose) }}
   </article>
 </section>

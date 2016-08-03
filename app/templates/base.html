@@ -11,10 +11,12 @@
   <header class="header">
     <div class="masthead {% block masthead_class %}{% endblock %}">
       <a href="https://www.texastribune.org">
-        <img class="trib-logo" alt="The Texas Tribune" src="https://s3.amazonaws.com/apps.texastribune.org/branding/TxTrib-logo-white500x55.png">
+        <img class="trib-logo desktop" alt="The Texas Tribune" src="https://s3.amazonaws.com/apps.texastribune.org/branding/TxTrib-logo-white500x55.png">
+        <img class="trib-logo mobile" alt="The Texas Tribune" src="{{ static('assets/images/logo-mobile.png')}}">
       </a>
       <div class="masthead-sections">
-        Section:
+        <div class="masthead-sections__desktop">
+          Section:
           <ul>
             {% for story in data.meta.storylist %}
               {% if story.id != "mainbar" %}
@@ -24,6 +26,11 @@
               {% endif %}
             {% endfor %}
           </ul>
+        </div>
+        <div class="masthead-sections__mobile">
+          Sections
+          <i class="chevron-down">V</i>
+        </div>
       </div>
       <div class="masthead-title">
         <a href="{{ static('index.html') }}">Unholstered</a>
@@ -54,7 +61,7 @@
 
   {% block content %}{% endblock %}
 
-  <section class="read-more">
+  <section class="read-more wrapper">
     <h3 class="read-more__title">More in this series</h3>
     <div class="read-more__stories">
     {% for story in data.meta.storylist %}
@@ -70,9 +77,7 @@
             {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
           </a>
         </div>
-        <a href="{{ static( story.slug ) }}">
-          <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
-        </a>
+        <h3 class="read-more__headline"><a href="{{ static( story.slug ) }}">{{ data[story.id].headline }}</a></h3>
         <p>{{ data[story.id].summary }}</p>
       </div>
       {% endif %}
@@ -82,7 +87,7 @@
 
   {% import 'macros/shares.html' as shares %}
 
-  <footer class="footer">
+  <footer class="footer wrapper">
     <div class="footer__wrapper">
       <div class="footer__section about">
         <h4 class="footer__title">About this project</h4>

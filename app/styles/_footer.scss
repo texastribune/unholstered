@@ -4,16 +4,8 @@
   &__wrapper {
     margin: 0 auto;
     max-width: $wide-width;
-    padding: 2em 0;
-
-    &:after {
-      clear: both;
-      content: ' ';
-      display: block;
-      font-size: 0;
-      height: 0;
-      visibility: hidden;
-    }
+    padding: 2em;
+    @include clearfix();
   }
 
   &__section {

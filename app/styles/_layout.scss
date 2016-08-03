@@ -1,0 +1,44 @@
+//max widths
+$text-width: 680px;
+$mid-width: 800px;
+$wide-width: 980px;
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: $wide-width;
+  padding: 0 1em;
+  position: relative;
+  width: 100%;
+
+  @include breakpoint(desktop) {
+    padding: 0 2em;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.desktop {
+  @include breakpoint(mobile) {
+    display: none;
+  }
+}
+
+.mobile {
+  @include breakpoint(nonmobile) {
+    display: none;
+  }
+}

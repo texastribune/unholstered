@@ -7,6 +7,7 @@
   margin-left: auto;
   margin-right: 0;
   max-width: $text-width;
+  @include clearfix();
 
   &__title {
     margin: 0;
@@ -25,29 +26,12 @@
   &__story {
     display: none;
     padding: 1em;
+    @include clearfix();
 
     .image {
       float: left;
       margin: 0 1em 0 0;
       width: 20%;
     }
-
-    &:after {
-      clear: both;
-      content: ' ';
-      display: block;
-      font-size: 0;
-      height: 0;
-      visibility: hidden;
-    }
-  }
-
-  &:after {
-    clear: both;
-    content: ' ';
-    display: block;
-    font-size: 0;
-    height: 0;
-    visibility: hidden;
   }
 }

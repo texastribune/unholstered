@@ -1,28 +1,50 @@
 .wrapper {
-  a {
-    border-bottom: 2px solid $light-blue;
-    color: $black;
-    display: inline-block;
-    text-decoration: none;
-  }
+  &__story {
+    margin: 0 auto;
+    max-width: $text-width;
+    width: 100%;
 
-  p {
-    font-family: $pt;
-    font-size: 1.1em;
-    line-height: 1.4em;
+    a {
+      border-bottom: 2px solid $light-blue;
+      color: $black;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    p {
+      font-family: $pt;
+      font-size: 1em;
+      line-height: 1.4em;
+
+      @include breakpoint(desktop) {
+        font-size: 1.1em;
+      }
+    }
   }
 }
 
 .sty-header {
-  padding: 2em 0 1em;
+  padding: 1em 0;
+
+  @include breakpoint(tablet) {
+    padding: 2em 0 1em;
+  }
 
   &.offduty {
-    background-color: $brown-gray;
+    background-color: $dark-gray;
   }
 
   &__wrapper {
     margin: 0 auto;
     max-width: $mid-width;
+    padding: 0 1em;
+
+    a {
+      border-bottom: 2px solid $light-blue;
+      color: $black;
+      display: inline-block;
+      text-decoration: none;
+    }
   }
 
   &__bar {
@@ -30,20 +52,36 @@
     color: $white;
     display: inline-block;
     font-family: $chathura;
-    font-size: 1.875em;
+    font-size: 1.5em;
     letter-spacing: .05em;
     line-height: 1;
     padding: 0 .5em;
     text-transform: uppercase;
+
+    @include breakpoint(tablet) {
+      font-size: 1.75em;
+    }
+
+    @include breakpoint(desktop) {
+      font-size: 1.875em;
+    }
   }
 
   &__headline {
     font-family: $rubik;
-    font-size: 2.5em;
+    font-size: 1.85em;
     font-weight: 400;
     letter-spacing: .02em;
     line-height: 1.1;
     margin: .5em 0;
+
+    @include breakpoint(tablet) {
+      font-size: 2em;
+    }
+
+    @include breakpoint(desktop) {
+      font-size: 2.5em;
+    }
 
     .offduty & {
       color: $white;
@@ -59,11 +97,15 @@
   &__byline {
     color: $gray;
     font-family: $chathura;
-    font-size: 1.75em;
+    font-size: 1.5em;
     letter-spacing: .05em;
     line-height: 1;
     margin: 0;
     text-transform: uppercase;
+
+    @include breakpoint(tablet) {
+      font-size: 1.75em;
+    }
 
     a {
       color: $gray;
@@ -84,7 +126,11 @@
 }
 
 .image {
-  margin: 1em;
+  margin: 1em 0;
+
+  @include breakpoint(mobile) {
+    margin: 1em -1em;
+  }
 
   &__img {
     display: block;
@@ -93,9 +139,17 @@
   &__caption {
     color: $gray;
     font-family: $chathura;
-    font-size: 1.5em;
+    font-size: 1.4em;
     letter-spacing: .02em;
     line-height: .75;
+
+    @include breakpoint(mobile) {
+      margin: 0 1em;
+    }
+
+    @include breakpoint(tablet) {
+      font-size: 1.5em;
+    }
   }
 
   &__credit {
@@ -103,18 +157,23 @@
     display: block;
     font-family: $pt;
     font-size: .7em;
-    margin-bottom: .25em;
+    margin: .25em;
     text-align: right;
   }
 }
 
 .subhead {
   font-family: $rubik;
-  font-size: 1.2em;
+  font-size: 1.1em;
   letter-spacing: .02em;
-  margin: 1.5em 0;
+  margin: 1em 0;
   padding-left: 1em;
   position: relative;
+
+  @include breakpoint(tablet) {
+    font-size: 1.2em;
+    margin: 1.5em 0;
+  }
 
   &:before {
     background-color: $orange-red;
@@ -140,30 +199,49 @@
 }
 
 .inline {
-  margin: 1em;
+  margin: 1em 0;
 
-  &--left {
-    float: left;
-    margin-left: -5em;
-    width: 60%;
-  }
+  @include breakpoint(tablet) {
+    &--left {
+      float: left;
+      margin: 1em 1em 1em 0;
+      width: 60%;
 
-  &--right {
-    float: right;
-    margin-right: -5em;
-    width: 60%;
+      @include breakpoint(bigdesktop) {
+        margin-left: -5em;
+      }
+    }
+
+    &--right {
+      float: right;
+      margin: 1em 0 1em 1em;
+      width: 60%;
+
+      @include breakpoint(bigdesktop) {
+        margin-right: -5em;
+      }
+    }
   }
 }
 
 .blockquote {
-  margin: 1em;
+  margin: 0 0 0 2em;
+
+  @include breakpoint(tablet) {
+    margin: 0;
+    padding: 1em 0;
+  }
 
   .quote {
     color: $orange-red;
     font-family: $rubik;
-    font-size: 1.75em;
-    line-height: 1.25;
+    font-size: 1.5em;
+    line-height: 1.4;
     margin: 0 0 .5em;
+
+    @include breakpoint(desktop) {
+      font-size: 1.75em;
+    }
   }
 
   &__credit {
