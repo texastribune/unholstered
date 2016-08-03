@@ -34,7 +34,7 @@
   position: relative;
   text-transform: uppercase;
 
-  @include breakpoint(desktop) {
+  @include breakpoint(tablet) {
     margin-right: 1.5rem;
   }
 
@@ -66,7 +66,7 @@
   }
 
   &__mobile {
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       display: none;
     }
   }
@@ -74,7 +74,7 @@
   &__desktop {
     display: none;
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       display: block;
     }
   }

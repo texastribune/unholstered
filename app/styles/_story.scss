@@ -16,7 +16,7 @@
       font-size: 1em;
       line-height: 1.4em;
 
-      @include breakpoint(desktop) {
+      @include breakpoint(tablet) {
         font-size: 1.1em;
       }
     }
@@ -26,7 +26,7 @@
 .sty-header {
   padding: 1em 0;
 
-  @include breakpoint(tablet) {
+  @include breakpoint(phablet) {
     padding: 2em 0 1em;
   }
 
@@ -58,11 +58,11 @@
     padding: 0 .5em;
     text-transform: uppercase;
 
-    @include breakpoint(tablet) {
+    @include breakpoint(phablet) {
       font-size: 1.75em;
     }
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       font-size: 1.875em;
     }
   }
@@ -75,11 +75,11 @@
     line-height: 1.1;
     margin: .5em 0;
 
-    @include breakpoint(tablet) {
+    @include breakpoint(phablet) {
       font-size: 2em;
     }
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       font-size: 2.5em;
     }
 
@@ -103,7 +103,7 @@
     margin: 0;
     text-transform: uppercase;
 
-    @include breakpoint(tablet) {
+    @include breakpoint(phablet) {
       font-size: 1.75em;
     }
 
@@ -147,7 +147,7 @@
       margin: 0 1em;
     }
 
-    @include breakpoint(tablet) {
+    @include breakpoint(phablet) {
       font-size: 1.5em;
     }
   }
@@ -170,7 +170,7 @@
   padding-left: 1em;
   position: relative;
 
-  @include breakpoint(tablet) {
+  @include breakpoint(phablet) {
     font-size: 1.2em;
     margin: 1.5em 0;
   }
@@ -201,13 +201,13 @@
 .inline {
   margin: 1em 0;
 
-  @include breakpoint(tablet) {
+  @include breakpoint(phablet) {
     &--left {
       float: left;
       margin: 1em 1em 1em 0;
       width: 60%;
 
-      @include breakpoint(bigdesktop) {
+      @include breakpoint(desktop) {
         margin-left: -5em;
       }
     }
@@ -217,7 +217,7 @@
       margin: 1em 0 1em 1em;
       width: 60%;
 
-      @include breakpoint(bigdesktop) {
+      @include breakpoint(desktop) {
         margin-right: -5em;
       }
     }
@@ -225,9 +225,9 @@
 }
 
 .blockquote {
-  margin: 0 0 0 2em;
+  margin: 0;
 
-  @include breakpoint(tablet) {
+  @include breakpoint(phablet) {
     margin: 0;
     padding: 1em 0;
   }
@@ -239,7 +239,7 @@
     line-height: 1.4;
     margin: 0 0 .5em;
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       font-size: 1.75em;
     }
   }

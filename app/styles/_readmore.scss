@@ -24,7 +24,7 @@
       }
     }
 
-    @include breakpoint(desktop) {
+    @include breakpoint(tablet) {
       width: 32%;
 
       &:nth-child(2n+2) {

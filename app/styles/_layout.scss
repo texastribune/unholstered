@@ -14,7 +14,7 @@ body {
   position: relative;
   width: 100%;
 
-  @include breakpoint(desktop) {
+  @include breakpoint(tablet) {
     padding: 0 2em;
   }
 }
