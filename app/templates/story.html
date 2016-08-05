@@ -24,6 +24,14 @@
 </section>
 <section class="wrapper">
   <article class="wrapper__story">
+    <div class="social">
+      <a class="social__icon" href="{{ shares.twitter( static(context.slug), context.twitter_text, 'Unholstered') }}">
+        {{ inject('assets/twitter.svg') }}
+      </a>
+      <a class="social__icon" href="{{ shares.facebook( static(context.slug), static(context.slug) ) }}"  target="_blank">
+        {{ inject('assets/facebook.svg') }}
+      </a>
+    </div>
     {{ prose(context.prose) }}
   </article>
 </section>

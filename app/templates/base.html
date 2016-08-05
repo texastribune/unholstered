@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Unholstered | The Texas Tribune</title>
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
+  {% include 'partials/meta.html' %}
+  <script src="{{ static('scripts/adLoader.js') }}"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
   <header class="header">
@@ -29,7 +31,7 @@
         </div>
         <div class="masthead-sections__mobile">
           Sections
-          <i class="chevron-down">V</i>
+          <i class="chevron-down">{{ inject('assets/down-arrow.svg') }}</i>
         </div>
       </div>
       <div class="masthead-title">
@@ -42,7 +44,7 @@
           <li id="nav-{{ story.id }}" class="navbar__story">
             <a href="{{ static( story.slug ) }}">
               <figure class="image thumbnail">
-                <img src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
+                <img src="{{ static('assets/images/illustrations/')}}{{ data[story.id].illustration.svg_url }}">
               </figure>
             </a>
             <span class="read-more__section navbar__section">
@@ -72,6 +74,8 @@
 
   {% block content %}{% endblock %}
 
+  <div class="banner-ad wrapper" id="ad-banner-footer"></div>
+
   <section class="read-more wrapper">
     <h3 class="read-more__title">More in this series</h3>
     <div class="read-more__stories">
@@ -80,7 +84,7 @@
       <div class="read-more__story">
         <a href="{{ static( story.slug ) }}">
           <figure class="image thumbnail">
-            <img class="image__img" src="{{ static('assets/images/')}}{{ data[story.id].lead_art.photo_url }}">
+            <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data[story.id].illustration.svg_url }}">
           </figure>
         </a>
         <div class="read-more__section">
@@ -113,7 +117,7 @@
         <div class="footer__social">
           <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
           <ul class="share-links">
-            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), context.twitter_text, 'roadfromrita') }}">
+            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), mainbar.twitter_text, 'unholstered') }}">
               {{ inject('assets/twitter.svg') }}
             </a></li>
             <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
@@ -163,13 +167,13 @@
     <div class="footer-links">
       <div class="footer-links__left">&#xa9; <script>document.write(new Date().getFullYear())</script> <a href="https://www.texastribune.org">The Texas Tribune</a></div>
       <ul class="links">
-        <li><a href="">About Us</a></li>
-        <li><a href="">Contact Us</a></li>
-        <li><a href="">Who Funds Us?</a></li>
-        <li><a href="">Terms of Service</a></li>
-        <li><a href="">Code of Ethics</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li class="donate"><a href="">Donate</a></li>
+        <li><a href="https://www.texastribune.org/about/">About Us</a></li>
+        <li><a href="https://www.texastribune.org/contact/">Contact Us</a></li>
+        <li><a href="https://www.texastribune.org/support-us/donors-and-members/">Who Funds Us?</a></li>
+        <li><a href="https://www.texastribune.org/terms-of-service/">Terms of Service</a></li>
+        <li><a href="https://www.texastribune.org/ethics/">Code of Ethics</a></li>
+        <li><a href="https://www.texastribune.org/privacy/">Privacy Policy</a></li>
+        <li class="donate"><a href="https://support.texastribune.org/">Donate</a></li>
       </ul>
     </div>
   </footer>
@@ -183,5 +187,6 @@
     ga('create', 'UA-9827490-1', 'auto');
     ga('send', 'pageview');
   </script>
+  {% include 'partials/parsely.html' %}
 </body>
 </html>

@@ -65,7 +65,14 @@
     width: 1em;
   }
 
+  .chevron-down svg {
+    width: .4em;
+    height: .4em;
+  }
+
   &__mobile {
+    cursor: pointer;
+    
     @include breakpoint(tablet) {
       display: none;
     }

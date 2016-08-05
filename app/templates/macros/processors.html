@@ -38,3 +38,7 @@
   </blockquote>
 </aside>
 {% endmacro %}
+
+{% macro ad(value) %}
+<div class="{{ value.adtype }}-ad" id="{{ value.id }}"></div>
+{% endmacro %}

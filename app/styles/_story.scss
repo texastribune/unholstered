@@ -16,6 +16,29 @@
       font-size: 1.1em;
       line-height: 1.4em;
     }
+
+    .social {
+      float: right;
+
+      &__icon {
+        background: $light-blue;
+        box-shadow: none;
+        padding: .5em .5em .4em;
+
+        &:first-child {
+          margin-right: 1em;
+        }
+
+        svg {
+          fill: white;
+          height: 1.5em;
+        }
+
+        &:hover {
+          background: $orange-red;
+        }
+      }
+    }
   }
 }
 
@@ -111,10 +134,6 @@
       }
     }
   }
-}
-
-.story {
-  padding: 1em 0 2em;
 }
 
 .image {
