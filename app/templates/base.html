@@ -6,7 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Unholstered | The Texas Tribune</title>
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
-  {% include 'partials/meta.html' %}
+  <script src="https://use.fontawesome.com/e75a5e3785.js"></script>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@texastribune">
+  <meta name="twitter:creator" content="@texastribune">
+  <meta property="og:url" content="{{ static( context.slug ) }}">
+  <meta property="og:title" content="{{ context.headline }} | Unholstered">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="{{ context.summary }}">
+  <meta property="og:site_name" content="The Texas Tribune">
+  <meta property="og:image" content="{{ static ('assets/images/illustrations/') }}{{ context.illustration.svg_url }}">
+  <meta property="fb:app_id" content="154122474650943">
   <script src="{{ static('scripts/adLoader.js') }}"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -31,7 +41,7 @@
         </div>
         <div class="masthead-sections__mobile">
           Sections
-          <i class="chevron-down">{{ inject('assets/down-arrow.svg') }}</i>
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
         </div>
       </div>
       <div class="masthead-title">
@@ -62,11 +72,14 @@
     <nav class="navbar navbar--mobile">
       <ul>
         {% for story in data.meta.storylist %}
-          <li id="nav-{{ story.id }}" class="navbar__story">
-            <a href="{{ static( story.slug ) }}">
-              {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
-            </a>
-          </li>
+          {% if data[story.id].section_number %}
+            <li id="nav-{{ story.id }}" class="navbar__story">
+              <a href="{{ static( story.slug ) }}">
+                <span class="navbar__sectionnum">{{ data[story.id].section_number }}</span>
+                {{ data[story.id].section_title }}
+              </a>
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
     </nav>
@@ -74,9 +87,8 @@
 
   {% block content %}{% endblock %}
 
-  <div class="banner-ad wrapper" id="ad-banner-footer"></div>
-
   <section class="read-more wrapper">
+    <div class="banner-ad wrapper" id="ad-banner-footer"></div>
     <h3 class="read-more__title">More in this series</h3>
     <div class="read-more__stories">
     {% for story in data.meta.storylist %}
@@ -118,10 +130,10 @@
           <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
           <ul class="share-links">
             <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), mainbar.twitter_text, 'unholstered') }}">
-              {{ inject('assets/twitter.svg') }}
+              <i class="fa fa-twitter" aria-hidden="true"></i>
             </a></li>
             <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
-              {{ inject('assets/facebook.svg') }}
+              <i class="fa fa-facebook" aria-hidden="true"></i>
             </a></li>
           </ul>
         </div>
@@ -187,6 +199,33 @@
     ga('create', 'UA-9827490-1', 'auto');
     ga('send', 'pageview');
   </script>
-  {% include 'partials/parsely.html' %}
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "{{ context.headline }}",
+        "url": "{{ static( context.slug ) }}",
+        "thumbnailUrl": "{{ static ('assets/images/illustrations/') }}{{ context.illustration.svg_url }}",
+        "dateCreated": "2016-08-30T06:00:00-06:00",
+        "articleSection": ["front-page", "law-and-order"],
+        "creator": ["Jolie McCullough", "Alexa Ura", "Johnathan Silver"]
+      }
+  </script>
+  <!-- START Parse.ly Include: Standard -->
+  <div id="parsely-root" style="display: none">
+    <span id="parsely-cfg" data-parsely-site="texastribune.org"></span>
+  </div>
+  <script>
+  (function(s, p, d) {
+    var h=d.location.protocol, i=p+"-"+s,
+        e=d.getElementById(i), r=d.getElementById(p+"-root"),
+        u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+        :"static."+p+".com";
+    if (e) return;
+    e = d.createElement(s); e.id = i; e.async = true;
+    e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+  })("script", "parsely", document);
+  </script>
+  <!-- END Parse.ly Include: Standard -->
 </body>
 </html>

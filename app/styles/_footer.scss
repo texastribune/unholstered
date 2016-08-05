@@ -33,6 +33,7 @@
   &__hashtag {
     font-family: 'Rubik', serif;
     font-size: 1.35em;
+    line-height: 1.4;
     text-align: center;
     text-transform: uppercase;
 
@@ -42,7 +43,6 @@
 
     @include breakpoint(nonmobile) {
       float: left;
-      line-height: 1.6;
       width: 50%;
     }
   }
@@ -58,12 +58,9 @@
       width: 2em;
     }
 
-    svg {
-      width: 1.5em;
-    }
-
-    path {
-      fill: $light-blue;
+    .fa {
+      color: $light-blue;
+      font-size: 1.75em;
     }
 
     @include breakpoint(nonmobile) {

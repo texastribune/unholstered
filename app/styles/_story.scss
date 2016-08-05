@@ -7,7 +7,6 @@
     a {
       box-shadow: $light-blue 0 -2px 0 inset;
       color: $black;
-      display: inline-block;
       text-decoration: none;
     }
 
@@ -20,19 +19,22 @@
     .social {
       float: right;
 
+      @include breakpoint(mobile) {
+        float: none;
+        margin-top: -1em;
+        text-align: center;
+      }
+
       &__icon {
         background: $light-blue;
         box-shadow: none;
+        display: inline-block;
+        font-size: 1.25em;
+        color: $white;
+        margin-left: 1em;
         padding: .5em .5em .4em;
-
-        &:first-child {
-          margin-right: 1em;
-        }
-
-        svg {
-          fill: white;
-          height: 1.5em;
-        }
+        text-align: center;
+        width: 2em;
 
         &:hover {
           background: $orange-red;
@@ -235,12 +237,10 @@
 }
 
 .blockquote {
+  border-bottom: 1px solid $light-blue;
+  border-top: 1px solid $light-blue;
   margin: 0;
-
-  @include breakpoint(phablet) {
-    margin: 0;
-    padding: 1em 0;
-  }
+  padding: 1em 0;
 
   .quote {
     color: $orange-red;

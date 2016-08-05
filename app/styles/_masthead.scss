@@ -26,15 +26,17 @@
   color: $white;
   float: right;
   font-family: $chathura;
-  font-size: 1.6em;
+  font-size: 1.5em;
   letter-spacing: .05em;
-  line-height: 1.25em;
+  line-height: 1.35em;
   margin-right: 1rem;
   padding: 0 .7em;
   position: relative;
   text-transform: uppercase;
 
   @include breakpoint(tablet) {
+    font-size: 1.6em;
+    line-height: 1.25em;
     margin-right: 1.5rem;
   }
 
@@ -60,19 +62,22 @@
   li {
     display: inline-block;
     line-height: 1;
-    margin: 0;
+    margin: 0 .1em;
     text-align: center;
     width: 1em;
   }
 
-  .chevron-down svg {
-    width: .4em;
-    height: .4em;
+  .fa-caret-down {
+    font-size: .6em;
+
+    .masthead-mainbar & {
+      color: $white;
+    }
   }
 
   &__mobile {
     cursor: pointer;
-    
+
     @include breakpoint(tablet) {
       display: none;
     }
@@ -86,28 +91,30 @@
     }
   }
 
-  &:before {
-    border-radius: .25rem .625rem 0 0;
+  &:before,
+  &:after {
     content: '';
     display: block;
-    height: 1.25em;
+    height: 1.35em;
     position: absolute;
-    left: -3px;
     top: 0;
-    transform: skewX(-20deg);
     width: 15px;
+
+    @include breakpoint(tablet) {
+      height: 1.25em;
+    }
+  }
+
+  &:before {
+    border-radius: .25rem .625rem 0 0;
+    left: -3px;
+    transform: skewX(-20deg);
   }
 
   &:after {
     border-radius: .625rem .25rem 0 0;
-    content: '';
-    display: block;
-    height: 1.25em;
-    position: absolute;
     right: -3px;
-    top: 0;
     transform: skewX(20deg);
-    width: 15px;
   }
 
   .masthead-story & {
@@ -141,35 +148,42 @@
   border-radius: .625rem .625rem 0 0;
   float: right;
   font-family: $rubik;
-  font-size: 1.1em;
+  font-size: 1em;
   letter-spacing: .02em;
   margin-right: .5em;
-  padding: .35em 1em;
+  padding: .4em 1em;
   position: relative;
   text-transform: uppercase;
 
-  &:before {
-    border-radius: .25rem .625rem 0 0;
+  @include breakpoint(tablet) {
+    font-size: 1.1em;
+    padding: .35em 1em;
+  }
+
+  &:before,
+  &:after {
     content: '';
     display: block;
-    height: 1.8em;
-    left: -3px;
+    height: 2em;
     position: absolute;
     top: 0;
-    transform: skewX(-20deg);
     width: 15px;
+
+    @include breakpoint(tablet) {
+      height: 1.8em;
+    }
+  }
+
+  &:before {
+    border-radius: .25rem .625rem 0 0;
+    left: -3px;
+    transform: skewX(-20deg);
   }
 
   &:after {
     border-radius: .625rem .25rem 0 0;
-    content: '';
-    display: block;
-    height: 1.8em;
-    position: absolute;
     right: -3px;
-    top: 0;
     transform: skewX(20deg);
-    width: 15px;
   }
 
 
