@@ -69,7 +69,7 @@
   }
 
   &__bar {
-    background: $light-blue;
+    background: $orange-red;
     color: $white;
     display: inline-block;
     font-family: $chathura;
@@ -178,35 +178,13 @@
 .subhead {
   font-family: $rubik;
   font-size: 1.2em;
+  font-weight: 500;
   letter-spacing: .02em;
   margin: 1em 0;
-  padding-left: 1em;
   position: relative;
 
   @include breakpoint(phablet) {
     margin: 1.5em 0;
-  }
-
-  &:before {
-    background-color: $orange-red;
-    content: '';
-    display: block;
-    height: .5em;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: .5em;
-  }
-
-  &:after {
-    background-color: $orange-red;
-    content: '';
-    display: block;
-    height: .5em;
-    left: 0;
-    position: absolute;
-    top: .75em;
-    width: .5em;
   }
 }
 
@@ -237,8 +215,6 @@
 }
 
 .blockquote {
-  border-bottom: 1px solid $light-blue;
-  border-top: 1px solid $light-blue;
   margin: 0;
   padding: 1em 0;
 

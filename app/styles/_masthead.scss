@@ -8,7 +8,8 @@
 
 .masthead {
   background-color: $black;
-  height: 2em;
+  border-bottom: .65em solid $white;
+  height: 2.65em;
 
   a {
     color: $black;
@@ -29,7 +30,7 @@
   font-size: 1.5em;
   letter-spacing: .05em;
   line-height: 1.35em;
-  margin-right: 1rem;
+  margin-right: .75rem;
   padding: 0 .7em;
   position: relative;
   text-transform: uppercase;
@@ -37,7 +38,7 @@
   @include breakpoint(tablet) {
     font-size: 1.6em;
     line-height: 1.25em;
-    margin-right: 1.5rem;
+    margin-right: 1rem;
   }
 
   a {
