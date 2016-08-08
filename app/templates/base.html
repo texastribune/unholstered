@@ -41,7 +41,7 @@
         </div>
         <div class="masthead-sections__mobile">
           Sections
-          <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <i class="chevron-down">{{ inject('assets/images/down-arrow.svg') }}</i>
         </div>
       </div>
       <div class="masthead-title">
@@ -130,10 +130,10 @@
           <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
           <ul class="share-links">
             <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), mainbar.twitter_text, 'unholstered') }}">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
+              {{ inject('assets/images/twitter.svg') }}
             </a></li>
             <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
+              {{ inject('assets/images/facebook.svg') }}
             </a></li>
           </ul>
         </div>

@@ -26,10 +26,10 @@
   <article class="wrapper__story">
     <div class="social">
       <a class="social__icon" href="{{ shares.twitter( static(context.slug), context.twitter_text, 'Unholstered') }}">
-        <i class="fa fa-twitter" aria-hidden="true"></i>
+        {{ inject('assets/images/twitter.svg') }}
       </a>
       <a class="social__icon" href="{{ shares.facebook( static(context.slug), static(context.slug) ) }}"  target="_blank">
-        <i class="fa fa-facebook" aria-hidden="true"></i>
+        {{ inject('assets/images/facebook.svg') }}
       </a>
     </div>
     {{ prose(context.prose) }}

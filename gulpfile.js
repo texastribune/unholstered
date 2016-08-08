@@ -24,7 +24,7 @@ gulp.task('rev', require('./gulp/rev'))
 gulp.task('rev-replace', ['rev'], require('./gulp/rev-replace'))
 
 gulp.task('build', ['clean'], (done) => {
-  runSequence(['images', 'scripts', 'styles', 'templates'], ['rev-replace'], done)
+  runSequence(['images'], ['scripts', 'styles', 'templates'], ['rev-replace'], done)
 })
 
 gulp.task('default', ['build'])
