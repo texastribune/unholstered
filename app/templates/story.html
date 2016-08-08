@@ -17,7 +17,7 @@
     <h1 class="sty-header__headline">{{ context.headline }}</h1>
     <figure class="sty-header__art image">
       <!-- Don't do it this way, figure out how to inject -->
-      <img src="{{ static('assets/images/illustrations/')}}{{ context.illustration.svg_url }}" class="svg">
+      {{ inject('assets/images/illustrations/' + context.illustration.svg_url) }}
     </figure>
     <div class="sty-header__byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</div>
   </div>
@@ -25,10 +25,10 @@
 <section class="wrapper">
   <article class="wrapper__story">
     <div class="social">
-      <a class="social__icon" href="{{ shares.twitter( static(context.slug), context.twitter_text, 'Unholstered') }}">
+      <a class="social__icon" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text, 'Unholstered') }}">
         {{ inject('assets/images/twitter.svg') }}
       </a>
-      <a class="social__icon" href="{{ shares.facebook( static(context.slug), static(context.slug) ) }}"  target="_blank">
+      <a class="social__icon" href="{{ shares.facebook(staticAbsolute(context.slug), staticAbsolute(context.slug)) }}"  target="_blank">
         {{ inject('assets/images/facebook.svg') }}
       </a>
     </div>

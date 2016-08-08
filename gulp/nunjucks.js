@@ -10,6 +10,7 @@ const config = require('../project.config')
 const customFilters = require('../custom-filters')
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'
+const PROJECT_URL = `https://${config.bucket}/${config.folder}/`
 
 const env = nunjucks.configure('./app/templates', {
   autoescape: false,
@@ -24,6 +25,11 @@ env.addGlobal('static', (p) => {
 
   return url.resolve('/', p)
 })
+
+/*
+Creates an absolute path URL.
+ */
+env.addGlobal('staticAbsolute', (p) => url.resolve(PROJECT_URL, p) + '/')
 
 /*
 Lets you inject the contents of a file into a template. Good for things like
