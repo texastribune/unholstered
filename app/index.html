@@ -11,25 +11,23 @@
 {% set context = data.mainbar %}
 
 {% block content %}
-<section class="intro">
-{{ prose(data.mainbar.intro) }}
-</section>
-
-{% for slide in data.mainbar.slides %}
-  <section class="slide">
-    <h3 class="slide-head">{{ slide.head }}</h3>
-    <div class="slide-text">
-      {{ prose(slide.prose) }}
+<div class="mainbar-container">
+  <div class="swiper-progress"></div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        {{ prose(data.mainbar.intro) }}
+      </div>
+    {% for slide in data.mainbar.slides %}
+      <div class="swiper-slide">
+        <h3 class="slide-head">{{ slide.head }}</h3>
+        <div class="slide-text">{{ prose(slide.prose) }}</div>
+      </div>
+    {% endfor %}
+      <div class="swiper-slide">
+        {{ prose(data.mainbar.closer) }}
+      </div>
     </div>
-  </section>
-{% endfor %}
-
-<section class="close">
-  {{ prose(data.mainbar.closer) }}
-</section>
-{% endblock %}
-
-{% block scripts %}
-<script src="{{ static('scripts/libs/d3.v3.min.js') }}"></script>
-<script src="{{ static('scripts/libs/stack.v1.min.js') }}"></script>
+  </div>
+</div>
 {% endblock %}

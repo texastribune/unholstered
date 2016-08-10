@@ -28,7 +28,7 @@ module.exports = () => {
     middleware: [
       webpackDevMiddleware(bundler, {
         publicPath: webpackConfig.output.publicPath,
-        stats: {colors: true}
+        stats: {chunk: false, colors: true}
       })
     ],
     notify: false,
