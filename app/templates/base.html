@@ -33,7 +33,7 @@
             {% for story in data.meta.storylist %}
               {% if story.id != "mainbar" %}
                 <a href="{{ static( story.slug ) }}">
-                  <li id="{{ story.id }}" class="{% if context.id == story.id %}active-story{% endif %}">{{ data[story.id].section_number }}</li>
+                  <li id="{{ story.id }}" class="{% if context.id == story.id %}active-story{% endif %}">{{ story.numeral }}</li>
                 </a>
               {% endif %}
             {% endfor %}
@@ -90,34 +90,9 @@
 
   {% block content %}{% endblock %}
 
-  {# <section class="read-more wrapper">
-    <div class="banner-ad wrapper" id="ad-banner-footer"></div>
-    <h3 class="read-more__title">More in this series</h3>
-    <div class="read-more__stories">
-    {% for story in data.meta.storylist %}
-      {% if story.id != context.id %}
-      <div class="read-more__story">
-        <a href="{{ static( story.slug ) }}">
-          <figure class="image thumbnail">
-            <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data[story.id].illustration.svg_url }}">
-          </figure>
-        </a>
-        <div class="read-more__section">
-          <a href="{{ static( story.slug ) }}">
-            {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
-          </a>
-        </div>
-        <h3 class="read-more__headline"><a href="{{ static( story.slug ) }}">{{ data[story.id].headline }}</a></h3>
-        <p>{{ data[story.id].summary }}</p>
-      </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-</section> #}
-
   {% import 'macros/shares.html' as shares %}
 
-  {# <footer class="footer">
+  <footer class="footer">
     <div class="wrapper footer__wrapper">
       <div class="footer__section about">
         <h4 class="footer__title">About this project</h4>
@@ -191,7 +166,7 @@
         <li class="donate"><a href="https://support.texastribune.org/">Donate</a></li>
       </ul>
     </div>
-  </footer> #}
+  </footer>
 
   {% block scripts %}
   <script src="{{ static('scripts/commons.js') }}"></script>

@@ -29,15 +29,15 @@
       &__icon {
         background: $light-blue;
         box-shadow: none;
-        display: inline-block;
-        font-size: 1.25em;
         color: $white;
+        display: inline-block;
         margin-left: 1em;
-        padding: .5em .5em .4em;
+        padding: .4em .5em .2em;
         text-align: center;
-        width: 2em;
 
         svg {
+          height: 1.5em;
+          width: 1.5em;
 
           path {
             fill: $white;

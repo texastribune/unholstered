@@ -9,4 +9,4 @@ Swiper('.swiper-container', {
   paginationType: 'progress',
   simulateTouch: true,
   speed: 500
-})
+});

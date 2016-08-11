@@ -72,14 +72,6 @@
     width: 1em;
   }
 
-  .fa-caret-down {
-    font-size: .6em;
-
-    .masthead-mainbar & {
-      color: $white;
-    }
-  }
-
   &__mobile {
     cursor: pointer;
 
@@ -146,6 +138,21 @@
 
   .active-story {
     border: 1px solid $orange-red;
+  }
+}
+
+.chevron-down {
+  svg {
+    height: .4em;
+    width: .5em;
+
+    path {
+      fill: $black;
+
+      .masthead-mainbar & {
+        fill: $white;
+      }
+    }
   }
 }
 
