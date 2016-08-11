@@ -12,16 +12,20 @@
 
 {% block content %}
 <div class="mainbar-container">
-  <div class="swiper-progress"></div>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         {{ prose(data.mainbar.intro) }}
       </div>
     {% for slide in data.mainbar.slides %}
-      <div class="swiper-slide">
-        <h3 class="slide-head">{{ slide.head }}</h3>
-        <div class="slide-text">{{ prose(slide.prose) }}</div>
+      <div class="swiper-slide swiper-slide--content">
+        <div class="slide-graphic">
+          <div class="graphic"></div>
+        </div>
+        <div class="slide-prose">
+          <h3 class="slide-head">{{ slide.head }}</h3>
+          <div class="slide-text">{{ prose(slide.prose) }}</div>
+        </div>
       </div>
     {% endfor %}
       <div class="swiper-slide">
@@ -31,3 +35,8 @@
   </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ static('scripts/graphic.js') }}"></script>
+{% endblock scripts %}

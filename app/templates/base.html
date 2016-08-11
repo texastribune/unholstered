@@ -20,7 +20,7 @@
   <script src="{{ static('scripts/adLoader.js') }}"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
-  {#<header class="header">
+  <header class="header">
     <div class="masthead {% block masthead_class %}{% endblock %}">
       <a href="https://www.texastribune.org">
         <img class="trib-logo desktop" alt="The Texas Tribune" src="https://s3.amazonaws.com/apps.texastribune.org/branding/TxTrib-logo-white500x55.png">
@@ -48,6 +48,7 @@
         <a href="{{ static('index.html') }}">Unholstered</a>
       </div>
     </div>
+    <div class="swiper-progress"></div>
     <nav class="navbar navbar--desktop">
       <ul>
         {% for story in data.meta.storylist %}
@@ -83,7 +84,7 @@
         {% endfor %}
       </ul>
     </nav>
-  </header>#}
+  </header>
 
   {% block content %}{% endblock %}
 
@@ -190,9 +191,10 @@
     </div>
   </footer> #}
 
-  {% block scripts %}{% endblock %}
+  {% block scripts %}
   <script src="{{ static('scripts/commons.js') }}"></script>
   <script src="{{ static('scripts/main.js') }}"></script>
+  {% endblock scripts %}
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

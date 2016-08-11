@@ -20,6 +20,10 @@
     height: 1.2em;
     margin: .4em;
   }
+
+  .mainbar-body & {
+    border-bottom: .65em solid $beige;
+  }
 }
 
 .masthead-sections {

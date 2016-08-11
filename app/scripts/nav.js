@@ -1,6 +1,5 @@
 import $ from 'jquery'
 
-// var mystack = stack()
 $('.masthead-sections__desktop ul li').mouseenter(function () {
   $('.navbar--desktop .navbar__story').hide()
 

@@ -1,4 +1,5 @@
 import Swiper from 'swiper'
+import './nav'
 
 Swiper('.swiper-container', {
   direction: 'vertical',

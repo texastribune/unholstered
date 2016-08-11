@@ -578,3 +578,17 @@ button.swiper-pagination-bullet {
   flex-direction: column;
   justify-content: center;
 }
+
+.swiper-slide--content {
+  flex-flow: row;
+}
+
+.slide-graphic {
+  padding: 2rem;
+  width: 50%;
+}
+
+.slide-prose {
+  padding: 2rem;
+  width: 50%;
+}
