@@ -2,6 +2,7 @@
 
 {% from 'macros/prose.html' import prose %}
 {% from 'macros/authors.html' import authors %}
+{% from 'macros/related.html' import related %}
 {% import 'macros/shares.html' as shares %}
 
 {% block body_class %}story-body{% endblock %}
@@ -34,5 +35,27 @@
     </div>
     {{ prose(context.prose) }}
   </article>
+</section>
+
+<section class="read-more wrapper">
+  <div class="banner-ad wrapper" id="ad-banner-footer"></div>
+  <h3 class="read-more__title">More in this series</h3>
+  <div class="read-more__stories">
+    <div class="read-more__story">
+      <a href="{{ static( data.mainbar.slug ) }}">
+        <figure class="image thumbnail">
+          <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data.mainbar.illustration.svg_url }}">
+        </figure>
+      </a>
+      <div class="read-more__section">
+        <a href="{{ static( data.mainbar.slug ) }}">
+          Data
+        </a>
+      </div>
+      <h3 class="read-more__headline"><a href="{{ static( data.mainbar.slug ) }}">{{ data.mainbar.headline }}</a></h3>
+      <p>{{ data.mainbar.summary }}</p>
+    </div>
+    {{ related(context.related, data) }}
+  </div>
 </section>
 {% endblock %}

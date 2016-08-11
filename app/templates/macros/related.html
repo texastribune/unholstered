@@ -1,0 +1,20 @@
+{% import 'macros/processors.html' as processors %}
+
+{% macro related(content, data) %}
+  {% for item in content %}
+    <div class="read-more__story">
+      <a href="{{ static( data[item.section_id].slug ) }}">
+        <figure class="image thumbnail">
+          <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data[item.section_id].illustration.svg_url }}">
+        </figure>
+      </a>
+      <div class="read-more__section">
+        <a href="{{ static( data[item.section_id].slug ) }}">
+          Section {{ data[item.section_id].section_number }}, {{ data[item.section_id].section_title }}
+        </a>
+      </div>
+      <h3 class="read-more__headline"><a href="{{ static( data[item.section_id].slug ) }}">{{ data[item.section_id].headline }}</a></h3>
+      <p>{{ data[item.section_id].summary }}</p>
+    </div>
+  {% endfor %}
+{% endmacro %}

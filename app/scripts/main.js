@@ -16,9 +16,9 @@ $('.masthead-sections__desktop ul li').mouseenter(function() {
 
 //NEED TO HIDE THESE BASED ON RESIZE
 
-// $('.navbar--desktop').mouseleave(function() {
-//   $('.navbar--desktop').hide();
-// });
+$('.navbar--desktop').mouseleave(function() {
+  $('.navbar--desktop').hide();
+});
 
 $('.masthead-sections__mobile').click(function() {
   $('.navbar--mobile .navbar__story').toggle();
