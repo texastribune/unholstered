@@ -32,11 +32,12 @@
         color: $white;
         display: inline-block;
         margin-left: 1em;
-        padding: .3em .5em .2em;;
+        padding: .4em .5em .2em;
         text-align: center;
 
         svg {
-          width: 1.75em;
+          height: 1.5em;
+          width: 1.5em;
 
           path {
             fill: $white;
