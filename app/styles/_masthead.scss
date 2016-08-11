@@ -8,8 +8,8 @@
 
 .masthead {
   background-color: $black;
-  border-bottom: .65em solid $white;
-  height: 2.65em;
+  //border-bottom: .65em solid $white;
+  height: 2em; //2.65em.
 
   a {
     color: $black;
@@ -21,9 +21,9 @@
     margin: .4em;
   }
 
-  .mainbar-body & {
-    border-bottom: .65em solid $beige;
-  }
+  // .mainbar-body & {
+  //   border-bottom: .65em solid $beige;
+  // }
 }
 
 .masthead-sections {
