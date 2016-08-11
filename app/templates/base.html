@@ -57,14 +57,16 @@
                 <img src="{{ static('assets/images/illustrations/')}}{{ data[story.id].illustration.svg_url }}">
               </figure>
             </a>
-            <span class="read-more__section navbar__section">
+            <div class="navbar__text">
+              <span class="read-more__section navbar__section">
+                <a href="{{ static( story.slug ) }}">
+                  {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
+                </a>
+              </span>
               <a href="{{ static( story.slug ) }}">
-                {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
+                <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
               </a>
-            </span>
-            <a href="{{ static( story.slug ) }}">
-              <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
-            </a>
+            <div>
           </li>
         {% endfor %}
       </ul>
@@ -129,10 +131,10 @@
         <div class="footer__social">
           <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
           <ul class="share-links">
-            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(static(''), mainbar.twitter_text, 'unholstered') }}">
+            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(staticAbsolute(''), mainbar.twitter_text, 'unholstered') }}">
               {{ inject('assets/images/twitter.svg') }}
             </a></li>
-            <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(static('')) }}"  target="_blank">
+            <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(staticAbsolute(''), staticAbsolute('')) }}"  target="_blank">
               {{ inject('assets/images/facebook.svg') }}
             </a></li>
           </ul>

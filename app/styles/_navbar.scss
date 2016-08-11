@@ -33,8 +33,13 @@
 
     .image {
       float: left;
-      margin: 0 1em 0 0;
+      margin: 0 5% 0 0;
       width: 20%;
+    }
+
+    .navbar__text {
+      float: left;
+      width: 75%;
     }
 
     .navbar--mobile & {

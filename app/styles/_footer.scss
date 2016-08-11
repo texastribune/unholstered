@@ -58,9 +58,12 @@
       width: 2em;
     }
 
-    .fa {
-      color: $light-blue;
-      font-size: 1.75em;
+    svg {
+      height: 1.75em;
+
+      path {
+        fill: $light-blue;
+      }
     }
 
     @include breakpoint(nonmobile) {
