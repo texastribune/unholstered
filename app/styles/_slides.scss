@@ -2,7 +2,7 @@
 
 .slide-head {
   font-family: $rubik;
-  font-size: 1.25em;
+  font-size: 1.3125em;
   letter-spacing: .02em;
   line-height: 1.3;
 }
@@ -23,7 +23,6 @@
 
   &__art {
     width: 40%;
-    float: left;
 
     svg {
       width: 100%;
@@ -33,7 +32,6 @@
 
   &__head {
     width: 60%;
-    float: right;
     text-align: center;
   }
 
