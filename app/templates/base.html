@@ -92,6 +92,7 @@
 
   {% import 'macros/shares.html' as shares %}
 
+  {% block footer %}
   <footer class="footer">
     <div class="wrapper footer__wrapper">
       <div class="footer__section about">
@@ -167,6 +168,7 @@
       </ul>
     </div>
   </footer>
+  {% endblock footer %}
 
   {% block scripts %}
   <script src="{{ static('scripts/commons.js') }}"></script>
