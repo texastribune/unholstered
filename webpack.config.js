@@ -4,8 +4,7 @@ const webpack = require('webpack')
 module.exports = {
   context: path.join(__dirname, '/app/scripts'),
   entry: {
-    main: './main.js',
-    graphic: './graphic.js'
+    main: './main.js'
   },
   output: {
     path: path.join(__dirname, '/dist/scripts'),

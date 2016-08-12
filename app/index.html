@@ -20,7 +20,7 @@
     {% for slide in data.mainbar.slides %}
       <div class="swiper-slide swiper-slide--content">
         <div class="slide-graphic">
-          <div class="graphic"></div>
+          <div class="graphic graphic-hook-{{ loop.index }}"></div>
         </div>
         <div class="slide-prose">
           <h3 class="slide-head">{{ slide.head }}</h3>
@@ -38,5 +38,4 @@
 
 {% block scripts %}
 {{ super() }}
-<script src="{{ static('scripts/graphic.js') }}"></script>
 {% endblock scripts %}

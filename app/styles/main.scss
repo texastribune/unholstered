@@ -46,3 +46,16 @@ a {
 // .mainbar-body {
 //   background: $beige;
 // }
+
+svg {
+  overflow: visible;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  vertical-align: bottom;
+  margin: 0 auto;
+}
+
+svg, rect, g {
+  box-sizing: content-box;
+}
