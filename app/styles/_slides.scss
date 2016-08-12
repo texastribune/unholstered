@@ -1,0 +1,58 @@
+//figure out how to change masthead color on each slide
+
+.slide-head {
+  font-family: $rubik;
+  font-size: 1.25em;
+  letter-spacing: .02em;
+  line-height: 1.3;
+}
+
+.slide-text {
+  font-family: $pt;
+  line-height: 1.4;
+}
+
+.slide-intro {
+  background: $light-blue;
+  padding: 0 2em;
+  @include clearfix;
+
+  &.swiper-slide {
+    flex-direction: row;
+  }
+
+  &__art {
+    width: 40%;
+    float: left;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__head {
+    width: 60%;
+    float: right;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: $rubik;
+    font-size: 3.125em;
+    font-weight: 500;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+//colors
+.slide-2 {
+  background: $dark-gray;
+  color: $white;
+
+  .highlight,
+  a {
+    color: $goldenbrown;
+  }
+}

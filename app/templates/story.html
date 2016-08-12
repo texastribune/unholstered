@@ -17,7 +17,6 @@
     </div>
     <h1 class="sty-header__headline">{{ context.headline }}</h1>
     <figure class="sty-header__art image">
-      <!-- Don't do it this way, figure out how to inject -->
       {{ inject('assets/images/illustrations/' + context.illustration.svg_url) }}
     </figure>
     <div class="sty-header__byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</div>
@@ -42,18 +41,18 @@
   <h3 class="read-more__title">More in this series</h3>
   <div class="read-more__stories">
     <div class="read-more__story">
-      <a href="{{ static( data.mainbar.slug ) }}">
+      <a href="{{ static( data.findings.slug ) }}">
         <figure class="image thumbnail">
-          <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data.mainbar.illustration.svg_url }}">
+          <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data.findings.illustration.svg_url }}">
         </figure>
       </a>
       <div class="read-more__section">
-        <a href="{{ static( data.mainbar.slug ) }}">
+        <a href="{{ static( data.findings.slug ) }}">
           Data
         </a>
       </div>
-      <h3 class="read-more__headline"><a href="{{ static( data.mainbar.slug ) }}">{{ data.mainbar.headline }}</a></h3>
-      <p>{{ data.mainbar.summary }}</p>
+      <h3 class="read-more__headline"><a href="{{ static( data.findings.slug ) }}">{{ data.findings.headline }}</a></h3>
+      <p>{{ data.findings.summary }}</p>
     </div>
     {{ related(context.related, data) }}
   </div>

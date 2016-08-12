@@ -8,17 +8,28 @@
 
 {% block masthead_class %}masthead-mainbar{% endblock %}
 
-{% set context = data.mainbar %}
+{% set context = data.findings %}
+
+{% block swiperbar %}
+<div class="swiper-progress"></div>
+{% endblock %}
 
 {% block content %}
 <div class="mainbar-container">
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        {{ prose(data.mainbar.intro) }}
+      <div class="swiper-slide slide-intro">
+        <div class="slide-intro__art">{{ inject('assets/images/illustrations/records.svg') }}</div>
+        <div class="slide-intro__head">
+          <h1 class="slide-intro__title">Unholstered</h1>
+          <h4 class="slide-intro__tag">{{ data.findings.tagline }}</h4>
+        </div>
       </div>
-    {% for slide in data.mainbar.slides %}
-      <div class="swiper-slide swiper-slide--content">
+      <div class="swiper-slide slide-intro-text">
+        {{ prose(data.findings.intro) }}
+      </div>
+    {% for slide in data.findings.slides %}
+      <div class="swiper-slide swiper-slide--content slide-{{loop.index}}">
         <div class="slide-graphic">
           <div class="graphic graphic-hook-{{ loop.index }}"></div>
         </div>
@@ -28,8 +39,8 @@
         </div>
       </div>
     {% endfor %}
-      <div class="swiper-slide">
-        {{ prose(data.mainbar.closer) }}
+      <div class="swiper-slide slide-footer">
+        {{ prose(data.findings.closer) }}
       </div>
     </div>
   </div>

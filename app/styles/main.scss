@@ -38,14 +38,12 @@ a {
 //sections
 @import 'masthead';
 @import 'navbar';
+@import 'slides';
 @import 'story';
 @import 'readmore';
 @import 'footer';
 @import 'ads';
-
-// .mainbar-body {
-//   background: $beige;
-// }
+@import 'swiper';
 
 svg {
   overflow: visible;
@@ -58,4 +56,8 @@ svg {
 
 svg, rect, g {
   box-sizing: content-box;
+}
+
+.mainbar-body {
+  background: $light-blue;
 }

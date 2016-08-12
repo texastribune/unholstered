@@ -1,15 +1,24 @@
 .navbar {
   background: $white;
-  border-bottom: .25em solid $black;
+  border-bottom: .2em solid $black;
   display: none;
   width: 100%;
   @include clearfix();
 
   &--desktop {
-    border-left: .25em solid $black;
+    border-left: .2em solid $black;
+    border-right: .2em solid $black;
     margin-left: auto;
     margin-right: 0;
-    max-width: $text-width;
+    width: 21em;
+  }
+
+  .mainbar-body & {
+    background: $black;
+
+    a {
+      color: $white;
+    }
   }
 
   &__title {
@@ -31,16 +40,16 @@
     padding: 1em;
     @include clearfix();
 
-    .image {
-      float: left;
-      margin: 0 5% 0 0;
-      width: 20%;
-    }
-
-    .navbar__text {
-      float: left;
-      width: 75%;
-    }
+    // .image {
+    //   float: left;
+    //   margin: 0 5% 0 0;
+    //   width: 20%;
+    // }
+    //
+    // .navbar__text {
+    //   float: left;
+    //   width: 75%;
+    // }
 
     .navbar--mobile & {
       border-top: 1px solid $orange-red;

@@ -8,22 +8,22 @@
 
 .masthead {
   background-color: $black;
-  border-bottom: .65em solid $white;
-  height: 2.65em;
+  //border-bottom: .65em solid $white;
+  height: 2em; //2.65em.
 
   a {
     color: $black;
     text-decoration: none;
   }
 
-  .trib-logo {
+  .trib-logo svg {
     height: 1.2em;
     margin: .4em;
   }
 
-  .mainbar-body & {
-    border-bottom: .65em solid $beige;
-  }
+  // .mainbar-body & {
+  //   border-bottom: .65em solid $beige;
+  // }
 }
 
 .masthead-sections {
@@ -42,7 +42,6 @@
   @include breakpoint(tablet) {
     font-size: 1.6em;
     line-height: 1.25em;
-    margin-right: 1rem;
   }
 
   a {
@@ -200,11 +199,11 @@
 
 
   .masthead-mainbar & {
-    background-color: $white;
+    background-color: $light-blue;
 
     &:before,
     &:after {
-      background-color: $white;
+      background-color: $light-blue;
     }
 
   }
@@ -216,5 +215,3 @@
     }
   }
 }
-
-@import 'swiper';

@@ -1,6 +1,7 @@
 import Swiper from 'swiper'
 import './nav'
 import GridMaker from './GridMaker'
+import './colors'
 
 const swiper = new Swiper('.swiper-container', {
   direction: 'vertical',
