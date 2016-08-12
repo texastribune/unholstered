@@ -14,7 +14,7 @@ export default function gridMaker (selection, params) {
 
   const [width, height] = [sizing.width, sizing.height]
 
-  const padding = params.padding || 0.3
+  const padding = params.padding || 0.2
 
   x.domain(d3.range(cols))
     .range([0, width])
@@ -42,7 +42,7 @@ export default function gridMaker (selection, params) {
     .attr('y', (d) => y(Math.floor(d / cols)))
     .attr('width', 0)
     .attr('height', 0)
-    .attr('fill', 'tomato')
+    .attr('fill', 'lightgray')
     .transition().duration(0).delay(() => Math.random() * 1000)
     .attr('width', () => x.bandwidth())
     .attr('height', () => y.bandwidth())
