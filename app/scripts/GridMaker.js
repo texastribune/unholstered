@@ -1,40 +1,49 @@
 import * as d3 from 'd3'
+import isMobile from './isMobile'
 
-export default function GridMaker (selection, params) {
-  const el = d3.select(selection)
-  const s = 20
-  const width = params.x * s
-  const height = params.y * s
-  const padding = 0.35
-
-  el.select('svg').remove()
-
+export default function gridMaker (selection, params) {
   const x = d3.scaleBand()
-    .domain(d3.range(params.x))
-    .rangeRound([0, width])
+  const y = d3.scaleBand()
+
+  const cols = Math.ceil(Math.sqrt(params.total))
+  const rows = Math.ceil(params.total / cols)
+
+  const container = d3.select(selection)
+  container.select('svg').remove()
+  const sizing = container.node().parentNode.getBoundingClientRect()
+
+  const [width, height] = [sizing.width, sizing.height]
+
+  const padding = params.padding || 0.3
+
+  x.domain(d3.range(cols))
+    .range([0, width])
     .padding(padding)
     .paddingOuter(0)
 
-  const elWidth = el.node().clientWidth
-  const elHeight = Math.round(elWidth * (height / width))
-
-  const svg = el.append('svg')
-    .attr('width', elWidth)
-    .attr('height', elHeight)
-    .attr('viewBox', `0 0 ${width} ${height}`)
-
-  const g = svg.append('g')
+  y.domain(d3.range(rows))
+    .range([0, height])
+    .padding(padding)
+    .paddingOuter(0)
 
   const data = d3.range(params.total)
 
-  // JOIN
+  const svg = container.append('svg')
+    .attr('width', sizing.width)
+    .attr('height', sizing.height)
+    .attr('shape-rendering', 'crispEdges')
+  const g = svg.append('g').attr('class', 'grid')
+
   const cells = g.selectAll('rect').data(data, (i) => i)
 
   // ENTER
-  cells.enter().append('rect')
-    .attr('x', (d) => x(d % params.x))
-    .attr('y', (d) => Math.floor(d / params.x) * x.step())
-    .attr('width', x.bandwidth)
-    .attr('height', x.bandwidth)
+  cells.enter().append('rect').attr('class', 'cell')
+    .attr('x', (d) => x(d % cols))
+    .attr('y', (d) => y(Math.floor(d / cols)))
+    .attr('width', 0)
+    .attr('height', 0)
     .attr('fill', 'tomato')
+    .transition().duration(0).delay(() => Math.random() * 1000)
+    .attr('width', () => x.bandwidth())
+    .attr('height', () => y.bandwidth())
 }

@@ -580,15 +580,29 @@ button.swiper-pagination-bullet {
 }
 
 .swiper-slide--content {
-  flex-flow: row;
+  flex-flow: column;
+
+  @media (min-width: 56.1875em) {
+    flex-flow: row;
+  }
 }
 
 .slide-graphic {
-  padding: 2rem;
-  width: 50%;
+  height: 50%;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 6rem;
+  width: 80vw;
+
+  @media (min-width: 56.1875em) {
+    height: 70vh;
+    margin-top: 2rem;
+    width: 100%;
+  }
 }
 
 .slide-prose {
+  height: 50%;
   padding: 2rem;
-  width: 50%;
 }
