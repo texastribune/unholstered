@@ -165,6 +165,7 @@
   padding: .4em 1em;
   position: relative;
   text-transform: uppercase;
+  transition: all 1s;
 
   @include breakpoint(tablet) {
     font-size: 1.1em;
@@ -178,6 +179,7 @@
     height: 2em;
     position: absolute;
     top: 0;
+    transition: all 1s;
     width: 15px;
 
     @include breakpoint(tablet) {
@@ -198,15 +200,15 @@
   }
 
 
-  .masthead-mainbar & {
-    background-color: $light-blue;
-
-    &:before,
-    &:after {
-      background-color: $light-blue;
-    }
-
-  }
+  // .masthead-mainbar & {
+  //   background-color: $light-blue;
+  //
+  //   &:before,
+  //   &:after {
+  //     background-color: $light-blue;
+  //   }
+  //
+  // }
 
   .masthead-story & {
 
