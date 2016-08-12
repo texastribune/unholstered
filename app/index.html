@@ -29,9 +29,9 @@
         {{ prose(data.findings.intro) }}
       </div>
     {% for slide in data.findings.slides %}
-      <div class="swiper-slide swiper-slide--content slide-{{loop.index}}">
+      <div class="swiper-slide swiper-slide--content slide-{{ loop.index }}">
         <div class="slide-graphic">
-          <div class="graphic graphic-hook-{{ loop.index }}"></div>
+          <div class="graphic graphic-hook-{{ loop.index + 1 }}"></div>
         </div>
         <div class="slide-prose">
           <h3 class="slide-head">{{ slide.head }}</h3>

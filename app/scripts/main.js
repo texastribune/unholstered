@@ -14,19 +14,19 @@ const swiper = new Swiper('.swiper-container', {
 })
 
 const mapping = {
-  1: {
+  2: {
     total: 121,
     subset: 116,
     x: 11,
     y: 11
   },
-  2: {
+  3: {
     total: 660,
     subset: 652,
     x: 22,
     y: 30
   },
-  3: {
+  4: {
     total: 924,
     subset: 917,
     x: 28,
@@ -37,5 +37,7 @@ const mapping = {
 swiper.on('onSlideChangeEnd', (s) => {
   const activeIndex = s.activeIndex
 
-  GridMaker(`.graphic-hook-${activeIndex}`, mapping[activeIndex])
+  if (mapping.hasOwnProperty(activeIndex)) {
+    GridMaker(`.graphic-hook-${activeIndex}`, mapping[activeIndex])
+  }
 })
