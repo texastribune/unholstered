@@ -24,10 +24,12 @@
     </div>
     <div class="swiper-wrapper">
       <div class="swiper-slide slide-intro bg-lightblue">
-        <div class="slide-intro__art">{{ inject('assets/images/illustrations/intro-image.svg') }}</div>
-        <div class="slide-intro__head">
-          <h1 class="slide-intro__title">Unholstered</h1>
-          <h4 class="slide-intro__tag">{{ data.findings.subhead }}</h4>
+        <div class="swiper-slide__section slide-intro__art">{{ inject('assets/images/illustrations/intro-image.svg') }}</div>
+        <div class="swiper-slide__section slide-intro__head">
+          <div>
+            <h1 class="slide-intro__title">Unholstered</h1>
+            <h4 class="slide-intro__tag">{{ data.findings.subhead }}</h4>
+          </div>
         </div>
       </div>
       <div class="swiper-slide slide-intro-text bg-lightblue">
