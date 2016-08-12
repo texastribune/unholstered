@@ -16,7 +16,7 @@
     text-decoration: none;
   }
 
-  .trib-logo {
+  .trib-logo svg {
     height: 1.2em;
     margin: .4em;
   }
@@ -200,11 +200,11 @@
 
 
   .masthead-mainbar & {
-    background-color: $white;
+    background-color: $light-blue;
 
     &:before,
     &:after {
-      background-color: $white;
+      background-color: $light-blue;
     }
 
   }
@@ -216,5 +216,3 @@
     }
   }
 }
-
-@import 'swiper';

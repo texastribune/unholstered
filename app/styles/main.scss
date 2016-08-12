@@ -38,11 +38,13 @@ a {
 //sections
 @import 'masthead';
 @import 'navbar';
+@import 'slides';
 @import 'story';
 @import 'readmore';
 @import 'footer';
 @import 'ads';
+@import 'swiper';
 
-// .mainbar-body {
-//   background: $beige;
-// }
+.mainbar-body {
+  background: $light-blue;
+}

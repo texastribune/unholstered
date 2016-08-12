@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Unholstered | The Texas Tribune</title>
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
-  <script src="https://use.fontawesome.com/e75a5e3785.js"></script>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@texastribune">
   <meta name="twitter:creator" content="@texastribune">
@@ -23,15 +22,15 @@
   <header class="header">
     <div class="masthead {% block masthead_class %}{% endblock %}">
       <a href="https://www.texastribune.org">
-        <img class="trib-logo desktop" alt="The Texas Tribune" src="https://s3.amazonaws.com/apps.texastribune.org/branding/TxTrib-logo-white500x55.png">
-        <img class="trib-logo mobile" alt="The Texas Tribune" src="{{ static('assets/images/logo-mobile.png')}}">
+        <span class="trib-logo desktop">{{ inject('assets/images/tribune-white.svg') }}</span>
+        <span class="trib-logo mobile">{{ inject('assets/images/tt-bug.svg') }}</span>
       </a>
       <div class="masthead-sections">
         <div class="masthead-sections__desktop">
           Section:
           <ul>
             {% for story in data.meta.storylist %}
-              {% if story.id != "mainbar" %}
+              {% if story.id != "findings" %}
                 <a href="{{ static( story.slug ) }}">
                   <li id="{{ story.id }}" class="{% if context.id == story.id %}active-story{% endif %}">{{ story.numeral }}</li>
                 </a>
@@ -52,23 +51,19 @@
     <nav class="navbar navbar--desktop">
       <ul>
         {% for story in data.meta.storylist %}
-          <li id="nav-{{ story.id }}" class="navbar__story">
-            <a href="{{ static( story.slug ) }}">
-              <figure class="image thumbnail">
+          <a href="{{ static( story.slug ) }}">
+            <li id="nav-{{ story.id }}" class="navbar__story">
+              <!-- <figure class="image thumbnail">
                 <img src="{{ static('assets/images/illustrations/')}}{{ data[story.id].illustration.svg_url }}">
-              </figure>
-            </a>
-            <div class="navbar__text">
-              <span class="read-more__section navbar__section">
-                <a href="{{ static( story.slug ) }}">
+              </figure> -->
+              <div class="navbar__text">
+                <span class="read-more__section navbar__section">
                   {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
-                </a>
-              </span>
-              <a href="{{ static( story.slug ) }}">
+                </span>
                 <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
-              </a>
-            <div>
-          </li>
+              <div>
+            </li>
+          </a>
         {% endfor %}
       </ul>
     </nav>

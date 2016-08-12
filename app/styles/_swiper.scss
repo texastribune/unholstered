@@ -241,6 +241,7 @@ button.swiper-pagination-bullet {
 }
 /* Progress */
 .swiper-pagination-progress {
+  //background: rgba(0, 0, 0, 0.15);
   position: absolute;
 }
 .swiper-pagination-progress .swiper-pagination-progressbar {
@@ -547,10 +548,10 @@ button.swiper-pagination-bullet {
 
 .swiper-progress {
   height: 100vw;
-  margin-left: -.625rem;
+  margin-left: -.25rem;
   transform-origin: 100% 0;
   transform: rotate(270deg);
-  width: .625rem;
+  width: .25rem;
   z-index: 2;
 
   .swiper-pagination-progressbar {
