@@ -206,3 +206,11 @@
   width: 50%;
   z-index: 2;
 }
+
+.cell--orange-red-light {
+  fill: transparentize($orange-red, .7);
+}
+
+.cell--orange-red {
+  fill: $orange-red;
+}

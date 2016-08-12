@@ -1,4 +1,3 @@
-import { select } from 'd3'
 import Swiper from 'swiper'
 import './nav'
 import GridMaker from './GridMaker'
@@ -14,36 +13,33 @@ const swiper = new Swiper('.swiper-container', {
   speed: 500
 })
 
+swiper.runCallbacksOnInit = true
+
 const mapping = {
+  1: {
+    total: 652,
+    subset: 116
+  },
   2: {
-    total: 121,
-    subset: 116,
-    x: 11,
-    y: 11
-  },
-  3: {
-    total: 660,
-    subset: 652,
-    x: 22,
-    y: 30
-  },
-  4: {
-    total: 924,
-    subset: 917,
-    x: 28,
-    y: 33
+    total: 116,
+    subset: 48
   }
 }
 
-swiper.on('onSlideChangeEnd', (s) => {
+let maker = null
+
+function graphicHandler (s) {
   const activeIndex = s.activeIndex
 
   if (mapping.hasOwnProperty(activeIndex)) {
-    GridMaker('#graphic', mapping[activeIndex])
+    if (!maker) maker = GridMaker('#graphic')
+    maker.render(mapping[activeIndex])
   } else {
-    select('#graphic svg').remove()
+    if (maker) maker.hide()
   }
-})
+}
+
+swiper.on('slideChangeEnd', graphicHandler)
 
 swiper.on('onTransitionStart', (s) => {
   const activeSlide = s.slides[s.activeIndex].classList
