@@ -1,15 +1,16 @@
 .navbar {
   background: $white;
-  border-bottom: .25em solid $black;
+  border-bottom: .2em solid $black;
   display: none;
   width: 100%;
   @include clearfix();
 
   &--desktop {
-    border-left: .25em solid $black;
+    border-left: .2em solid $black;
+    border-right: .2em solid $black;
     margin-left: auto;
     margin-right: 0;
-    max-width: 21em;
+    width: 21em;
   }
 
   .mainbar-body & {

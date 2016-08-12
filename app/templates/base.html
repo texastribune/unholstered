@@ -47,7 +47,7 @@
         <a href="{{ static('index.html') }}">Unholstered</a>
       </div>
     </div>
-    <div class="swiper-progress"></div>
+    {% block swiperbar %}{% endblock %}
     <nav class="navbar navbar--desktop">
       <ul>
         {% for story in data.meta.storylist %}

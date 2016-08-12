@@ -4,7 +4,8 @@ $('.masthead-sections__desktop ul li').mouseenter(function () {
   $('.navbar--desktop .navbar__story').hide()
 
   var navbarWidth = $('.masthead-sections').outerWidth(true);
-  $('.navbar--desktop').css('width', navbarWidth);
+  $('.mainbar-body .navbar--desktop').css('width', navbarWidth);
+  $('.story-body .navbar--desktop').css('width', navbarWidth + 12);
 
   $('.navbar--desktop #nav-' + this.id).show()
   $('.navbar--desktop').show()

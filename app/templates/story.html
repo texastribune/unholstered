@@ -17,7 +17,6 @@
     </div>
     <h1 class="sty-header__headline">{{ context.headline }}</h1>
     <figure class="sty-header__art image">
-      <!-- Don't do it this way, figure out how to inject -->
       {{ inject('assets/images/illustrations/' + context.illustration.svg_url) }}
     </figure>
     <div class="sty-header__byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</div>
