@@ -1,7 +1,7 @@
 import Swiper from 'swiper'
 import './nav'
 import GridMaker from './GridMaker'
-import './colors'
+import changeColors from './colors'
 
 const swiper = new Swiper('.swiper-container', {
   direction: 'vertical',
@@ -14,19 +14,19 @@ const swiper = new Swiper('.swiper-container', {
 })
 
 const mapping = {
-  2: {
+  1: {
     total: 121,
     subset: 116,
     x: 11,
     y: 11
   },
-  3: {
+  2: {
     total: 660,
     subset: 652,
     x: 22,
     y: 30
   },
-  4: {
+  3: {
     total: 924,
     subset: 917,
     x: 28,
@@ -37,7 +37,11 @@ const mapping = {
 swiper.on('onSlideChangeEnd', (s) => {
   const activeIndex = s.activeIndex
 
-  if (mapping.hasOwnProperty(activeIndex)) {
-    GridMaker(`.graphic-hook-${activeIndex}`, mapping[activeIndex])
-  }
+  GridMaker(`.graphic-hook-${activeIndex}`, mapping[activeIndex])
+})
+
+swiper.on('onTransitionStart', (s) => {
+  const activeSlide = s.slides[s.activeIndex].classList
+
+  changeColors(activeSlide)
 })

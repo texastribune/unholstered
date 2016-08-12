@@ -38,21 +38,97 @@
   }
 
   &__title {
+    color: $navy;
     font-family: $rubik;
-    font-size: 3.125em;
+    font-size: 3.5em;
     font-weight: 500;
     margin: 0;
     text-transform: uppercase;
   }
+
+  &__tag {
+    color: $white;
+    font-family: $chathura;
+    font-size: 1.75em;
+    letter-spacing: .04em;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+
+
+  }
 }
 
 //colors
-.slide-2 {
-  background: $dark-gray;
+.bg-lightblue {
+  background-color: $light-blue;
+
+  .highlight,
+  a {
+    color: $white;
+  }
+
+  &.masthead-title::before,
+  &.masthead-title::after {
+    background-color: $light-blue;
+  }
+}
+
+.bg-darkgray {
+  background-color: $dark-gray;
   color: $white;
 
   .highlight,
   a {
     color: $goldenbrown;
+  }
+
+  &:before,
+  &:after {
+    background-color: $dark-gray;
+  }
+}
+
+.bg-beige {
+  background-color: $beige;
+
+  .highlight,
+  a {
+    color: $orange-red;
+  }
+
+  &:before,
+  &:after {
+    background-color: $beige;
+  }
+}
+
+.bg-navy {
+  background-color: $navy;
+  color: $white;
+
+  .highlight,
+  a {
+    color: $goldenbrown;
+  }
+
+  &:before,
+  &:after {
+    background-color: $navy;
+  }
+}
+
+.bg-gray {
+  background-color: $gray;
+  color: $white;
+
+  .highlight,
+  a {
+    color: $tan;
+  }
+
+  &:before,
+  &:after {
+    background-color: $gray;
   }
 }
