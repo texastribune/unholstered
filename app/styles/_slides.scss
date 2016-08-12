@@ -74,6 +74,7 @@
 .swiper-slide {
   display: flex;
   flex-direction: column;
+  z-index: 5;
 
   @media (min-width: 56.1875em) {
     flex-flow: row;
@@ -113,22 +114,11 @@
   }
 }
 
-// .slide-graphic {
-//   height: 50%;
-//   margin-bottom: 2rem;
-//   margin-left: 2rem;
-//   margin-right: 2rem;
-//   margin-top: 6rem;
-//   width: 80vw;
-//
-//   @media (min-width: 56.1875em) {
-//     height: 70vh;
-//     margin-top: 2rem;
-//     width: 100%;
-//   }
-// }
-//
-// .slide-prose {
-//   height: 50%;
-//   padding: 2rem;
-// }
+.graphic-container {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  z-index: 2;
+}

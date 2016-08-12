@@ -12,7 +12,7 @@ export default function gridMaker (selection, params) {
   container.select('svg').remove()
   const sizing = container.node().parentNode.getBoundingClientRect()
 
-  const [width, height] = [sizing.width, sizing.height]
+  const [width, height] = [sizing.width - 20 * 2, sizing.height - 20 * 2]
 
   const padding = params.padding || 0.2
 
@@ -33,7 +33,9 @@ export default function gridMaker (selection, params) {
     .attr('height', sizing.height)
     .attr('shape-rendering', 'crispEdges')
   const g = svg.append('g').attr('class', 'grid')
+    .attr('transform', 'translate(20, 20)')
 
+  // JOIN
   const cells = g.selectAll('rect').data(data, (i) => i)
 
   // ENTER

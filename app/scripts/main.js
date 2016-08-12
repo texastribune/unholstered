@@ -1,3 +1,4 @@
+import { select } from 'd3'
 import Swiper from 'swiper'
 import './nav'
 import GridMaker from './GridMaker'
@@ -38,6 +39,8 @@ swiper.on('onSlideChangeEnd', (s) => {
   const activeIndex = s.activeIndex
 
   if (mapping.hasOwnProperty(activeIndex)) {
-    GridMaker(`.graphic-hook-${activeIndex}`, mapping[activeIndex])
+    GridMaker('#graphic', mapping[activeIndex])
+  } else {
+    select('#graphic svg').remove()
   }
 })
