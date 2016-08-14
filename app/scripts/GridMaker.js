@@ -1,4 +1,5 @@
 import * as d3 from 'd3'
+import getSquareSizing from './getSquareSizing'
 
 export default function gridMaker (selection) {
   const container = d3.select(selection)
@@ -11,12 +12,14 @@ export default function gridMaker (selection) {
     const x = d3.scaleBand()
     const y = d3.scaleBand()
 
-    const cols = Math.ceil(Math.sqrt(params.total))
-    const rows = Math.ceil(params.total / cols)
-
     const sizing = container.node().parentNode.getBoundingClientRect()
+    console.log(sizing)
 
     const [width, height] = [sizing.width - 20 * 2, sizing.height - 20 * 2]
+    const side = getSquareSizing(width, height, params.total)
+
+    const cols = Math.floor(width / side)
+    const rows = Math.floor(height / side)
 
     const padding = params.padding || 0.2
 
@@ -40,21 +43,18 @@ export default function gridMaker (selection) {
     // JOIN
     const cells = g.selectAll('rect').data(data, (i) => i)
 
+    const transitionTime = 500
+
     // EXIT
     cells.exit()
       .transition()
-      .duration(0)
-      .delay(() => Math.random() * 1250)
+      .duration(transitionTime)
       .style('fill-opacity', 1e-6)
       .remove()
 
     // UPDATE
-    cells
-      .attr('class', 'cell')
-      .attr('fill', (d) => d < params.subset ? 'rgb(209, 70, 33)' : 'rgba(209, 70, 33, 0.3)')
-      .transition()
-      .duration(500)
-      .delay(() => Math.random() * 1250)
+    cells.transition()
+      .delay(() => Math.random() * 1250 + transitionTime)
       .attr('x', (d) => x(d % cols))
       .attr('y', (d) => y(Math.floor(d / cols)))
       .attr('width', () => x.bandwidth())
@@ -66,10 +66,13 @@ export default function gridMaker (selection) {
       .attr('y', (d) => y(Math.floor(d / cols)))
       .attr('width', 0)
       .attr('height', 0)
-      .attr('fill', (d) => d < params.subset ? 'rgb(209, 70, 33)' : 'rgba(209, 70, 33, 0.3)')
-      .transition().duration(0).delay(() => Math.random() * 625)
+      .attr('fill', 'rgba(209, 70, 33, 0.3)')
+      .transition()
+        .duration(0)
+        .delay(() => Math.random() * 1250 + transitionTime)
         .attr('width', () => x.bandwidth())
         .attr('height', () => y.bandwidth())
+        .attr('fill', (d) => d < params.subset ? 'rgb(209, 70, 33)' : 'rgba(209, 70, 33, 0.3)')
   }
 
   function hide () {
