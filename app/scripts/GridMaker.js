@@ -20,7 +20,7 @@ export default function gridMaker (selection) {
     const cols = Math.floor(width / side)
     const rows = Math.floor(height / side)
 
-    const padding = params.padding || 0.2
+    const padding = params.padding || 0.25
 
     x.domain(d3.range(cols))
       .range([0, width])
@@ -51,13 +51,16 @@ export default function gridMaker (selection) {
       .style('fill-opacity', 1e-6)
       .remove()
 
+    const xWidth = x.bandwidth()
+    const yWidth = y.bandwidth()
+
     // UPDATE
     cells.transition()
       .delay(() => Math.random() * 1250 + transitionTime)
       .attr('x', (d) => x(d % cols))
       .attr('y', (d) => y(Math.floor(d / cols)))
-      .attr('width', x.bandwidth)
-      .attr('height', y.bandwidth)
+      .attr('width', xWidth)
+      .attr('height', yWidth)
 
     // ENTER
     cells.enter().append('rect').attr('class', 'cell')
@@ -69,8 +72,8 @@ export default function gridMaker (selection) {
       .transition()
         .duration(0)
         .delay(() => Math.random() * 1250 + transitionTime)
-        .attr('width', x.bandwidth)
-        .attr('height', y.bandwidth)
+        .attr('width', xWidth)
+        .attr('height', yWidth)
         .attr('fill', (d) => d < params.subset ? 'rgb(209, 70, 33)' : 'rgba(209, 70, 33, 0.3)')
   }
 
