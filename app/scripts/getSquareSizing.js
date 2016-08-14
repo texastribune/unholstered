@@ -1,9 +1,27 @@
-export default function getSquareSizing (x, y, n) {
-  const px = Math.ceil(Math.sqrt(x / y * n))
-  const sx = Math.floor(px * y / x) * px < n ? y / Math.ceil(px * y / x) : x / px
+/**
+ * Calculates the optimal length of each of `n` squares to fill an `x` by `y`
+ * container.
+ *
+ * Source: http://math.stackexchange.com/a/466248
+ *
+ * @param  {Number} x
+ * @param  {Number} y
+ * @param  {Number} n
+ * @return {Number}
+ */
+function getSquareSizing (x, y, n) {
+  const xByY = x / y
+  const yByX = y / x
 
-  const py = Math.ceil(Math.sqrt(y / x * n))
-  const sy = Math.floor(py * x / y) * py < n ? x / Math.ceil(x * py / y) : y / py
+  const px = Math.ceil(Math.sqrt(xByY * n))
+  const pxByYByX = px * yByX
+  const sx = Math.floor(pxByYByX) * px < n ? y / Math.ceil(pxByYByX) : x / px
+
+  const py = Math.ceil(Math.sqrt(yByX * n))
+  const pyByXByY = py * xByY
+  const sy = Math.floor(pyByXByY) * py < n ? x / Math.ceil(pyByXByY) : y / py
 
   return Math.max(sx, sy)
 }
+
+export default getSquareSizing
