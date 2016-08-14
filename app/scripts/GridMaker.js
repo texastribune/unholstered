@@ -13,7 +13,6 @@ export default function gridMaker (selection) {
     const y = d3.scaleBand()
 
     const sizing = container.node().parentNode.getBoundingClientRect()
-    console.log(sizing)
 
     const [width, height] = [sizing.width - 20 * 2, sizing.height - 20 * 2]
     const side = getSquareSizing(width, height, params.total)
@@ -57,8 +56,8 @@ export default function gridMaker (selection) {
       .delay(() => Math.random() * 1250 + transitionTime)
       .attr('x', (d) => x(d % cols))
       .attr('y', (d) => y(Math.floor(d / cols)))
-      .attr('width', () => x.bandwidth())
-      .attr('height', () => y.bandwidth())
+      .attr('width', x.bandwidth)
+      .attr('height', y.bandwidth)
 
     // ENTER
     cells.enter().append('rect').attr('class', 'cell')
@@ -70,8 +69,8 @@ export default function gridMaker (selection) {
       .transition()
         .duration(0)
         .delay(() => Math.random() * 1250 + transitionTime)
-        .attr('width', () => x.bandwidth())
-        .attr('height', () => y.bandwidth())
+        .attr('width', x.bandwidth)
+        .attr('height', y.bandwidth)
         .attr('fill', (d) => d < params.subset ? 'rgb(209, 70, 33)' : 'rgba(209, 70, 33, 0.3)')
   }
 
