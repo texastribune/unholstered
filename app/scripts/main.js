@@ -10,7 +10,8 @@ const swiper = new Swiper('.swiper-container', {
   pagination: '.swiper-progress',
   paginationType: 'progress',
   simulateTouch: true,
-  speed: 500
+  speed: 500,
+  onSlideChangeEnd: graphicHandler
 })
 
 swiper.runCallbacksOnInit = true
@@ -27,9 +28,13 @@ const mapping = {
 }
 
 let maker = null
+let activeIndex
 
 function graphicHandler (s) {
-  const activeIndex = s.activeIndex
+  if (activeIndex === s.activeIndex) return
+
+  activeIndex = s.activeIndex
+  console.log(activeIndex)
 
   if (mapping.hasOwnProperty(activeIndex)) {
     if (!maker) maker = GridMaker('#graphic')
@@ -38,8 +43,6 @@ function graphicHandler (s) {
     if (maker) maker.hide()
   }
 }
-
-swiper.on('slideChangeEnd', graphicHandler)
 
 swiper.on('onTransitionStart', (s) => {
   const activeSlide = s.slides[s.activeIndex].classList
