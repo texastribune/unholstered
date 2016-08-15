@@ -6,6 +6,7 @@ export default function gridMaker (selection) {
   const svg = container.append('svg')
   const g = svg.append('g').attr('class', 'grid')
     .attr('transform', 'translate(20, 20)')
+  const label = svg.append('text')
 
   function render (params) {
     container.style('display', 'block')
@@ -14,7 +15,7 @@ export default function gridMaker (selection) {
 
     const sizing = container.node().parentNode.getBoundingClientRect()
 
-    const [width, height] = [sizing.width - 20 * 2, sizing.height - 20 * 2]
+    const [width, height] = [sizing.width - 20 * 2, sizing.height - 20 * 4]
     const side = getSquareSizing(width, height, params.total)
 
     const cols = Math.floor(width / side)
@@ -38,6 +39,20 @@ export default function gridMaker (selection) {
       .attr('width', sizing.width)
       .attr('height', sizing.height)
       .attr('shape-rendering', 'crispEdges')
+
+    // LABEL
+    let labelText = ''
+    if (params.subset) {
+      labelText = params.subset + ' out of '
+    }
+    labelText += params.total + ' ' + params.class
+
+    label
+      .attr('x', sizing.width / 2 )
+      .attr('y', sizing.height - 30 )
+      .attr('class', 'chart-label')
+      .style('text-anchor', 'middle')
+      .text(labelText)
 
     // JOIN
     const cells = g.selectAll('rect').data(data, (i) => i)

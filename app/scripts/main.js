@@ -19,11 +19,13 @@ swiper.runCallbacksOnInit = true
 const mapping = {
   1: {
     total: 652,
-    subset: 116
+    subset: 116,
+    class: 'shootings'
   },
   2: {
     total: 116,
-    subset: 48
+    subset: 48,
+    class: 'shootings'
   }
 }
 
