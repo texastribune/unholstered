@@ -221,5 +221,9 @@
 
 .chart-label {
   font-family: $chathura;
-  font-size: 1.875em;
+  font-size: 1.75em;
+
+  @include breakpoint(tablet) {
+    font-size: 1.875em;
+  }
 }

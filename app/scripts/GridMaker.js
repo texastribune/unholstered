@@ -43,7 +43,7 @@ export default function gridMaker (selection) {
     // LABEL
     let labelText = ''
     if (params.subset) {
-      labelText = params.subset + ' out of '
+      labelText = params.subset + ' of '
     }
     labelText += params.total + ' ' + params.class
 
