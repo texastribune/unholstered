@@ -40,17 +40,6 @@
     padding: 1em;
     @include clearfix();
 
-    // .image {
-    //   float: left;
-    //   margin: 0 5% 0 0;
-    //   width: 20%;
-    // }
-    //
-    // .navbar__text {
-    //   float: left;
-    //   width: 75%;
-    // }
-
     .navbar--mobile & {
       border-top: 1px solid $orange-red;
       font-family: $chathura;
