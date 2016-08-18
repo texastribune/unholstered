@@ -25,7 +25,7 @@
         <span class="trib-logo desktop">{{ inject('assets/images/tribune-white.svg') }}</span>
         <span class="trib-logo mobile">{{ inject('assets/images/tt-bug.svg') }}</span>
       </a>
-      <div class="masthead-sections">
+      <div class="masthead-sections {{ context.background }}">
         <div class="masthead-sections__desktop">
           Section:
           <ul>
@@ -43,7 +43,7 @@
           <i class="chevron-down">{{ inject('assets/images/down-arrow.svg') }}</i>
         </div>
       </div>
-      <div class="masthead-title {%block mastheadcolor %}{% endblock %}">
+      <div class="masthead-title {% block masthead_color %}{% endblock %}">
         <a href="{{ static('index.html') }}">Unholstered</a>
       </div>
     </div>
@@ -70,14 +70,20 @@
     <nav class="navbar navbar--mobile">
       <ul>
         {% for story in data.meta.storylist %}
-          {% if data[story.id].section_number %}
-            <li id="nav-{{ story.id }}" class="navbar__story">
-              <a href="{{ static( story.slug ) }}">
-                <span class="navbar__sectionnum">{{ data[story.id].section_number }}</span>
-                {{ data[story.id].section_title }}
-              </a>
-            </li>
-          {% endif %}
+          <li id="nav-{{ story.id }}" class="navbar__story">
+            <a href="{{ static( story.slug ) }}">
+              <span class="navbar__sectionnum">
+              {% if data[story.id].section_number %}
+                {{ data[story.id].section_number }}
+              </span>
+              {{ data[story.id].section_title }}
+              {% else %}
+                Data
+              </span>
+              {% endif %}
+            </a>
+          </li>
+
         {% endfor %}
       </ul>
     </nav>

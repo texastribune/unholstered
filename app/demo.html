@@ -8,7 +8,7 @@
 
 {% block masthead_class %}masthead-mainbar{% endblock %}
 
-{% set context = data.findings %}
+{% set context = data.demo %}
 
 {% block swiperbar %}
 <div class="swiper-progress"></div>
@@ -17,6 +17,16 @@
 {% block masthead_color %}bg-lightblue{% endblock %}
 
 {% block content %}
+
+<div style="height: 0;">
+  <svg width="20" height="2" shape-rendering="crispEdges">
+    <defs>
+      <pattern id="diagonal" width="25" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="1" height="2" fill="rgb(209, 70, 33)"></rect>
+      </pattern>
+    </defs>
+  </svg>
+</div>
 
 <div class="mainbar-container">
   <div class="swiper-container">
@@ -33,10 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide slide-intro-text bg-lightblue">
-        {{ prose(data.findings.intro) }}
-      </div>
-    {% for slide in data.findings.slides %}
+    {% for slide in context.slides %}
       <div class="swiper-slide swiper-slide--content bg-{{ slide.color }}">
         <div class="slide-graphic swiper-slide__section">
           <div class="graphic graphic-hook-{{ loop.index + 1 }}"></div>
@@ -49,9 +56,6 @@
         </div>
       </div>
     {% endfor %}
-      <div class="swiper-slide slide-footer bg-lightblue">
-        {{ prose(data.findings.closer) }}
-      </div>
     </div>
   </div>
 </div>

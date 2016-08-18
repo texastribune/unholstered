@@ -42,3 +42,7 @@
 {% macro ad(value) %}
 <div class="{{ value.adtype }}-ad" id="{{ value.id }}"></div>
 {% endmacro %}
+
+{% macro disclosure(value) %}
+<p style="font-style: italic">{{ value }}</p>
+{% endmacro %}
