@@ -66,8 +66,13 @@
     }
   }
 
-  .thumbnail {
+  .image {
     margin: 1em 0 0;
+
+    &__img {
+      height: 150px;
+      margin: 0 auto;
+    }
   }
 
   p {
