@@ -12,14 +12,16 @@ $('.masthead-sections__desktop ul li').mouseenter(function () {
   $('.navbar--desktop').show()
 })
 
-//closes navbar
-$('.navbar--desktop').mouseleave(function () {
-  $('.navbar--desktop').hide()
-})
-// OR - hack to close the navbar on those times when you hover over the
-//li but don't put your mouse into the navbar, missing the above trigger
-$('.masthead-title').mouseenter(function () {
-  $('.navbar--desktop').hide()
+//closes navbar if it goes out of ul but not into navbar.
+//if it goes into navbar then it waits to close until it leaves navbar
+$('.masthead-sections__desktop').mouseleave( function(e) {
+    if( $(e.toElement).hasClass('navbar__story') ) {
+        $('.navbar__story').mouseleave( function() {
+          $('.navbar--desktop').hide()
+        })
+    } else {
+      $('.navbar--desktop').hide()
+    }
 })
 
 //simple mobile nav on click
