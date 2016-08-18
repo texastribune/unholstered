@@ -1,6 +1,8 @@
 import Swiper from 'swiper'
 import './nav'
 import GridMaker from './GridMaker'
+import BoxMaker from './BoxMaker'
+import BarMaker from './BarMaker'
 import changeColors from './colors'
 
 const swiper = new Swiper('.swiper-container', {
@@ -36,13 +38,16 @@ function graphicHandler (s) {
   if (activeIndex === s.activeIndex) return
 
   activeIndex = s.activeIndex
-  console.log(activeIndex)
 
-  if (mapping.hasOwnProperty(activeIndex)) {
-    if (!maker) maker = GridMaker('#graphic')
-    maker.render(mapping[activeIndex])
-  } else {
-    if (maker) maker.hide()
+  // if (mapping.hasOwnProperty(activeIndex)) {
+  //   if (!maker) maker = GridMaker('#graphic')
+  //   maker.render(mapping[activeIndex])
+  // } else {
+  //   if (maker) maker.hide()
+  // }
+
+  if (activeIndex === 2) {
+    BarMaker('#graphic')
   }
 }
 

@@ -227,3 +227,18 @@
     font-size: 1.875em;
   }
 }
+
+.axis .domain,
+.axis line {
+  display: none;
+}
+
+.axis text {
+  font-family: $rubik, sans-serif;
+  font-size: .875rem;
+}
+
+.labels text {
+  font-family: $rubik, sans-serif;
+  font-size: 1rem;
+}
