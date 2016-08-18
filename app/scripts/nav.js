@@ -12,13 +12,14 @@ $('.masthead-sections__desktop ul li').mouseenter(function () {
   $('.navbar--desktop').show()
 })
 
-//NEED TO HIDE ON RESIZE, SWITCH TO MOBILE
-//ALSO NEED TO FIX WEIRDNESS WITH HOVER IN MASTHEAD
-
 //closes navbar
 $('.navbar--desktop').mouseleave(function () {
   $('.navbar--desktop').hide()
-  //because i'm only leaving after leaving navbar, but if you never get into navbar it doesn't work. poop
+})
+// OR - hack to close the navbar on those times when you hover over the
+//li but don't put your mouse into the navbar, missing the above trigger
+$('.masthead-title').mouseenter(function () {
+  $('.navbar--desktop').hide()
 })
 
 //simple mobile nav on click

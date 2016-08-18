@@ -8,8 +8,8 @@
   &--desktop {
     border-left: .2em solid $black;
     border-right: .2em solid $black;
-    margin-left: auto;
-    margin-right: 0;
+    position: absolute;
+    right: 0;
     width: 21em;
   }
 
