@@ -70,14 +70,20 @@
     <nav class="navbar navbar--mobile">
       <ul>
         {% for story in data.meta.storylist %}
-          {% if data[story.id].section_number %}
-            <li id="nav-{{ story.id }}" class="navbar__story">
-              <a href="{{ static( story.slug ) }}">
-                <span class="navbar__sectionnum">{{ data[story.id].section_number }}</span>
-                {{ data[story.id].section_title }}
-              </a>
-            </li>
-          {% endif %}
+          <li id="nav-{{ story.id }}" class="navbar__story">
+            <a href="{{ static( story.slug ) }}">
+              <span class="navbar__sectionnum">
+              {% if data[story.id].section_number %}
+                {{ data[story.id].section_number }}
+              </span>
+              {{ data[story.id].section_title }}
+              {% else %}
+                Data
+              </span>
+              {% endif %}
+            </a>
+          </li>
+
         {% endfor %}
       </ul>
     </nav>

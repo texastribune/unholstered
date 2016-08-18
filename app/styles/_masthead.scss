@@ -141,8 +141,10 @@
 }
 
 .chevron-down {
+  display: inline-block;
+
   svg {
-    height: .4em;
+    vertical-align: middle;
     width: .5em;
 
     path {
