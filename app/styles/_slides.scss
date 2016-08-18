@@ -242,3 +242,44 @@
   font-family: $rubik, sans-serif;
   font-size: 1rem;
 }
+
+.slider-controls {
+  bottom: 0;
+  padding: .875rem;
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.slider-controls__button {
+  transition: background-color .3s;
+
+  &:last-child {
+    border-left: 1px solid $navy;
+    margin-left: .5rem;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .05);
+  }
+}
+
+.icon {
+  display: inline-block;
+
+  svg {
+    fill: $navy;
+    height: 1em;
+    vertical-align: middle;
+  }
+}
+
+.icon--animated {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+ 0%, 20%, 50%, 80%, 100% {transform: translate3d(0, 0, 0);}
+ 40% {transform: translate3d(0, -30px, 0);}
+ 60% {transform: translate3d(0, -15px, 0);}
+}

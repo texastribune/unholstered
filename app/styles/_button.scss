@@ -1,0 +1,39 @@
+.btn {
+  border: .0625rem solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $rubik;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  padding-bottom: .375rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .375rem;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.btn--large {
+  font-size: 1rem;
+
+  @media (min-width: 56.1875em) {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 81.25em) {
+    font-size: 1.75rem;
+  }
+}
+
+.btn--transparent {
+  background-color: transparent;
+  border-color: $navy;
+  color: $navy;
+}
+
+.is-hidden {
+  display: none;
+}

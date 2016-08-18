@@ -9,11 +9,15 @@ const swiper = new Swiper('.swiper-container', {
   direction: 'vertical',
   keyboardControl: true,
   mousewheelControl: true,
+  nextButton: '#next-button',
+  prevButton: '#prev-button',
   pagination: '.swiper-progress',
   paginationType: 'progress',
   simulateTouch: true,
   speed: 500,
-  onSlideChangeEnd: graphicHandler
+  onSlideChangeStart: onSlideChangeStart,
+  onSlideChangeEnd: onSlideChangeEnd,
+  onTransitionStart: onTransitionStart
 })
 
 swiper.runCallbacksOnInit = true
@@ -34,7 +38,10 @@ const mapping = {
 let maker = null
 let activeIndex
 
-function graphicHandler (s) {
+const nextButton = document.querySelector('#next-button')
+const prevButton = document.querySelector('#prev-button')
+
+function onSlideChangeEnd (s) {
   if (activeIndex === s.activeIndex) return
 
   activeIndex = s.activeIndex
@@ -49,10 +56,31 @@ function graphicHandler (s) {
   if (activeIndex === 2) {
     BarMaker('#graphic')
   }
+
+  const nextButtonText = nextButton.querySelector('.js-next-button-text')
+
+  if (activeIndex > 0) {
+    nextButtonText.textContent = 'Next'
+    prevButton.classList.remove('is-hidden')
+  } else {
+    nextButtonText.textContent = 'Begin'
+    prevButton.classList.add('is-hidden')
+  }
 }
 
-swiper.on('onTransitionStart', (s) => {
+function onSlideChangeStart (s) {
+  const activeIndex = s.activeIndex
+  const icon = nextButton.querySelector('.icon')
+
+  if (activeIndex > 0) {
+    icon.classList.remove('icon--animated')
+  } else {
+    icon.classList.add('icon--animated')
+  }
+}
+
+function onTransitionStart (s) {
   const activeSlide = s.slides[s.activeIndex].classList
 
   changeColors(activeSlide)
-})
+}
