@@ -79,6 +79,10 @@
   &.masthead-title::after {
     background-color: $light-blue;
   }
+
+  &.swiper-pagination-progress .swiper-pagination-progressbar  {
+    background-color: $white;
+  }
 }
 
 .bg-darkgray {
@@ -94,6 +98,10 @@
   &:after {
     background-color: $dark-gray;
   }
+
+  &.swiper-pagination-progress .swiper-pagination-progressbar {
+    background-color: $goldenbrown;
+  }
 }
 
 .bg-beige {
@@ -107,6 +115,10 @@
   &:before,
   &:after {
     background-color: $beige;
+  }
+
+  &.swiper-pagination-progress .swiper-pagination-progressbar  {
+    background-color: $orange-red;
   }
 }
 
@@ -123,6 +135,10 @@
   &:after {
     background-color: $navy;
   }
+
+  &.swiper-pagination-progress .swiper-pagination-progressbar  {
+    background-color: $goldenbrown;
+  }
 }
 
 .bg-gray {
@@ -137,6 +153,10 @@
   &:before,
   &:after {
     background-color: $gray;
+  }
+
+  &.swiper-pagination-progress .swiper-pagination-progressbar  {
+    background-color: $tan;
   }
 }
 
@@ -226,4 +246,8 @@
   @include breakpoint(tablet) {
     font-size: 1.875em;
   }
+}
+
+.swiper-pagination-progress .swiper-pagination-progressbar {
+  background-color: $white;
 }
