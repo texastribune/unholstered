@@ -79,7 +79,7 @@ function BarMaker (containerEl, opts) {
 
   y.domain(data.map((d) => d.name))
     .range([0, height])
-    .padding(isMobile ? 0.45 : 0.35)
+    .padding(isMobile ? 0.4 : 0.3)
 
   const yAxis = d3.axisLeft(y)
 

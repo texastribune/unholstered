@@ -40,6 +40,7 @@ let activeIndex
 
 const nextButton = document.querySelector('#next-button')
 const prevButton = document.querySelector('#prev-button')
+let animationTimeout
 
 function onSlideChangeEnd (s) {
   if (activeIndex === s.activeIndex) return
@@ -62,6 +63,11 @@ function onSlideChangeEnd (s) {
   if (activeIndex > 0) {
     nextButtonText.textContent = 'Next'
     prevButton.classList.remove('is-hidden')
+    window.clearTimeout(animationTimeout)
+    animationTimeout = window.setTimeout(() => {
+      const icon = nextButton.querySelector('.icon')
+      icon.classList.add('icon--animated')
+    }, 1000 * 20)
   } else {
     nextButtonText.textContent = 'Begin'
     prevButton.classList.add('is-hidden')
