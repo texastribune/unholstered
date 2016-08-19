@@ -68,7 +68,12 @@
 
 //colors
 .bg-lightblue {
-  background-color: $light-blue;
+
+  &.swiper-slide,
+  &.masthead-title {
+    background-color: $light-blue;
+    color: $white;
+  }
 
   .highlight,
   a {
@@ -86,8 +91,12 @@
 }
 
 .bg-darkgray {
-  background-color: $dark-gray;
-  color: $white;
+
+  &.swiper-slide,
+  &.masthead-title {
+    background-color: $dark-gray;
+    color: $white;
+  }
 
   .highlight,
   a {
@@ -105,7 +114,10 @@
 }
 
 .bg-beige {
-  background-color: $beige;
+  &.swiper-slide,
+  &.masthead-title {
+    background-color: $beige;
+  }
 
   .highlight,
   a {
@@ -123,8 +135,12 @@
 }
 
 .bg-navy {
-  background-color: $navy;
-  color: $white;
+
+  &.swiper-slide,
+  &.masthead-title {
+    background-color: $navy;
+    color: $white;
+  }
 
   .highlight,
   a {
@@ -142,8 +158,12 @@
 }
 
 .bg-gray {
-  background-color: $gray;
-  color: $white;
+
+  &.swiper-slide,
+  &.masthead-title {
+    background-color: $gray;
+    color: $white;
+  }
 
   .highlight,
   a {
