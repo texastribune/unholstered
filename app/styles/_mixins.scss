@@ -1,12 +1,29 @@
-@mixin clearfix() {
+// clearfix
+// source: http://cssmojo.com/latest_new_clearfix_so_far/
+@mixin clearfix {
   &:after {
     clear: both;
-    content: ' ';
-    display: block;
-    font-size: 0;
-    height: 0;
-    visibility: hidden;
+    content: '';
+    display: table;
   }
+}
+
+// font-size
+// An easy way to set both an IE `rem` fallback and think in pixels at the
+// same time.
+@mixin font-size($size) {
+  @if type-of($size) != 'number' {
+    @warn inspect($val) + ' was passed to font-size(), but it is not a number.';
+    @return $size;
+  }
+
+  @if unit($size) == 'px' {
+    font-size: $size;
+  } @else {
+    font-size: $size * 1px;
+  }
+
+  font-size: to-rem($size);
 }
 
 @mixin breakpoint($point) {

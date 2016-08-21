@@ -6,7 +6,10 @@ $rubik: 'Rubik', sans-serif;
 $chathura: 'Chathura', sans-serif;
 $pt: 'PT Serif', serif;
 
+$font-size-base: 16;
+
 //helpers
+@import 'functions';
 @import 'mixins';
 @import 'layout';
 @import 'colors';
@@ -43,21 +46,8 @@ a {
 @import 'readmore';
 @import 'footer';
 @import 'ads';
-@import 'swiper';
+@import 'libs/swiper';
 @import 'button';
-
-svg {
-  overflow: visible;
-  // position: absolute;
-  // top: 50%;
-  // transform: translate(0, -50%);
-  vertical-align: bottom;
-  margin: 0 auto;
-}
-
-svg, rect, g {
-  box-sizing: content-box;
-}
 
 .mainbar-body {
   background: $light-blue;

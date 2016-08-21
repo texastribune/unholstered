@@ -1,204 +1,22 @@
-.slide-head {
-  font-family: $rubik;
-  font-size: 1.3125em;
-  letter-spacing: .02em;
-  line-height: 1.3;
-
-  .highlight--big {
-    font-size: 2.25em;
-    font-weight: 500;
-    line-height: 1em;
-    vertical-align: middle;
-  }
-}
-
-.slide-text {
-  font-family: $pt;
-  line-height: 1.4;
-
-  a {
-    text-decoration:underline;
-  }
-}
-
-.slide-intro {
-  background-color: $light-blue;
-
-  &__art {
-    width: 40%;
-
-    & svg {
-      width: 100%;
-      vertical-align: bottom;
-    }
-  }
-
-  &__head {
-    width: 60%;
-    text-align: center;
-
-    &.swiper-slide__section {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-    }
-  }
-
-  &__title {
-    color: $navy;
-    font-family: $rubik;
-    font-size: 3.5em;
-    font-weight: 500;
-    margin: 0;
-    text-transform: uppercase;
-  }
-
-  &__tag {
-    color: $white;
-    font-family: $chathura;
-    font-size: 1.75em;
-    letter-spacing: .04em;
-    line-height: 1;
-    margin: 0;
-    text-transform: uppercase;
-
-
-  }
-}
-
-//colors
-.bg-lightblue {
-  background-color: $light-blue;
-
-  .highlight,
-  a {
-    color: $white;
-  }
-
-  &.masthead-title::before,
-  &.masthead-title::after {
-    background-color: $light-blue;
-  }
-}
-
-.bg-darkgray {
-  background-color: $dark-gray;
-  color: $white;
-
-  .highlight,
-  a {
-    color: $goldenbrown;
-  }
-
-  &:before,
-  &:after {
-    background-color: $dark-gray;
-  }
-}
-
-.bg-beige {
-  background-color: $beige;
-
-  .highlight,
-  a {
-    color: $orange-red;
-  }
-
-  &:before,
-  &:after {
-    background-color: $beige;
-  }
-}
-
-.bg-navy {
-  background-color: $navy;
-  color: $white;
-
-  .highlight,
-  a {
-    color: $goldenbrown;
-  }
-
-  &:before,
-  &:after {
-    background-color: $navy;
-  }
-}
-
-.bg-gray {
-  background-color: $gray;
-  color: $white;
-
-  .highlight,
-  a {
-    color: $tan;
-  }
-
-  &:before,
-  &:after {
-    background-color: $gray;
-  }
-}
-
+// sets up the full width/height mainbar container, where all slides and
+// graphics live
 .mainbar-container {
   height: 100%;
   left: 0;
-  padding-top: 2rem;
+  padding-top: 2rem; // hard-coded based on the set height of the sticky header
   position: absolute;
   top: 0;
   width: 100%;
 }
 
+// tells the swiper container to fill the space provided by .mainbar-container
 .swiper-container {
   height: 100%;
   width: 100%;
 }
 
-.swiper-slide {
-  display: flex;
-  flex-direction: column;
-  z-index: 5;
-
-  @media (min-width: 56.1875em) {
-    flex-flow: row;
-  }
-}
-
-.swiper-slide__section {
-  flex: 1 0 0;
-  margin: 1.25rem .625rem 0;
-
-  &:last-child {
-    margin: 0 .625rem .625rem;
-  }
-
-  @media (min-width: 56.1875em) {
-    margin: 1.25rem;
-
-    &:last-child {
-      margin: 1.25rem;
-    }
-  }
-}
-
-.swiper-slide__section--prose {
-  @media (min-width: 56.1875em) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-.swiper-slide--content {
-  flex-flow: column;
-
-  @media (min-width: 56.1875em) {
-    flex-flow: row;
-  }
-}
-
 .graphic-container {
-  height: 50%;
+  height: 48%;
   left: 0;
   position: absolute;
   top: 0;
@@ -211,36 +29,159 @@
   }
 }
 
-.cell--orange-red-light {
-  fill: transparentize($orange-red, .7);
-}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
 
-.cell--orange-red {
-  fill: $orange-red;
-}
-
-.chart-label {
-  font-family: $chathura;
-  font-size: 1.75em;
-
-  @include breakpoint(tablet) {
-    font-size: 1.875em;
+  @media (min-width: 56.1875em) {
+    align-items: center;
   }
 }
 
-.axis .domain,
-.axis line {
-  display: none;
+.swiper-slide--graphic {
+  align-items: flex-end;
+
+  @media (min-width: 56.1875em) {
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 
-.axis text {
-  font-family: $rubik, sans-serif;
-  font-size: .875rem;
+.slide-content {
+  padding: 1rem;
 }
 
-.labels text {
-  font-family: $rubik, sans-serif;
-  font-size: 1rem;
+.slide-content--flex {
+  @media (min-width: 56.1875em) {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.slide-content--graphic {
+  height: 50%;
+
+  @media (min-width: 56.1875em) {
+    width: 48%;
+  }
+}
+
+// .slide-content--graphic {
+//   position: absolute;
+//   left: 0;
+//   top: 42%;
+//
+//   @media (min-width: 56.1875em) {
+//     left: 52%;
+//     top: auto;
+//   }
+// }
+
+.slide-content--flex-child {
+  flex: 1 0 0;
+}
+
+.splash-art {
+  margin-bottom: to-rem(20);
+  margin-top: to-rem(10);
+  text-align: center;
+
+  svg {
+    height: 100%;
+    width: 100%;
+
+    @media (min-width: 56.1875em) {
+      width: 90%;
+    }
+  }
+}
+
+.splash-header {
+  text-align: center;
+}
+
+.splash-header__title {
+  color: $navy;
+  font-family: $rubik;
+  font-size: 12vw;
+  font-weight: 500;
+  margin: 0;
+  text-transform: uppercase;
+
+  @media (min-width: 56.1875em) {
+    font-size: 3.5rem;
+  }
+
+  @media (min-width: 81.25em) {
+    font-size: 4.5rem;
+  }
+}
+
+.splash-header__subtitle {
+  color: $white;
+  font-family: $chathura;
+  font-size: 7.5vw;
+  letter-spacing: .04em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+
+  @media (min-width: 56.1875em) {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 81.25em) {
+    font-size: 2.25rem;
+  }
+}
+
+.slide-prose {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: to-rem(800);
+
+  @media (min-width: 56.1875em) {
+    margin-top: 0;
+  }
+
+  > p {
+    @include font-size(16);
+    font-family: $pt;
+    line-height: 1.4;
+    margin: 0 0 1rem;
+
+    @media (min-width: 56.1875em) {
+      @include font-size(24);
+      line-height: 1.5;
+    }
+  }
+}
+
+.slide-prose__header {
+  @include font-size(18);
+  font-family: $rubik;
+  letter-spacing: .02em;
+  line-height: 1.3;
+  margin: 0 0 1rem;
+
+  @media (min-width: 56.1875em) {
+    @include font-size(30);
+  }
+}
+
+.bg-lightblue {
+  background-color: $light-blue;
+
+  .highlight,
+  a {
+    color: $white;
+  }
+
+  &.masthead-title:before,
+  &.masthead-title:after {
+    background-color: $light-blue;
+  }
 }
 
 .slider-controls {
@@ -276,10 +217,26 @@
 
 .icon--animated {
   animation: bounce 2s infinite;
+  will-change: transform;
 }
 
 @keyframes bounce {
  0%, 20%, 50%, 80%, 100% {transform: translate3d(0, 0, 0);}
  40% {transform: translate3d(0, -30px, 0);}
  60% {transform: translate3d(0, -15px, 0);}
+}
+
+.axis .domain,
+.axis line {
+  display: none;
+}
+
+.axis text {
+  font-family: $rubik, sans-serif;
+  font-size: .875rem;
+}
+
+.labels text {
+  font-family: $rubik, sans-serif;
+  font-size: 1rem;
 }
