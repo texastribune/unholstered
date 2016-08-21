@@ -10,7 +10,7 @@
 
 {% set context = data.findings %}
 
-{% block swiperbar %}
+{% block swiper_bar %}
 <div class="swiper-progress"></div>
 {% endblock %}
 
@@ -19,6 +19,46 @@
 {% block content %}
 
 <div class="mainbar-container">
+  <div id="swiper-container" class="swiper-container">
+    <div class="graphic-container">
+      <div id="graphic"></div>
+    </div>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="slide-content slide-content--flex">
+          <div class="splash-art slide-content--flex-child">{{ inject('assets/images/illustrations/intro-image.svg') }}</div>
+          <header class="splash-header slide-content--flex-child">
+            <h1 class="splash-header__title">Unholstered</h1>
+            <p class="splash-header__subtitle">{{ data.findings.subhead }}</p>
+          </header>
+        </div>
+      </div>
+      {% for slide in context.intro_slides %}
+      <div class="swiper-slide">
+        <div class="slide-content">
+          <div class="slide-prose">
+            {{ prose(slide.prose) }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for slide in context.slides %}
+      <div class="swiper-slide swiper-slide--graphic" data-primary-color="{{ slide.color }}">
+        <div class="slide-content slide-content--graphic">
+          <div class="slide-prose">
+            <h2 class="slide-prose__header">{{ slide.head }}</h2>
+            {{ prose(slide.prose) }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{#
+  <!-- This is the previous verison of the slides - saving for now -->
+  <div class="mainbar-container">
   <div class="swiper-container">
     <div class="graphic-container">
       <div id="graphic"></div>
@@ -37,29 +77,30 @@
         {{ prose(data.findings.intro) }}
       </div>
     {% for slide in data.findings.slides %}
-      <div class="swiper-slide swiper-slide--content bg-{{ slide.color }}">
-        <div class="slide-graphic swiper-slide__section">
-          <div class="graphic graphic-hook-{{ loop.index + 1 }}"></div>
-        </div>
-        <div class="swiper-slide__section swiper-slide__section--prose">
-          <div class="slide-prose">
-            <h3 class="slide-head">{{ slide.head }}</h3>
-            <div class="slide-text">{{ prose(slide.prose) }}</div>
-          </div>
+    <div class="swiper-slide swiper-slide--content bg-{{ slide.color }}">
+      <div class="slide-graphic swiper-slide__section">
+        <div class="graphic graphic-hook-{{ loop.index + 1 }}"></div>
+      </div>
+      <div class="swiper-slide__section swiper-slide__section--prose">
+        <div class="slide-prose">
+          <h3 class="slide-head">{{ slide.head }}</h3>
+          <div class="slide-text">{{ prose(slide.prose) }}</div>
         </div>
       </div>
+    </div>
     {% endfor %}
       <div class="swiper-slide slide-footer bg-lightblue">
         {{ prose(data.findings.closer) }}
       </div>
     </div>
   </div>
-</div>
+</div> #}
 
 <div class="slider-controls">
   <button id="prev-button" class="slider-controls__button btn btn--transparent btn--large is-hidden"><div class="icon">{{ inject('assets/images/arrow-up.svg') }}</div></button>
   <button id="next-button" class="slider-controls__button btn btn--transparent btn--large"><span class="js-next-button-text">Begin</span> <div class="icon icon--animated">{{ inject('assets/images/arrow-down.svg') }}</div></button>
 </div>
+
 {% endblock content %}
 
 {% block footer %}{% endblock footer %}
