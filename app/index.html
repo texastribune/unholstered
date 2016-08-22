@@ -18,13 +18,23 @@
 
 {% block content %}
 
+<div style="height: 0;">
+  <svg width="20" height="2" shape-rendering="crispEdges">
+    <defs>
+      <pattern id="diagonal" width="25" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="1" height="2" fill="rgb(209, 70, 33)"></rect>
+      </pattern>
+    </defs>
+  </svg>
+</div>
+
 <div class="mainbar-container">
   <div id="swiper-container" class="swiper-container">
     <div class="graphic-container">
       <div id="graphic"></div>
     </div>
     <div class="swiper-wrapper">
-      <div class="swiper-slide" data-primary-color="lightblue" data-type="text-only">
+      <div class="swiper-slide swiper-slide--splash" data-primary-color="lightblue" data-type="text-only">
         <div class="slide-content slide-content--flex">
           <div class="splash-art slide-content--flex-child">{{ inject('assets/images/illustrations/intro-image.svg') }}</div>
           <header class="splash-header slide-content--flex-child">
@@ -43,8 +53,8 @@
       </div>
       {% endfor %}
       {% for slide in context.slides %}
-      <div class="swiper-slide{% if slide.chart_type %} swiper-slide--graphic{% endif %}" data-primary-color="{{ slide.color }}" data-type="{{ slide.chart_type }}" data-slide-index="{{ loop.index }}">
-        <div class="slide-content{% if slide.chart_type %} slide-content--graphic{% endif %}">
+      <div class="swiper-slide{% if slide.chart_type != 'text-only' %} swiper-slide--graphic{% endif %}" data-primary-color="{{ slide.color }}" data-type="{{ slide.chart_type }}" data-chart-id="{{ slide.id }}" data-slide-index="{{ loop.index }}">
+        <div class="slide-content{% if slide.chart_type != 'text-only' %} slide-content--graphic{% endif %}">
           <div class="slide-prose">
             <h2 class="slide-prose__header">{{ slide.head }}</h2>
             {{ prose(slide.prose) }}
@@ -55,46 +65,6 @@
     </div>
   </div>
 </div>
-
-{#
-  <!-- This is the previous verison of the slides - saving for now -->
-  <div class="mainbar-container">
-  <div class="swiper-container">
-    <div class="graphic-container">
-      <div id="graphic"></div>
-    </div>
-    <div class="swiper-wrapper">
-      <div class="swiper-slide slide-intro bg-lightblue">
-        <div class="swiper-slide__section slide-intro__art">{{ inject('assets/images/illustrations/intro-image.svg') }}</div>
-        <div class="swiper-slide__section slide-intro__head">
-          <div>
-            <h1 class="slide-intro__title">Unholstered</h1>
-            <h4 class="slide-intro__tag">{{ data.findings.subhead }}</h4>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide slide-intro-text bg-lightblue">
-        {{ prose(data.findings.intro) }}
-      </div>
-    {% for slide in data.findings.slides %}
-    <div class="swiper-slide swiper-slide--content bg-{{ slide.color }}">
-      <div class="slide-graphic swiper-slide__section">
-        <div class="graphic graphic-hook-{{ loop.index + 1 }}"></div>
-      </div>
-      <div class="swiper-slide__section swiper-slide__section--prose">
-        <div class="slide-prose">
-          <h3 class="slide-head">{{ slide.head }}</h3>
-          <div class="slide-text">{{ prose(slide.prose) }}</div>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-      <div class="swiper-slide slide-footer bg-lightblue">
-        {{ prose(data.findings.closer) }}
-      </div>
-    </div>
-  </div>
-</div> #}
 
 <div class="slider-controls">
   <button id="prev-button" class="slider-controls__button btn btn--transparent btn--large is-hidden"><div class="icon">{{ inject('assets/images/arrow-up.svg') }}</div></button>

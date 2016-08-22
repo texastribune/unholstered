@@ -1,15 +1,17 @@
 import * as d3 from 'd3'
+import checkIfMobile from './isMobile'
 import getSquareSizing from './getSquareSizing'
 
 function GridMaker (containerEl) {
-  let svg, g
+  let svg, g, gLabel
   let _isInitialized = false
   const container = d3.select(containerEl)
+  const isMobile = checkIfMobile()
 
   const margin = {
-    top: 60,
-    right: 40,
-    bottom: 60,
+    top: isMobile ? 20 : 60,
+    right: isMobile ? 20 : 40,
+    bottom: isMobile ? 40 : 60,
     left: 20
   }
 
@@ -34,19 +36,24 @@ function GridMaker (containerEl) {
     g = svg.append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
+    gLabel = container.append('div')
+      .attr('class', 'chart-label')
+      .style('padding', `0 ${margin.right}px 0 ${margin.left}px`)
+      .style('opacity', 0)
+
     _isInitialized = true
   }
 
-  function render (options) {
+  function render (options, slideIndex) {
     if (!isInitialized()) init()
 
     const transitionTime = options.transitionTime || 500
-    const sideLength = getSquareSizing(width, height, options.total)
+    const sideLength = getSquareSizing(width, height, options.length)
 
     const cols = Math.floor(width / sideLength)
     const rows = Math.floor(height / sideLength)
 
-    const padding = options.padding || 0.25
+    const padding = options.padding || 0.35
 
     x.domain(d3.range(cols))
       .range([0, width])
@@ -61,10 +68,8 @@ function GridMaker (containerEl) {
     const xWidth = x.bandwidth()
     const yWidth = y.bandwidth()
 
-    const data = d3.range(options.total)
-
     // JOIN
-    const cells = g.selectAll('rect').data(data, (i) => i)
+    const cells = g.selectAll('rect').data(options, (d) => d.value)
 
     // EXIT
     cells.exit()
@@ -74,143 +79,48 @@ function GridMaker (containerEl) {
       .remove()
 
     // UPDATE
-    cells.transition()
+    cells.transition('update')
       .duration(transitionTime)
-      // .delay(() => Math.random() * 1250 + transitionTime)
-      // .attr('x', (d) => x(d % cols))
-      // .attr('y', (d) => y(Math.floor(d / cols)))
-      // .attr('width', xWidth)
-      // .attr('height', yWidth)
-      .attr('fill', (d) => options.subset && d < options.subset ? 'rgb(209, 70, 33)' : 'rgba(209, 70, 33, 0.3)')
+      .attr('fill', (d) => d['slide' + slideIndex])
 
     // ENTER
     cells.enter().append('rect').attr('class', 'cell')
-      .attr('x', (d) => x(d % cols))
-      .attr('y', (d) => y(Math.floor(d / cols)))
+      .attr('x', (d, i) => x(i % cols))
+      .attr('y', (d, i) => y(Math.floor(i / cols)))
       .attr('width', 0)
       .attr('height', 0)
-      .attr('fill', 'rgb(209, 70, 33)')
-      .transition()
+      .attr('fill', (d) => d['slide' + slideIndex])
+      .transition('enter')
         .duration(0)
         .delay(() => Math.random() * 1250 + transitionTime)
         .attr('width', xWidth)
         .attr('height', yWidth)
-        .attr('fill', (d) => options.subset && d < options.subset ? 'rgba(209, 70, 33, 0.3)' : 'rgb(209, 70, 33)')
+
+    gLabel.text(`${options.length} total ${options.name}`)
+
+    gLabel.style('bottom', `${margin.bottom / 3}px`)
+      .transition()
+        .duration(750 + transitionTime)
+        .style('opacity', 1)
   }
 
   function remove () {
-    container.select('svg').remove()
+    container.select('svg').transition().duration(125).style('opacity', 1e-6).remove()
+    container.select('div').transition().duration(125).style('opacity', 1e-6).remove()
     _isInitialized = false
+  }
+
+  function type () {
+    return 'grid'
   }
 
   return {
     init,
     isInitialized,
     remove,
-    render
+    render,
+    type
   }
 }
 
 export default GridMaker
-
-// export default function gridMaker (containerEl) {
-//   const container = d3.select(containerEl)
-//   container.select('svg').remove()
-//
-//   const svg = container.append('svg')
-//   const g = svg.append('g').attr('class', 'grid')
-//     .attr('transform', 'translate(20, 20)')
-//   const label = svg.append('text')
-//
-//   function render (params) {
-//     const x = d3.scaleBand()
-//     const y = d3.scaleBand()
-//
-//     const sizing = container.node().parentNode.getBoundingClientRect()
-//
-//     const [width, height] = [sizing.width - 20 * 2, sizing.height - 20 * 2]
-//     const side = getSquareSizing(width, height, params.total)
-//
-//     const cols = Math.floor(width / side)
-//     const rows = Math.floor(height / side)
-//
-//     const padding = params.padding || 0.25
-//
-//     x.domain(d3.range(cols))
-//       .range([0, width])
-//       .padding(padding)
-//       .paddingOuter(0)
-//
-//     y.domain(d3.range(rows))
-//       .range([0, height])
-//       .padding(padding)
-//       .paddingOuter(0)
-//
-//     const data = d3.range(params.total)
-//
-//     svg
-//       .attr('width', sizing.width)
-//       .attr('height', sizing.height)
-//       .attr('shape-rendering', 'crispEdges')
-//
-//     // LABEL
-//     // let labelText = ''
-//     // if (params.subset) {
-//     //   labelText = params.subset + ' of '
-//     // }
-//     // labelText += params.total + ' ' + params.class
-//     //
-//     // label
-//     //   .attr('x', sizing.width / 2 )
-//     //   .attr('y', sizing.height - 30 )
-//     //   .attr('class', 'chart-label')
-//     //   .style('text-anchor', 'middle')
-//     //   .text(labelText)
-//
-//     // JOIN
-//     const cells = g.selectAll('rect').data(data, (i) => i)
-//
-//     const transitionTime = 500
-//
-//     // EXIT
-//     cells.exit()
-//       .transition()
-//       .duration(transitionTime)
-//       .style('fill-opacity', 1e-6)
-//       .remove()
-//
-//     const xWidth = x.bandwidth()
-//     const yWidth = y.bandwidth()
-//
-//     // UPDATE
-//     cells.transition()
-//       .delay(() => Math.random() * 1250 + transitionTime)
-//       .attr('x', (d) => x(d % cols))
-//       .attr('y', (d) => y(Math.floor(d / cols)))
-//       .attr('width', xWidth)
-//       .attr('height', yWidth)
-//
-//     // ENTER
-//     cells.enter().append('rect').attr('class', 'cell')
-//       .attr('x', (d) => x(d % cols))
-//       .attr('y', (d) => y(Math.floor(d / cols)))
-//       .attr('width', 0)
-//       .attr('height', 0)
-//       .attr('fill', 'rgba(209, 70, 33, 0.3)')
-//       .transition()
-//         .duration(0)
-//         .delay(() => Math.random() * 1250 + transitionTime)
-//         .attr('width', xWidth)
-//         .attr('height', yWidth)
-//         .attr('fill', (d) => d < params.subset ? 'rgb(209, 70, 33)' : 'rgba(209, 70, 33, 0.3)')
-//   }
-//
-//   function hide () {
-//     container.style('display', 'none')
-//   }
-//
-//   return {
-//     render,
-//     hide
-//   }
-// }
