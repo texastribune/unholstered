@@ -38,7 +38,7 @@
   padding: 0 .7em;
   position: relative;
   text-transform: uppercase;
-  transition: background-color 0.5s, color 0.5s;
+  transition: background-color .25s, color .25s;
 
   @include breakpoint(tablet) {
     font-size: 1.6em;
@@ -95,7 +95,7 @@
     height: 1.35em;
     position: absolute;
     top: 0;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color .25s, color .25s;
     width: 15px;
 
     @include breakpoint(tablet) {
