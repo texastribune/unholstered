@@ -43,6 +43,8 @@
 
     @include breakpoint(nonmobile) {
       float: left;
+      padding-right: 1em;
+      text-align: right;
       width: 50%;
     }
   }
@@ -69,6 +71,7 @@
     @include breakpoint(nonmobile) {
       float: right;
       margin: 0;
+      text-align: left;
       width: 50%;
     }
   }
