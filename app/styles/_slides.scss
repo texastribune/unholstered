@@ -292,3 +292,25 @@
   line-height: 1;
   vertical-align: middle;
 }
+
+.swiper-pagination-progressbar {
+  .bg-lightblue & {
+    background-color: $white;
+  }
+
+  .bg-darkgray & {
+    background-color: $goldenbrown;
+  }
+
+  .bg-gray & {
+    background-color: $tan;
+  }
+
+  .bg-navy & {
+    background-color: $goldenbrown;
+  }
+
+  .bg-beige & {
+    background-color: $orange-red;
+  }
+}
