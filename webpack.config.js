@@ -5,6 +5,7 @@ module.exports = {
   context: path.join(__dirname, '/app/scripts'),
   entry: {
     mainbar: './mainbar.js',
+    story: './story.js',
     commons: [
       './nav.js'
     ]

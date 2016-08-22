@@ -59,6 +59,33 @@
     padding: 2em 0 1em;
   }
 
+  .bg-lightblue & {
+    background-color: $light-blue;
+  }
+
+  .bg-darkgray & {
+    background-color: $dark-gray;
+    color: $white;
+  }
+
+  .bg-gray & {
+    background-color: $gray;
+    color: $white;
+  }
+
+  .bg-navy & {
+    background-color: $navy;
+    color: $white;
+  }
+
+  .bg-beige & {
+    background-color: $beige;
+
+    a {
+      color: $black;
+    }
+  }
+
   &__wrapper {
     margin: 0 auto;
     max-width: $mid-width;
