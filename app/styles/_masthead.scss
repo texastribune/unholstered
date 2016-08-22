@@ -38,6 +38,7 @@
   padding: 0 .7em;
   position: relative;
   text-transform: uppercase;
+  transition: background-color 0.5s, color 0.5s;
 
   @include breakpoint(tablet) {
     font-size: 1.6em;
@@ -94,6 +95,7 @@
     height: 1.35em;
     position: absolute;
     top: 0;
+    transition: background-color 0.5s, color 0.5s;
     width: 15px;
 
     @include breakpoint(tablet) {
@@ -138,6 +140,67 @@
   .active-story {
     border: 1px solid $orange-red;
   }
+
+  .bg-lightblue.story-body & {
+    background-color: $light-blue;
+
+    &:before,
+    &:after {
+      background-color: $light-blue;
+    }
+  }
+
+  .bg-darkgray.story-body & {
+    background-color: $dark-gray;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    &:before,
+    &:after {
+      background-color: $dark-gray;
+    }
+  }
+
+  .bg-gray.story-body & {
+    background-color: $gray;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    &:before,
+    &:after {
+      background-color: $gray;
+    }
+  }
+
+  .bg-navy.story-body & {
+    background-color: $navy;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    &:before,
+    &:after {
+      background-color: $navy;
+    }
+  }
+
+  .bg-beige.story-body & {
+    background-color: $beige;
+
+    &:before,
+    &:after {
+      background-color: $beige;
+    }
+  }
+
 }
 
 .chevron-down {
@@ -208,7 +271,7 @@
     }
   }
 
-  .bg-lightblue & {
+  .bg-lightblue.mainbar-body & {
     background-color: $light-blue;
     color: $white;
 
@@ -218,7 +281,7 @@
     }
   }
 
-  .bg-darkgray & {
+  .bg-darkgray.mainbar-body & {
     background-color: $dark-gray;
     color: $goldenbrown;
 
@@ -228,7 +291,7 @@
     }
   }
 
-  .bg-gray & {
+  .bg-gray.mainbar-body & {
     background-color: $gray;
     color: $tan;
 
@@ -239,7 +302,7 @@
     }
   }
 
-  .bg-navy & {
+  .bg-navy.mainbar-body & {
     background-color: $navy;
     color: $goldenbrown;
 
@@ -249,7 +312,7 @@
     }
   }
 
-  .bg-beige & {
+  .bg-beige.mainbar-body & {
     background-color: $beige;
     color: $orange-red;
 

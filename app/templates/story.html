@@ -5,15 +5,15 @@
 {% from 'macros/related.html' import related %}
 {% import 'macros/shares.html' as shares %}
 
-{% block body_class %}story-body{% endblock %}
+{% block body_class %}story-body {{ context.background }}{% endblock %}
 
 {% block masthead_class %}masthead-story{% endblock %}
 
 {% block content %}
-<section class="sty-header {{ context.background }}">
+<section class="sty-header">
   <div class="sty-header__wrapper wrapper">
     <div class="sty-header__bar">
-      Section {{ context.section_number }}, {{ context.section_title }}
+      Section {{ context.section_number }}
     </div>
     <h1 class="sty-header__headline">{{ context.headline }}</h1>
     <figure class="sty-header__art image">
@@ -59,3 +59,8 @@
   </div>
 </section>
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ static('scripts/story.js') }}"></script>
+{% endblock scripts %}
