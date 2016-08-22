@@ -70,7 +70,8 @@
 .bg-lightblue {
 
   &.swiper-slide,
-  &.masthead-title {
+  &.masthead-title,
+  &.sty-header {
     background-color: $light-blue;
     color: $white;
   }
@@ -80,8 +81,8 @@
     color: $white;
   }
 
-  &.masthead-title::before,
-  &.masthead-title::after {
+  &:before,
+  &:after {
     background-color: $light-blue;
   }
 
@@ -93,7 +94,8 @@
 .bg-darkgray {
 
   &.swiper-slide,
-  &.masthead-title {
+  &.masthead-title,
+  &.sty-header {
     background-color: $dark-gray;
     color: $white;
   }
@@ -115,7 +117,8 @@
 
 .bg-beige {
   &.swiper-slide,
-  &.masthead-title {
+  &.masthead-title,
+  &.sty-header {
     background-color: $beige;
   }
 
@@ -137,7 +140,8 @@
 .bg-navy {
 
   &.swiper-slide,
-  &.masthead-title {
+  &.masthead-title,
+  &.sty-header {
     background-color: $navy;
     color: $white;
   }
@@ -160,7 +164,8 @@
 .bg-gray {
 
   &.swiper-slide,
-  &.masthead-title {
+  &.masthead-title,
+  &.sty-header {
     background-color: $gray;
     color: $white;
   }
