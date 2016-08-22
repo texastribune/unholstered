@@ -4,7 +4,7 @@
 {% from 'macros/authors.html' import authors %}
 {% import 'macros/shares.html' as shares %}
 
-{% block body_class %}mainbar-body{% endblock %}
+{% block body_class %}mainbar-body bg-lightblue{% endblock %}
 
 {% block masthead_class %}masthead-mainbar{% endblock %}
 
@@ -14,7 +14,7 @@
 <div class="swiper-progress"></div>
 {% endblock %}
 
-{% block masthead_color %}bg-lightblue{% endblock %}
+{% block masthead_color %}{% endblock %}
 
 {% block content %}
 
@@ -24,7 +24,7 @@
       <div id="graphic"></div>
     </div>
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
+      <div class="swiper-slide" data-primary-color="lightblue" data-type="text-only">
         <div class="slide-content slide-content--flex">
           <div class="splash-art slide-content--flex-child">{{ inject('assets/images/illustrations/intro-image.svg') }}</div>
           <header class="splash-header slide-content--flex-child">
@@ -34,7 +34,7 @@
         </div>
       </div>
       {% for slide in context.intro_slides %}
-      <div class="swiper-slide">
+      <div class="swiper-slide" data-primary-color="lightblue" data-type="text-only">
         <div class="slide-content">
           <div class="slide-prose">
             {{ prose(slide.prose) }}
@@ -43,8 +43,8 @@
       </div>
       {% endfor %}
       {% for slide in context.slides %}
-      <div class="swiper-slide swiper-slide--graphic" data-primary-color="{{ slide.color }}">
-        <div class="slide-content slide-content--graphic">
+      <div class="swiper-slide{% if slide.chart_type %} swiper-slide--graphic{% endif %}" data-primary-color="{{ slide.color }}" data-type="{{ slide.chart_type }}" data-slide-index="{{ loop.index }}">
+        <div class="slide-content{% if slide.chart_type %} slide-content--graphic{% endif %}">
           <div class="slide-prose">
             <h2 class="slide-prose__header">{{ slide.head }}</h2>
             {{ prose(slide.prose) }}
@@ -107,4 +107,5 @@
 
 {% block scripts %}
 {{ super() }}
+<script src="{{ static('scripts/mainbar.js') }}"></script>
 {% endblock scripts %}

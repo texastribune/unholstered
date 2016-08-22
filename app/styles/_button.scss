@@ -30,8 +30,18 @@
 
 .btn--transparent {
   background-color: transparent;
-  border-color: $navy;
-  color: $navy;
+  border-color: currentColor;
+  color: $white;
+
+  .bg-lightblue & {
+    border-color: currentColor;
+    color: $black;
+  }
+
+  .bg-beige & {
+    border-color: currentColor;
+    color: $black;
+  }
 }
 
 .is-hidden {

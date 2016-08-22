@@ -1,11 +1,9 @@
 import Swiper from 'swiper'
 import './nav'
 import GridMaker from './GridMaker'
-import BoxMaker from './BoxMaker'
-import BarMaker from './BarMaker'
-import changeColors from './colors'
+// import BarMaker from './BarMaker'
 
-const swiper = new Swiper('.swiper-container', {
+const swiper = new Swiper('#swiper-container', {
   direction: 'vertical',
   keyboardControl: true,
   mousewheelControl: true,
@@ -16,36 +14,30 @@ const swiper = new Swiper('.swiper-container', {
   simulateTouch: true,
   speed: 500,
   onSlideChangeStart: onSlideChangeStart,
-  onSlideChangeEnd: onSlideChangeEnd,
-  onTransitionStart: onTransitionStart
+  onSlideChangeEnd: onSlideChangeEnd
 })
 
-swiper.runCallbacksOnInit = true
-
 const mapping = {
-  1: {
-    total: 652,
-    subset: 116,
+  3: {
+    total: 658,
     class: 'shootings'
   },
-  2: {
-    total: 116,
-    subset: 48,
+  4: {
+    total: 658,
+    subset: 244,
     class: 'shootings'
   }
 }
 
-let maker = null
-let activeIndex
-
+const body = document.body
+const bgClassPrefix = 'bg-'
 const nextButton = document.querySelector('#next-button')
 const prevButton = document.querySelector('#prev-button')
 let animationTimeout
+const graphic = GridMaker('#graphic')
 
 function onSlideChangeEnd (s) {
-  if (activeIndex === s.activeIndex) return
-
-  activeIndex = s.activeIndex
+  const activeIndex = s.activeIndex
 
   // if (mapping.hasOwnProperty(activeIndex)) {
   //   if (!maker) maker = GridMaker('#graphic')
@@ -54,8 +46,9 @@ function onSlideChangeEnd (s) {
   //   if (maker) maker.hide()
   // }
 
-  if (activeIndex === 2) {
-    BarMaker('#graphic')
+  if (mapping.hasOwnProperty(activeIndex)) {
+    if (!graphic.isInitialized()) graphic.init()
+    graphic.render(mapping[activeIndex])
   }
 
   const nextButtonText = nextButton.querySelector('.js-next-button-text')
@@ -67,7 +60,7 @@ function onSlideChangeEnd (s) {
     animationTimeout = window.setTimeout(() => {
       const icon = nextButton.querySelector('.icon')
       icon.classList.add('icon--animated')
-    }, 1000 * 20)
+    }, 1000 * 30)
   } else {
     nextButtonText.textContent = 'Begin'
     prevButton.classList.add('is-hidden')
@@ -76,6 +69,27 @@ function onSlideChangeEnd (s) {
 
 function onSlideChangeStart (s) {
   const activeIndex = s.activeIndex
+  const activeSlide = s.slides[activeIndex]
+
+  // Manage slide colors
+  const slideThemeColor = activeSlide.getAttribute('data-primary-color')
+
+  if (slideThemeColor) {
+    body.className.split(' ').forEach((name) => {
+      if (name.substr(0, bgClassPrefix.length) === bgClassPrefix) {
+        body.classList.remove(name)
+      }
+    })
+
+    body.classList.add(`${bgClassPrefix}${slideThemeColor}`)
+  }
+
+  // Handle graphic removal
+  if ((graphic && activeSlide.getAttribute('data-type') === 'text-only') || !mapping.hasOwnProperty(activeIndex)) {
+    graphic.remove()
+  }
+
+  // Icon bounciness toggle
   const icon = nextButton.querySelector('.icon')
 
   if (activeIndex > 0) {
@@ -83,10 +97,4 @@ function onSlideChangeStart (s) {
   } else {
     icon.classList.add('icon--animated')
   }
-}
-
-function onTransitionStart (s) {
-  const activeSlide = s.slides[s.activeIndex].classList
-
-  changeColors(activeSlide)
 }

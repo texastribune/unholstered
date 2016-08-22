@@ -30,11 +30,35 @@
 }
 
 .swiper-slide {
+  color: $white;
   display: flex;
   justify-content: center;
+  transition: background-color 0.5s, color 0.5s;
 
   @media (min-width: 56.1875em) {
     align-items: center;
+  }
+
+  .bg-lightblue & {
+    background-color: $light-blue;
+    color: $black;
+  }
+
+  .bg-darkgray & {
+    background-color: $dark-gray;
+  }
+
+  .bg-gray & {
+    background-color: $gray;
+  }
+
+  .bg-navy & {
+    background-color: $navy;
+  }
+
+  .bg-beige & {
+    background-color: $beige;
+    color: $black;
   }
 }
 
@@ -171,20 +195,6 @@
   }
 }
 
-.bg-lightblue {
-  background-color: $light-blue;
-
-  .highlight,
-  a {
-    color: $white;
-  }
-
-  &.masthead-title:before,
-  &.masthead-title:after {
-    background-color: $light-blue;
-  }
-}
-
 .slider-controls {
   bottom: 0;
   padding: .875rem;
@@ -197,7 +207,6 @@
   transition: background-color .3s;
 
   &:last-child {
-    border-left: 1px solid $navy;
     margin-left: .5rem;
   }
 
@@ -207,12 +216,22 @@
 }
 
 .icon {
+  color: $white;
   display: inline-block;
+  transition: color 0.5s, color 0.5s;
 
   svg {
-    fill: $navy;
+    fill: currentColor;
     height: 1em;
     vertical-align: middle;
+  }
+
+  .bg-lightblue & {
+    color: $black;
+  }
+
+  .bg-beige & {
+    color: $black;
   }
 }
 
@@ -240,4 +259,36 @@
 .labels text {
   font-family: $rubik, sans-serif;
   font-size: 1rem;
+}
+
+.highlight {
+  color: $white;
+  transition: color 0.5s;
+
+  .bg-lightblue & {
+    color: $white;
+  }
+
+  .bg-darkgray & {
+    color: $goldenbrown;
+  }
+
+  .bg-gray & {
+    color: $tan;
+  }
+
+  .bg-navy & {
+    color: $goldenbrown;
+  }
+
+  .bg-beige & {
+    color: $orange-red;
+  }
+}
+
+.highlight--big {
+  font-size: 2.25em;
+  font-weight: 500;
+  line-height: 1;
+  vertical-align: middle;
 }

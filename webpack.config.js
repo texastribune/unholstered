@@ -4,7 +4,10 @@ const webpack = require('webpack')
 module.exports = {
   context: path.join(__dirname, '/app/scripts'),
   entry: {
-    main: './main.js'
+    mainbar: './mainbar.js',
+    commons: [
+      './nav.js'
+    ]
   },
   output: {
     path: path.join(__dirname, '/dist/scripts'),

@@ -12,7 +12,7 @@
   height: 2em; //2.65em.
 
   a {
-    color: $black;
+    color: inherit;
     text-decoration: none;
   }
 
@@ -216,6 +216,57 @@
 
     a {
       color: $white;
+    }
+  }
+
+  .bg-lightblue & {
+    background-color: $light-blue;
+    color: $white;
+
+    &:before,
+    &:after {
+      background-color: $light-blue;
+    }
+  }
+
+  .bg-darkgray & {
+    background-color: $dark-gray;
+    color: $goldenbrown;
+
+    &:before,
+    &:after {
+      background-color: $dark-gray;
+    }
+  }
+
+  .bg-gray & {
+    background-color: $gray;
+    color: $tan;
+
+
+    &:before,
+    &:after {
+      background-color: $gray;
+    }
+  }
+
+  .bg-navy & {
+    background-color: $navy;
+    color: $goldenbrown;
+
+    &:before,
+    &:after {
+      background-color: $navy;
+    }
+  }
+
+  .bg-beige & {
+    background-color: $beige;
+    color: $orange-red;
+
+    &:before,
+    &:after {
+      background-color: $beige;
     }
   }
 }
