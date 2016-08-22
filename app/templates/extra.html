@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% from 'macros/prose.html' import prose %}
+
+{% block body_class %}about-body{% endblock %}
+
+{% block masthead_class %}about-story{% endblock %}
+
+{% block content %}
+<section class="wrapper">
+  <article class="wrapper__story">
+    {{ prose(context.prose) }}
+  </article>
+</section>
+{% endblock %}
