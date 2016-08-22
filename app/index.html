@@ -62,6 +62,15 @@
         </div>
       </div>
       {% endfor %}
+      {% for slide in context.footer_slides %}
+      <div class="swiper-slide" data-primary-color="gray" data-type="text-only">
+        <div class="slide-content">
+          <div class="slide-prose">
+            {{ prose(slide.prose) }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
