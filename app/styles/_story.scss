@@ -18,6 +18,14 @@
       margin: .5em 0 1.5em;
     }
 
+    .numbered-list {
+      font-family: $rubik;
+      font-weight: 500;
+      font-size: 1.5em;
+      margin-right: .25em;
+      color: $orange-red;
+    }
+
     .social {
       float: right;
 
@@ -31,7 +39,7 @@
         background: $light-blue;
         box-shadow: none;
         color: $white;
-        display: inline-block;
+        display: inline-flex;
         margin-left: 1em;
         padding: .5em;
         text-align: center;
