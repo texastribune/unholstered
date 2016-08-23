@@ -1,11 +1,8 @@
 import * as d3 from 'd3'
 import checkIfMobile from './isMobile'
 
-function BoxMaker (containerEl) {
-  let svg, g
-  let _isInitialized = false
-
-  const container = d3.select(containerEl)
+function BoxMaker (container) {
+  let svg, g, xAxisG
   const isMobile = checkIfMobile()
 
   const fillColor = 'rgb(209, 70, 33)'
@@ -13,10 +10,10 @@ function BoxMaker (containerEl) {
   const sizing = container.node().parentNode.getBoundingClientRect()
 
   const margin = {
-    top: isMobile ? 40 : sizing.height * 0.15,
-    right: 20,
-    bottom: isMobile ? 20 : sizing.height * 0.15,
-    left: 20
+    top: isMobile ? 20 : sizing.height * 0.15,
+    right: 40,
+    bottom: isMobile ? 60 : sizing.height * 0.15,
+    left: 30
   }
 
   const width = sizing.width - margin.right - margin.left
@@ -25,9 +22,7 @@ function BoxMaker (containerEl) {
   const x = d3.scaleBand()
   const y = d3.scaleLinear()
 
-  function isInitialized () {
-    return _isInitialized
-  }
+  let hasBeenInitialized = false
 
   function init () {
     svg = container.append('svg')
@@ -38,13 +33,17 @@ function BoxMaker (containerEl) {
     g = svg.append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-    _isInitialized = true
+    xAxisG = g.append('g')
+      .attr('class', 'x axis')
+      .attr('transform', `translate(0, ${height})`)
+
+    hasBeenInitialized = true
   }
 
-  function render () {
-    if (!isInitialized()) init()
+  function render (data) {
+    if (!hasBeenInitialized) init()
 
-    x.domain([0, 1])
+    x.domain(data.map((d) => d.label))
       .range([0, width])
       .padding(0.1)
       .paddingOuter(0)
@@ -52,12 +51,14 @@ function BoxMaker (containerEl) {
     y.domain([0, 100])
       .range([height, 0])
 
-    const bars = g.selectAll('rect').data([41, 14], (i) => i)
+    const xAxis = d3.axisBottom(x)
 
-    const barsGroup = bars.enter().append('g')
+    const bars = g.selectAll('rect').data(data, (d) => d.label)
+
+    const barsGroup = bars.enter().append('g').attr('class', 'gradient-bar')
 
     barsGroup.append('rect')
-      .attr('x', (d, i) => x(i))
+      .attr('x', (d) => x(d.label))
       .attr('y', 0)
       .attr('width', x.bandwidth)
       .attr('height', height)
@@ -65,31 +66,35 @@ function BoxMaker (containerEl) {
       .attr('stroke', fillColor)
       .attr('stroke-width', '2')
 
-    barsGroup.append('rect')
-      .attr('x', (d, i) => x(i))
-      .attr('y', (d) => y(d))
+    const barGroup = barsGroup.append('g')
+
+    barGroup.append('rect')
+      .attr('x', (d) => x(d.label))
+      .attr('y', (d) => y(d.value))
       .attr('width', x.bandwidth)
-      .attr('height', (d) => height - y(d))
+      .attr('height', (d) => height - y(d.value))
       .attr('fill', fillColor)
       .attr('stroke', fillColor)
       .attr('stroke-width', '2')
-  }
 
-  function remove () {
-    container.select('svg').transition().duration(125).style('opacity', 1e-6).remove()
-    _isInitialized = false
-  }
+    barGroup.append('text')
+      .attr('class', 'gradient-bar-text')
+      .attr('x', (d) => x(d.label) + x.bandwidth() / 2)
+      .attr('y', (d) => y(d.value) + ((height - y(d.value)) / 2))
+      .attr('dx', '.32em')
+      .attr('dy', '.32em')
+      .attr('text-anchor', 'middle')
+      .text((d) => `${d.value}%`)
 
-  function type () {
-    return 'box'
+    xAxisG.call(xAxis)
+      .selectAll('text')
+        .attr('fill', fillColor)
+        .style('font-size', isMobile ? '.75rem' : '.875rem')
+        .style('letter-spacing', '0.03em')
   }
 
   return {
-    init,
-    isInitialized,
-    remove,
-    render,
-    type
+    render
   }
 }
 

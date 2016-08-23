@@ -18,6 +18,7 @@
 .graphic-container {
   height: 48%;
   left: 0;
+  // pointer-events: none; // allow things to be clickable again
   position: absolute;
   top: 0;
   width: 100%;
@@ -87,7 +88,7 @@
 }
 
 .slide-content {
-  padding: 1rem;
+  padding: 1.875rem;
 }
 
 .slide-content--flex {
@@ -162,7 +163,7 @@
   background: $white;
   display: inline-block;
   font-family: $chathura;
-  font-size: 7.5vw;
+  font-size: 7vw;
   letter-spacing: .05em;
   line-height: 1;
   padding: 0 .5rem;
@@ -225,11 +226,8 @@
 }
 
 .slider-controls__button {
+  margin-left: .5rem;
   transition: background-color .3s;
-
-  &:last-child {
-    margin-left: .5rem;
-  }
 
   &:hover {
     background-color: rgba(255, 255, 255, .2);
@@ -366,4 +364,18 @@ text.label {
   .bg-beige & {
     color: $black;
   }
+}
+
+.gradient-bar-text {
+  fill: $white;
+  font-family: $rubik;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.whole-bar-text {
+  fill: $black;
+  font-family: $rubik;
+  font-size: 1.25rem;
+  line-height: 1;
 }

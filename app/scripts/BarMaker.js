@@ -1,52 +1,9 @@
 import * as d3 from 'd3'
 import checkIfMobile from './isMobile'
 
-const DATA = [
-  {
-    name: 'Robbery',
-    amount: 65
-  }, {
-    name: 'Burglary',
-    amount: 62
-  }, {
-    name: 'Shots Fired',
-    amount: 58
-  }, {
-    name: 'Domestic Disturbance',
-    amount: 51
-  }, {
-    name: 'Traffic Stop',
-    amount: 48
-  }, {
-    name: 'Suspicious Activity',
-    amount: 44
-  }, {
-    name: 'Weapons Disturbance',
-    amount: 43
-  }, {
-    name: 'Theft',
-    amount: 36
-  }, {
-    name: 'Mental Crisis',
-    amount: 35
-  }, {
-    name: 'Drug Warrant',
-    amount: 27
-  }, {
-    name: 'Assault',
-    amount: 25
-  }, {
-    name: 'Disorderly Conduct',
-    amount: 19
-  }, {
-    name: 'Other/Unknown',
-    amount: 139
-  }
-]
-
 const barColors = {
   selected: d3.color('rgba(224, 173, 43, 1)'),
-  unSelected: d3.color('rgba(224, 173, 43, 0.5)')
+  unSelected: d3.color('pink')
 }
 
 const textColors = {
@@ -54,10 +11,8 @@ const textColors = {
   unSelected: d3.color('rgba(255, 255, 255, 0.5)')
 }
 
-function BarMaker (containerEl) {
+function BarMaker (container) {
   let svg, g, yAxisG
-  let _isInitialized = false
-  const container = d3.select(containerEl)
   const isMobile = checkIfMobile()
 
   const sizing = container.node().parentNode.getBoundingClientRect()
@@ -75,9 +30,7 @@ function BarMaker (containerEl) {
   const x = d3.scaleLinear()
   const y = d3.scaleBand()
 
-  function isInitialized () {
-    return _isInitialized
-  }
+  let hasBeenInitialized = false
 
   function init () {
     svg = container.append('svg')
@@ -90,23 +43,13 @@ function BarMaker (containerEl) {
 
     yAxisG = g.append('g').attr('class', 'y axis')
 
-    _isInitialized = true
+    hasBeenInitialized = true
   }
 
-  function render (slideIndex) {
-    if (!isInitialized()) init()
+  function render (data) {
+    if (!hasBeenInitialized) init()
 
-    const data = DATA.map((d) => {
-      d.selected = false
-
-      if (slideIndex === 5) d.selected = true
-      if (slideIndex === 6 && d.name === 'Robbery') d.selected = true
-      if (slideIndex === 7 && d.name === 'Mental Crisis') d.selected = true
-
-      return d
-    })
-
-    x.domain([0, d3.max(data, (d) => d.amount)])
+    x.domain([0, d3.max(data, (d) => d.value)])
       .range([0, width])
 
     y.domain(data.map((d) => d.name))
@@ -119,12 +62,12 @@ function BarMaker (containerEl) {
     const bars = g.selectAll('.bar').data(data, (d) => d.name)
 
     // UPDATE
-    const t = d3.transition().duration(500)
+    // const t = d3.transition().duration(500)
 
-    bars.selectAll('rect').transition(t)
+    bars.selectAll('rect').transition()
       .attr('fill', (d) => d.selected ? barColors.selected : barColors.unSelected)
 
-    bars.selectAll('text').transition(t)
+    bars.selectAll('text').transition()
       .attr('fill', (d) => d.selected ? textColors.selected : textColors.unSelected)
 
     // ENTER
@@ -134,18 +77,18 @@ function BarMaker (containerEl) {
       .attr('transform', (d) => `translate(0, ${y(d.name)})`)
 
     barsEnter.append('rect')
-      .attr('width', (d) => x(d.amount))
+      .attr('width', (d) => x(d.value))
       .attr('height', y.bandwidth())
       .attr('fill', (d) => d.selected ? barColors.selected : barColors.unSelected)
 
     barsEnter.append('text')
       .attr('class', 'label')
-      .attr('x', (d) => x(d.amount))
+      .attr('x', (d) => x(d.value))
       .attr('y', (d) => y.bandwidth() / 2)
       .attr('dx', '.32em')
       .attr('dy', '.32em')
       .attr('fill', (d) => d.selected ? textColors.selected : textColors.unSelected)
-      .text((d) => d.amount)
+      .text((d) => d.value)
       .style('font-size', isMobile ? '.75rem' : '1rem')
       .style('letter-spacing', '0.03em')
 
@@ -156,21 +99,8 @@ function BarMaker (containerEl) {
         .style('letter-spacing', '0.03em')
   }
 
-  function remove () {
-    container.select('svg').transition().duration(125).style('opacity', 1e-6).remove()
-    _isInitialized = false
-  }
-
-  function type () {
-    return 'bar'
-  }
-
   return {
-    init,
-    isInitialized,
-    remove,
-    render,
-    type
+    render
   }
 }
 

@@ -53,7 +53,7 @@
       </div>
       {% endfor %}
       {% for slide in context.slides %}
-      <div class="swiper-slide{% if slide.chart_type != 'text-only' %} swiper-slide--graphic{% endif %}" data-primary-color="{{ slide.color }}" data-type="{{ slide.chart_type }}" data-chart-id="{{ slide.id }}" data-slide-index="{{ loop.index }}">
+      <div class="swiper-slide{% if slide.chart_type != 'text-only' %} swiper-slide--graphic{% endif %}" data-primary-color="{{ slide.color }}" data-slide-type="{{ slide.chart_type }}" data-slide-id="{{ slide.id }}" data-slide-index="{{ slide.index }}">
         <div class="slide-content{% if slide.chart_type != 'text-only' %} slide-content--graphic{% endif %}">
           <div class="slide-prose">
             <h2 class="slide-prose__header">{{ slide.head }}</h2>
@@ -63,7 +63,7 @@
       </div>
       {% endfor %}
       {% for slide in context.footer_slides %}
-      <div class="swiper-slide" data-primary-color="gray" data-type="text-only">
+      <div class="swiper-slide" data-primary-color="gray" data-slide-type="text-only">
         <div class="slide-content">
           <div class="slide-prose">
             {{ prose(slide.prose) }}
@@ -85,6 +85,11 @@
 
 {% block footer %}{% endblock footer %}
 
+{% block inline_data %}
+<script>
+window.slideData = {{ data['mainbar-data']|dump }};
+</script>
+{% endblock inline_data %}
 {% block scripts %}
 {{ super() }}
 <script src="{{ static('scripts/mainbar.js') }}"></script>

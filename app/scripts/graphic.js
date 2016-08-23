@@ -1,72 +1,67 @@
 import * as d3 from 'd3'
+import BarMaker from './BarMaker'
+import BoxMaker from './BoxMaker'
+import GridMaker from './GridMaker'
+import WholeMaker from './WholeMaker'
 
-var graphic = d3.select('.graphic')
-var width = graphic.node().clientWidth
+function graphic (container) {
+  let graphic
+  const containerEl = d3.select(container)
 
-var totalCells = 652
-var selectedCells = 116
-var cellsPerRow = 25
-var padding = 0.05
-var data = d3.range(totalCells)
+  let _isInitialized = false
 
-var x = d3.scaleBand()
-  .rangeRound([0, width])
-  .padding(padding)
-
-var svg = graphic.append('svg').attr('width', width)
-var g = svg.append('g')
-
-function render (d, rowTotal) {
-  if (rowTotal) cellsPerRow = rowTotal
-  x.domain(d3.range(cellsPerRow))
-
-  // TRANSITION
-  var t = d3.transition().duration(500).ease(d3.easeQuad)
-
-  // JOIN
-  var cells = g.selectAll('rect').data(d, function (i) { return i })
-
-  // EXIT
-  cells.exit()
-    .transition(t)
-    .duration(1500)
-    .style('fill-opacity', 1e-6)
-    .remove()
-    .on('end', update)
-
-  // UPDATE
-  function update () {
-    cells.transition(t).delay(function (d) { return d * 10 * Math.random() })
-      // .attrTween('transform', function() { return d3.interpolateString('rotate(0)', 'rotate(360)')})
-      .attr('x', function (d) { return x(d % cellsPerRow) })
-      .attr('y', function (d) { return Math.floor(d / cellsPerRow) * x.step() })
-      .attr('width', x.bandwidth)
-      .attr('height', x.bandwidth)
-      .attr('fill', function (d) {
-        return d <= 48 ? 'tomato' : 'lightsalmon'
-      })
+  function isInitialized () {
+    return _isInitialized
   }
 
-  // ENTER
-  cells.enter().append('rect')
-    .attr('x', function (d) { return x(d % cellsPerRow) })
-    .attr('y', function (d) { return Math.floor(d / cellsPerRow) * x.step() })
-    .attr('width', x.bandwidth)
-    .attr('height', x.bandwidth)
-    .attr('rx', 2)
-    .attr('ry', 2)
-    .attr('fill', 'lightgray')
-    .filter(function (d) { return d <= selectedCells })
-    .transition(t).delay(function (d) { return d * 5 })
-    .attr('fill', 'tomato')
-    .on('end', function () {
-      // SET SVG HEIGHT
-      svg.attr('height', x.step() * (Math.ceil(d.length / cellsPerRow)))
-    })
+  function render (graphicType, graphicId, graphicIndex, isUpdate) {
+    const data = window.slideData[`${graphicId}-${graphicIndex}`]
+
+    if (!isUpdate) {
+      switch (graphicType) {
+        case 'grid':
+          graphic = GridMaker(containerEl)
+          _isInitialized = true
+          break
+        case 'bar':
+          graphic = BarMaker(containerEl)
+          _isInitialized = true
+          break
+        case 'box':
+          graphic = BoxMaker(containerEl)
+          _isInitialized = true
+          break
+        case 'whole':
+          graphic = WholeMaker(containerEl)
+          _isInitialized = true
+          break
+      }
+    }
+
+    if (isInitialized()) graphic.render(data)
+  }
+
+  function remove () {
+    const t = d3.transition().duration(250)
+
+    containerEl.select('svg')
+      .transition(t)
+      .style('opacity', 1e-6)
+      .remove()
+
+    containerEl.select('div')
+      .transition(t)
+      .style('opacity', 1e-6)
+      .remove()
+
+    _isInitialized = false
+  }
+
+  return {
+    isInitialized,
+    remove,
+    render
+  }
 }
 
-render(data)
-
-d3.timeout(function () {
-  render(data.slice(0, selectedCells + 1), 11)
-}, 3000)
+export default graphic
