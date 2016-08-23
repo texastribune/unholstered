@@ -21,6 +21,7 @@ const nextButtonText = nextButton.querySelector('.js-next-button-text')
 const prevButton = document.querySelector('#prev-button')
 const replayButton = document.querySelector('#replay-button')
 
+// all actions that take place when a slide change BEGINS
 function onSlideChangeStart (s) {
   const activeIndex = s.activeIndex
   const activeSlide = s.slides[activeIndex]
@@ -74,6 +75,7 @@ function onSlideChangeStart (s) {
   }
 }
 
+// all actions that take place when a slide change ENDS
 function onSlideChangeEnd (s) {
   const activeIndex = s.activeIndex
 
@@ -103,6 +105,7 @@ function onSlideChangeEnd (s) {
   }
 }
 
+// all actions that take place when the FINAL slide is reached
 function onReachEnd (s) {
   replayButton.addEventListener('click', () => {
     nextButton.classList.remove('is-hidden')
