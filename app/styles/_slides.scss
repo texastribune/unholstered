@@ -165,8 +165,8 @@
   font-size: 7.5vw;
   letter-spacing: .05em;
   line-height: 1;
-  padding: 0 .5em;
-  margin: .25em 0 0 0;
+  padding: 0 .5rem;
+  margin: .25rem 0 0 0;
   text-transform: uppercase;
 
   @media (min-width: 56.1875em) {
@@ -240,9 +240,9 @@
     }
   }
 
-  &:focus {
-    outline: none;
-  }
+  // &:focus {
+  //   outline: none;
+  // }
 }
 
 .icon {
@@ -293,7 +293,7 @@ text.label {
 
 .highlight {
   color: $white;
-  font-weight: bold;
+  font-weight: 700;
   transition: color 0.5s;
 
   .bg-lightblue & {
@@ -318,10 +318,9 @@ text.label {
 }
 
 .highlight--big {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: 500;
   line-height: 0;
-  // vertical-align: middle;
 }
 
 .swiper-pagination-progressbar {
