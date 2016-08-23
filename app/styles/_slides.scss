@@ -250,10 +250,16 @@
   display: inline-block;
   transition: color 0.5s, color 0.5s;
 
+  &.icon--replay {
+    svg {
+      padding: 0 0 0 .2em;
+    }
+  }
+
   svg {
     fill: currentColor;
     height: 1em;
-    vertical-align: middle;
+    vertical-align: sub;
   }
 
   .bg-lightblue & {

@@ -15,6 +15,7 @@ const body = document.body
 const nextButton = document.querySelector('#next-button')
 const nextButtonText = nextButton.querySelector('.js-next-button-text')
 const prevButton = document.querySelector('#prev-button')
+const replayButton = document.querySelector('#replay-button')
 
 function onSlideChangeStart (s) {
   const activeIndex = s.activeIndex
@@ -75,10 +76,19 @@ function onSlideChangeEnd (s) {
     activeSlideId = slideId
   }
 
+  console.log(activeIndex)
   // Manage before/after button states
-  if (activeIndex > 0) {
+  if (s.isBeginning) {
+    nextButtonText.textContent = 'Begin'
+    prevButton.classList.add('is-hidden')
+  } else if(s.isEnd) {
+    nextButton.classList.add('is-hidden')
+    replayButton.classList.remove('is-hidden')
+  } else {
     nextButtonText.textContent = 'Next'
+    nextButton.classList.remove('is-hidden')
     prevButton.classList.remove('is-hidden')
+    replayButton.classList.add('is-hidden')
 
     window.clearTimeout(animationTimeout)
 
@@ -86,13 +96,16 @@ function onSlideChangeEnd (s) {
       const icon = nextButton.querySelector('.icon')
       icon.classList.add('icon--animated')
     }, 1000 * 30)
-  } else {
-    nextButtonText.textContent = 'Begin'
-    prevButton.classList.add('is-hidden')
   }
 }
 
-Swiper('#swiper-container', {
+function onReachEnd (s) {
+  replayButton.onclick=function() {
+    swiper.slideTo(0, 1500);
+  }
+}
+
+var swiper = Swiper('#swiper-container', {
   direction: 'vertical',
   keyboardControl: true,
   mousewheelControl: true,
@@ -103,5 +116,6 @@ Swiper('#swiper-container', {
   simulateTouch: true,
   speed: 500,
   onSlideChangeStart: onSlideChangeStart,
-  onSlideChangeEnd: onSlideChangeEnd
+  onSlideChangeEnd: onSlideChangeEnd,
+  onReachEnd: onReachEnd
 })
