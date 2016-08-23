@@ -76,7 +76,6 @@ function onSlideChangeEnd (s) {
     activeSlideId = slideId
   }
 
-  console.log(activeIndex)
   // Manage before/after button states
   if (s.isBeginning) {
     nextButtonText.textContent = 'Begin'
