@@ -101,7 +101,10 @@ function onSlideChangeEnd (s) {
 
 function onReachEnd (s) {
   replayButton.onclick=function() {
-    swiper.slideTo(0, 1500);
+    nextButton.classList.remove('is-hidden')
+    replayButton.classList.add('is-hidden')
+
+    swiper.slideTo(0, 1000)
   }
 }
 
