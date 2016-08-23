@@ -43,6 +43,14 @@
 <div class="{{ value.adtype }}-ad" id="{{ value.id }}"></div>
 {% endmacro %}
 
+{% macro list(value) %}
+<ul class="bullet-list">
+  {% for item in value %}
+    <li><span>{{ item }}</span></li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
 {% macro disclosure(value) %}
 <p style="font-style: italic">{{ value }}</p>
 {% endmacro %}

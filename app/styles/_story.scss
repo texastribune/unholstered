@@ -10,7 +10,8 @@
       text-decoration: none;
     }
 
-    p {
+    p,
+    ul {
       font-family: $pt;
       font-size: 1.125em;
       line-height: 1.5em;
@@ -265,4 +266,24 @@
 
 .comments {
   padding-bottom: 1em;
+}
+
+.bullet-list {
+  li {
+    list-style-type: square;
+    color: $orange-red;
+    margin: .5em 0 0;
+
+    span {
+      color: $black;
+    }
+  }
+}
+
+.asterisk {
+  width: .5em;
+  height: .5em;
+  background-color: $orange-red;
+  display: inline-block;
+  margin: 0 .35em 0.1em 0;
 }
