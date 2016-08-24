@@ -264,28 +264,24 @@
   }
 
   &__caption {
-    color: $gray;
-    font-family: $chathura;
-    font-size: 1.4em;
-    letter-spacing: .02em;
-    line-height: .75;
+    color: $dark-gray;
+    font-family: $rubik;
+    font-size: .85em;
 
     @include breakpoint(mobile) {
       margin: 0 1em;
     }
-
-    @include breakpoint(phablet) {
-      font-size: 1.5em;
-    }
   }
 
   &__credit {
-    color: $gray;
+    color: gray;
     display: block;
-    font-family: $pt;
-    font-size: .7em;
-    margin: .25em;
-    text-align: right;
+    font-family: $chathura;
+    font-size: 1.35em;
+    font-style: normal;
+    letter-spacing: .02em;
+    margin: .5em 0;
+    line-height: 0;
   }
 }
 
