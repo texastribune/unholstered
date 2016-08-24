@@ -212,6 +212,10 @@
     font-weight: 500;
   }
 
+  .bg-lightblue & {
+    color: $navy;
+  }
+
   @media (min-width: 56.1875em) {
     @include font-size(30);
   }
@@ -305,7 +309,7 @@ text.label {
   }
 
   .bg-darkgray & {
-    color: $goldenbrown;
+    color: $orange-red;
   }
 
   .bg-gray & {
@@ -333,7 +337,7 @@ text.label {
   }
 
   .bg-darkgray & {
-    background-color: $goldenbrown;
+    background-color: $orange-red;
   }
 
   .bg-gray & {
