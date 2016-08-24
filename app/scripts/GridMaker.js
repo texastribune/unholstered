@@ -9,11 +9,20 @@ function GridMaker (container, opts) {
   const colorScale = opts.colorScale || { base: d3.color('rgba(204, 186, 165, 1)'), scale: [] }
 
   const margin = {
-    top: isMobile ? 20 : 60,
+    top: isMobile ? 40 : 60,
     right: isMobile ? 30 : 40,
-    bottom: isMobile ? 40 : 60 + opts.extraMarginBottom,
-    left: 30
+    bottom: isMobile ? 30 : 60 + opts.extraMarginBottom,
+    left: isMobile ? 30 : 40
   }
+
+  // const labelPadding = {
+  //   top: 1,
+  //   right: 2,
+  //   bottom: 1,
+  //   left: 2
+  // }
+
+  const labelPadding = 3
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
@@ -93,12 +102,11 @@ function GridMaker (container, opts) {
     cells.enter().append('rect').attr('class', 'cell')
       .attr('x', (d, i) => x(i % cols))
       .attr('y', (d, i) => y(Math.floor(i / cols)))
-      .attr('width', 0)
-      .attr('height', 0)
       .attr('fill', (d) => d.fillColor)
       .transition('enter')
         .duration(0)
-        .delay(() => Math.random() * 875 + transitionTime)
+        .delay((d, i) => Math.random() * transitionTime)
+        .delay((d, i) => i * 2)
         .attr('width', xWidth)
         .attr('height', yWidth)
 
@@ -113,20 +121,33 @@ function GridMaker (container, opts) {
       .remove()
 
     // LABELS ENTER
-    labels.enter().append('text').attr('class', 'grid-label')
+    labels.enter()
+      .append('text').attr('class', 'grid-label')
       .attr('x', width / 2)
       .attr('y', (d) => y(Math.floor(d.value / cols)) / 2 + y(Math.floor(d.offset / cols)))
       .attr('dx', '.05em')
       .attr('dy', '.85em')
       .attr('text-anchor', 'middle')
-      .text((d) => d.label)
+      .text((d) => `${d.value} ${d.label}`)
+      .transition()
+      .duration(750 + transitionTime)
+      .each(function () {
+        const dims = d3.select(this).node().getBBox()
+
+        labelsGroup.insert('rect', 'text')
+          .attr('class', 'grid-label-background')
+          .attr('x', dims.x - labelPadding)
+          .attr('y', dims.y - labelPadding)
+          .attr('width', dims.width + labelPadding * 2)
+          .attr('height', dims.height + labelPadding * 2)
+      })
 
     gLabel.text(`${data.length} total ${opts.label}`)
 
-    gLabel.style('bottom', `${margin.bottom * 0.5}px`)
+    gLabel.style(isMobile ? 'top' : 'bottom', `${margin.bottom * 0.5}px`)
       .transition()
-        .duration(750 + transitionTime)
-        .style('opacity', 1)
+      .duration(750 + transitionTime)
+      .style('opacity', 1)
   }
 
   function preprocessData (data) {

@@ -21,9 +21,12 @@
 <div style="height: 0;">
   <svg width="20" height="2" shape-rendering="crispEdges">
     <defs>
-      <pattern id="diagonal" width="25" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <pattern id="diagonal" width="20" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <rect width="1" height="2" fill="rgb(209, 70, 33)"></rect>
       </pattern>
+      <filter id="text-filter">
+        <feOffset in="blurOut" result="dropBlur" dx="5" dy="5" />
+      </filter>
     </defs>
   </svg>
 </div>

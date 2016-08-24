@@ -20,7 +20,7 @@ function BarMaker (container) {
   const margin = {
     top: isMobile ? 20 : sizing.height * 0.15,
     right: isMobile ? 60 : 80,
-    bottom: isMobile ? 40 : sizing.height * 0.15,
+    bottom: isMobile ? 30 : sizing.height * 0.15,
     left: isMobile ? 160 : 200
   }
 

@@ -10,9 +10,9 @@ function WholeMaker (container, opts) {
   const sizing = container.node().parentNode.getBoundingClientRect()
 
   const margin = {
-    top: isMobile ? 20 : sizing.height * 0.1,
+    top: isMobile ? 20 : sizing.height * 0.15,
     right: isMobile ? 80 : sizing.width * 0.2,
-    bottom: isMobile ? 40 : sizing.height * 0.1,
+    bottom: isMobile ? 30 : sizing.height * 0.15,
     left: isMobile ? 80 : sizing.width * 0.2
   }
 
