@@ -1,8 +1,10 @@
 import * as d3 from 'd3'
+
 import BarMaker from './BarMaker'
 import BoxMaker from './BoxMaker'
 import GridMaker from './GridMaker'
 import WholeMaker from './WholeMaker'
+import colorScales from './colorScales'
 
 function graphic (container) {
   let graphic
@@ -20,7 +22,11 @@ function graphic (container) {
     if (!isUpdate) {
       switch (graphicType) {
         case 'grid':
-          graphic = GridMaker(containerEl)
+          graphic = GridMaker(containerEl, {
+            colorScale: colorScales[graphicId],
+            extraMarginBottom: graphicId === 'officers' ? 20 : 0,
+            label: graphicId === 'officers' ? 'officers' : 'shootings'
+          })
           _isInitialized = true
           break
         case 'bar':
@@ -32,7 +38,7 @@ function graphic (container) {
           _isInitialized = true
           break
         case 'whole':
-          graphic = WholeMaker(containerEl)
+          graphic = WholeMaker(containerEl, {colorScale: colorScales[graphicId]})
           _isInitialized = true
           break
       }

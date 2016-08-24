@@ -1,17 +1,19 @@
 import * as d3 from 'd3'
 import checkIfMobile from './isMobile'
 
-function WholeMaker (container) {
-  let svg, g
+function WholeMaker (container, opts) {
+  let svg, g, yAxisG
   const isMobile = checkIfMobile()
+
+  const colorScale = opts.colorScale
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
   const margin = {
     top: isMobile ? 20 : sizing.height * 0.1,
-    right: 60,
+    right: isMobile ? 80 : sizing.width * 0.2,
     bottom: isMobile ? 40 : sizing.height * 0.1,
-    left: isMobile ? 80 : 100
+    left: isMobile ? 80 : sizing.width * 0.2
   }
 
   const width = sizing.width - margin.right - margin.left
@@ -30,6 +32,10 @@ function WholeMaker (container) {
     g = svg.append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
+    yAxisG = g.append('g')
+      .attr('class', 'y axis whole-chart-axis')
+      .attr('transform', `translate(${width + 5}, 0)`)
+
     hasBeenInitialized = true
   }
 
@@ -41,6 +47,9 @@ function WholeMaker (container) {
     y.domain([0, 100])
       .range([0, height])
 
+    const yAxis = d3.axisRight(y)
+    yAxis.ticks(3).tickFormat((d) => `${d}%`)
+
     const bars = g.selectAll('.bar').data(data, (d) => d.label)
 
     const barsEnter = bars.enter()
@@ -48,15 +57,20 @@ function WholeMaker (container) {
       .attr('class', 'bar')
       .attr('transform', (d) => `translate(0, ${y(d.offset)})`)
 
+    const t = d3.transition().duration(250)
+
     barsEnter.append('rect')
       .attr('class', 'whole-bar')
       .attr('width', width)
       .attr('height', (d) => y(d.value))
-      .attr('fill', () => '#' + Math.floor(Math.random() * 16777215).toString(16))
+      .attr('fill', (d) => d.fillColor)
+      .style('opacity', 0)
+      .transition(t)
+      .style('opacity', 1)
 
     barsEnter.append('text')
       .attr('class', 'whole-bar-text')
-      .attr('x', -9)
+      .attr('x', -13)
       .attr('y', (d) => y(d.value) / 2)
       .attr('dx', '.32em')
       .attr('dy', '.32em')
@@ -64,30 +78,14 @@ function WholeMaker (container) {
       .text((d) => d.label)
       .style('font-size', isMobile ? '.75rem' : '1rem')
       .style('letter-spacing', '0.03em')
+      .style('opacity', 0)
+      .transition(t)
+      .style('opacity', 1)
 
-    // barsGroup.append('rect')
-    //   .attr('x', (d) => x(d.label))
-    //   .attr('y', (d) => y(d.value))
-    //   .attr('width', x.bandwidth)
-    //   .attr('height', (d) => height - y(d.value))
-    //   .attr('fill', fillColor)
-    //   .attr('stroke', fillColor)
-    //   .attr('stroke-width', '2')
-    //
-    // barsGroup.append('text')
-    //   .attr('class', 'gradient-bar-text')
-    //   .attr('x', (d) => x(d.label) + x.bandwidth() / 2)
-    //   .attr('y', (d) => y(d.value) + ((height - y(d.value)) / 2))
-    //   .attr('dx', '.32em')
-    //   .attr('dy', '.32em')
-    //   .attr('text-anchor', 'middle')
-    //   .text((d) => `${d.value}%`)
-
-    // xAxisG.call(xAxis)
-    //   .selectAll('text')
-    //     .attr('fill', fillColor)
-    //     .style('font-size', isMobile ? '.75rem' : '.875rem')
-    //     .style('letter-spacing', '0.03em')
+    yAxisG.call(yAxis)
+    .style('opacity', 0)
+    .transition(t)
+    .style('opacity', 1)
   }
 
   function prepareData (data) {
@@ -99,13 +97,14 @@ function WholeMaker (container) {
 
     let totalOffset = 0
 
-    return data.map((d) => {
+    return data.map((d, i) => {
       const value = (d.value / total) * 100
 
       const processed = {
         label: d.label,
         value: value,
-        offset: totalOffset
+        offset: totalOffset,
+        fillColor: colorScale[i]
       }
 
       totalOffset += value

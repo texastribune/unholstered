@@ -53,7 +53,7 @@
       </div>
       {% endfor %}
       {% for slide in context.slides %}
-      <div class="swiper-slide{% if slide.chart_type != 'text-only' %} swiper-slide--graphic{% endif %}" data-primary-color="{{ slide.color }}" data-slide-type="{{ slide.chart_type }}" data-slide-id="{{ slide.id }}" data-slide-index="{{ slide.index }}">
+      <div class="swiper-slide{% if slide.chart_type != 'text-only' %} swiper-slide--graphic{% endif %}{% if slide.id == 'officers' %}-inverted{% endif %}" data-primary-color="{{ slide.color }}" data-slide-type="{{ slide.chart_type }}" data-slide-id="{{ slide.id }}" data-slide-index="{{ slide.index }}">
         <div class="slide-content{% if slide.chart_type != 'text-only' %} slide-content--graphic{% endif %}">
           <div class="slide-prose">
             <h2 class="slide-prose__header">{{ slide.head }}</h2>

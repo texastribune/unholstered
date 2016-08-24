@@ -30,6 +30,11 @@
   }
 }
 
+.graphic-container--inverted {
+  left: auto;
+  right: 0;
+}
+
 .swiper-slide {
   align-items: center;
   color: $white;
@@ -84,6 +89,13 @@
   @media (min-width: 56.1875em) {
     align-items: center;
     justify-content: flex-end;
+  }
+}
+
+.swiper-slide--graphic-inverted {
+  @media (min-width: 56.1875em) {
+    align-items: center;
+    justify-content: flex-start;
   }
 }
 
@@ -284,9 +296,25 @@
  60% {transform: translate3d(0, -15px, 0);}
 }
 
-.axis .domain,
-.axis line {
-  display: none;
+.bar-chart-axis,
+.box-chart-axis {
+   .domain,
+   line {
+    display: none;
+  }
+}
+
+.whole-chart-axis {
+  .domain,
+  line {
+    stroke: $white;
+  }
+
+  text {
+    fill: $white;
+    font-size: .75rem;
+    letter-spacing: .03em;
+  }
 }
 
 .axis text {
@@ -378,8 +406,16 @@ text.label {
 }
 
 .whole-bar-text {
-  fill: $black;
+  fill: $white;
   font-family: $rubik;
   font-size: 1.25rem;
   line-height: 1;
+}
+
+.grid-label {
+  fill: $white;
+  font-family: $rubik;
+  font-size: 1rem;
+  line-height: 1;
+  text-shadow: 2px 2px 2px #000, 3px 3px 3px rgba(0, 0, 0, .1);
 }

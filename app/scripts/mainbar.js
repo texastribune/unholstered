@@ -16,6 +16,7 @@ const bgClassPrefix = 'bg-'
 
 // elements
 const body = document.body
+const graphicContainer = document.querySelector('.graphic-container')
 const nextButton = document.querySelector('#next-button')
 const nextButtonText = nextButton.querySelector('.js-next-button-text')
 const prevButton = document.querySelector('#prev-button')
@@ -78,6 +79,13 @@ function onSlideChangeStart (s) {
 // all actions that take place when a slide change ENDS
 function onSlideChangeEnd (s) {
   const activeIndex = s.activeIndex
+
+  // check for inverted graphic placement and apply class if needed
+  if (STATE.slideId === 'officers') {
+    graphicContainer.classList.add('graphic-container--inverted')
+  } else {
+    graphicContainer.classList.remove('graphic-container--inverted')
+  }
 
   // manage graphic
   STATE.graphic.render(STATE.slideType, STATE.slideId, STATE.slideIndex, STATE.isUpdate)

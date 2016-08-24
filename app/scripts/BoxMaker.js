@@ -34,7 +34,7 @@ function BoxMaker (container) {
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
     xAxisG = g.append('g')
-      .attr('class', 'x axis')
+      .attr('class', 'x axis box-chart-axis')
       .attr('transform', `translate(0, ${height})`)
 
     hasBeenInitialized = true
@@ -57,6 +57,8 @@ function BoxMaker (container) {
 
     const barsGroup = bars.enter().append('g').attr('class', 'gradient-bar')
 
+    const t = d3.transition().duration(250)
+
     barsGroup.append('rect')
       .attr('x', (d) => x(d.label))
       .attr('y', 0)
@@ -65,6 +67,9 @@ function BoxMaker (container) {
       .attr('fill', 'url(#diagonal)')
       .attr('stroke', fillColor)
       .attr('stroke-width', '2')
+      .style('opacity', 0)
+      .transition(t)
+      .style('opacity', 1)
 
     const barGroup = barsGroup.append('g')
 
@@ -76,6 +81,9 @@ function BoxMaker (container) {
       .attr('fill', fillColor)
       .attr('stroke', fillColor)
       .attr('stroke-width', '2')
+      .style('opacity', 0)
+      .transition(t)
+      .style('opacity', 1)
 
     barGroup.append('text')
       .attr('class', 'gradient-bar-text')
@@ -85,12 +93,18 @@ function BoxMaker (container) {
       .attr('dy', '.32em')
       .attr('text-anchor', 'middle')
       .text((d) => `${d.value}%`)
+      .style('opacity', 0)
+      .transition(t)
+      .style('opacity', 1)
 
     xAxisG.call(xAxis)
       .selectAll('text')
-        .attr('fill', fillColor)
+        .attr('class', 'gradient-bar-text')
         .style('font-size', isMobile ? '.75rem' : '.875rem')
         .style('letter-spacing', '0.03em')
+        .style('opacity', 0)
+        .transition(t)
+        .style('opacity', 1)
   }
 
   return {

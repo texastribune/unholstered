@@ -2,14 +2,16 @@ import * as d3 from 'd3'
 import checkIfMobile from './isMobile'
 import getSquareSizing from './getSquareSizing'
 
-function GridMaker (container) {
-  let svg, g //, gLabel
+function GridMaker (container, opts) {
+  let svg, g, rectsGroup, labelsGroup, gLabel
   const isMobile = checkIfMobile()
+
+  const colorScale = opts.colorScale || { base: d3.color('rgba(204, 186, 165, 1)'), scale: [] }
 
   const margin = {
     top: isMobile ? 20 : 60,
-    right: isMobile ? 20 : 40,
-    bottom: isMobile ? 40 : 60,
+    right: isMobile ? 30 : 40,
+    bottom: isMobile ? 40 : 60 + opts.extraMarginBottom,
     left: 30
   }
 
@@ -32,10 +34,15 @@ function GridMaker (container) {
     g = svg.append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-    // gLabel = container.append('div')
-    //   .attr('class', 'chart-label')
-    //   .style('padding', `0 ${margin.right}px 0 ${margin.left}px`)
-    //   .style('opacity', 0)
+    rectsGroup = g.append('g')
+
+    labelsGroup = g.append('g')
+      .attr('class', 'chart-section-labels')
+
+    gLabel = container.append('div')
+      .attr('class', 'chart-label')
+      .style('padding', `0 ${margin.right}px 0 ${margin.left}px`)
+      .style('opacity', 0)
 
     hasBeenInitialized = true
   }
@@ -43,13 +50,16 @@ function GridMaker (container) {
   function render (data) {
     if (!hasBeenInitialized) init()
 
+    const sectionLabelData = preprocessLabelData(data)
     data = preprocessData(data)
+
+    console.log(sectionLabelData)
 
     const transitionTime = 500
     const sideLength = getSquareSizing(width, height, data.length)
 
-    const cols = Math.floor(width / sideLength)
-    const rows = Math.floor(height / sideLength)
+    const cols = Math.round(width / sideLength)
+    const rows = Math.round(height / sideLength)
 
     const padding = 0.25
 
@@ -67,7 +77,7 @@ function GridMaker (container) {
     const yWidth = y.bandwidth()
 
     // JOIN
-    const cells = g.selectAll('rect').data(data, (d) => d.value)
+    const cells = rectsGroup.selectAll('rect').data(data)
 
     // EXIT
     cells.exit()
@@ -79,43 +89,78 @@ function GridMaker (container) {
     // UPDATE
     cells.transition('update')
       .duration(transitionTime)
-      .attr('x', (d, i) => x(i % cols))
-      .attr('y', (d, i) => y(Math.floor(i / cols)))
-      .attr('width', xWidth)
-      .attr('height', yWidth)
       .attr('fill', (d) => d.fillColor)
 
     // ENTER
     cells.enter().append('rect').attr('class', 'cell')
       .attr('x', (d, i) => x(i % cols))
-      .attr('y', (d, i) => y(Math.floor(i / rows)))
+      .attr('y', (d, i) => y(Math.floor(i / cols)))
       .attr('width', 0)
       .attr('height', 0)
       .attr('fill', (d) => d.fillColor)
       .transition('enter')
         .duration(0)
-        .delay(() => Math.random() * 1250 + transitionTime)
+        .delay(() => Math.random() * 875 + transitionTime)
         .attr('width', xWidth)
         .attr('height', yWidth)
 
-    // gLabel.text(`${options.length} total ${options.name}`)
-    //
-    // gLabel.style('bottom', `${margin.bottom / 3}px`)
-    //   .transition()
-    //     .duration(750 + transitionTime)
-    //     .style('opacity', 1)
+    // LABELS JOIN
+    const labels = labelsGroup.selectAll('text').data(sectionLabelData, (d) => d.label)
+
+    // LABELS EXIT
+    labels.exit()
+      .transition()
+      .duration(transitionTime)
+      .style('fill-opacity', 1e-6)
+      .remove()
+
+    // LABELS ENTER
+    labels.enter().append('text').attr('class', 'grid-label')
+      .attr('x', width / 2)
+      .attr('y', (d) => y(Math.floor(d.value / cols)) / 2 + y(Math.floor(d.offset / cols)))
+      .attr('dx', '.05em')
+      .attr('dy', '.85em')
+      .attr('text-anchor', 'middle')
+      .text((d) => d.label)
+
+    gLabel.text(`${data.length} total ${opts.label}`)
+
+    gLabel.style('bottom', `${margin.bottom * 0.5}px`)
+      .transition()
+        .duration(750 + transitionTime)
+        .style('opacity', 1)
   }
 
   function preprocessData (data) {
-    // get the grand total of squares we are working with
-    const total = d3.sum(data, (d) => d.value)
+    data = data.map((d, i) => {
+      let fillColor
 
-    // map data to the format d3 needs
-    return d3.range(total).map((i) => {
-      return {
-        value: i,
-        fillColor: '#ccbaa5'
+      if (data.length === 1) {
+        fillColor = colorScale.base
+      } else {
+        fillColor = d.selected ? colorScale.scale[i] || colorScale.offBase : colorScale.offBase
       }
+
+      return d3.range(d.value).map((v) => {
+        return { fillColor }
+      })
+    })
+
+    return d3.merge(data)
+  }
+
+  function preprocessLabelData (data) {
+    const activeLabels = data.filter((d) => d.labeled)
+
+    if (!activeLabels) return []
+
+    let offset = 0
+
+    return activeLabels.map((d) => {
+      d.offset = offset
+      offset += d.value
+
+      return d
     })
   }
 

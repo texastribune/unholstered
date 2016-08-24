@@ -3,7 +3,7 @@ import checkIfMobile from './isMobile'
 
 const barColors = {
   selected: d3.color('rgba(224, 173, 43, 1)'),
-  unSelected: d3.color('pink')
+  unSelected: d3.color('rgba(224, 173, 43, 0.5)')
 }
 
 const textColors = {
@@ -20,7 +20,7 @@ function BarMaker (container) {
   const margin = {
     top: isMobile ? 20 : sizing.height * 0.15,
     right: isMobile ? 60 : 80,
-    bottom: isMobile ? 20 : sizing.height * 0.15,
+    bottom: isMobile ? 40 : sizing.height * 0.15,
     left: isMobile ? 160 : 200
   }
 
@@ -41,7 +41,7 @@ function BarMaker (container) {
     g = svg.append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-    yAxisG = g.append('g').attr('class', 'y axis')
+    yAxisG = g.append('g').attr('class', 'y axis bar-chart-axis')
 
     hasBeenInitialized = true
   }
@@ -61,14 +61,13 @@ function BarMaker (container) {
     // JOIN
     const bars = g.selectAll('.bar').data(data, (d) => d.name)
 
-    // UPDATE
-    // const t = d3.transition().duration(500)
-
-    bars.selectAll('rect').transition()
+    bars.selectAll('rect')
       .attr('fill', (d) => d.selected ? barColors.selected : barColors.unSelected)
 
-    bars.selectAll('text').transition()
+    bars.selectAll('text')
       .attr('fill', (d) => d.selected ? textColors.selected : textColors.unSelected)
+
+    const t = d3.transition().duration(250)
 
     // ENTER
     const barsEnter = bars.enter()
@@ -80,6 +79,9 @@ function BarMaker (container) {
       .attr('width', (d) => x(d.value))
       .attr('height', y.bandwidth())
       .attr('fill', (d) => d.selected ? barColors.selected : barColors.unSelected)
+      .style('opacity', 0)
+      .transition(t)
+      .style('opacity', 1)
 
     barsEnter.append('text')
       .attr('class', 'label')
@@ -91,6 +93,9 @@ function BarMaker (container) {
       .text((d) => d.value)
       .style('font-size', isMobile ? '.75rem' : '1rem')
       .style('letter-spacing', '0.03em')
+      .style('opacity', 0)
+      .transition(t)
+      .style('opacity', 1)
 
     yAxisG.call(yAxis)
       .selectAll('text')
