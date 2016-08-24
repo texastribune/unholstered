@@ -331,6 +331,18 @@
       padding-right: .2em;
     }
   }
+
+  .full & {
+    margin: 0 -3em;
+
+    .quote {
+      font-size: 1.75em;
+
+      @include breakpoint(tablet) {
+        font-size: 2em;
+      }
+    }
+  }
 }
 
 .comments {

@@ -31,7 +31,7 @@
 {% endmacro %}
 
 {% macro blockquote(value) %}
-<aside class="inline{% if value.align %} inline--{{ value.align }}{% endif %}">
+<aside class="inline{% if value.align %} inline--{{ value.align }}{% else %} full{% endif %}">
   <blockquote class="blockquote">
     <p class="quote">{{ value.quote }}</p>
     {% if value.credit %}<cite class="blockquote__credit">{{ value.credit }}</cite>{% endif %}
