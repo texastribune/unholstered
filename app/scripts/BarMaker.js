@@ -87,7 +87,7 @@ function BarMaker (container) {
       .attr('class', 'label')
       .attr('x', (d) => x(d.value))
       .attr('y', (d) => y.bandwidth() / 2)
-      .attr('dx', '.32em')
+      .attr('dx', '.5em')
       .attr('dy', '.32em')
       .attr('fill', (d) => d.selected ? textColors.selected : textColors.unSelected)
       .text((d) => d.value)
