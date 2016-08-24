@@ -53,8 +53,6 @@ function GridMaker (container, opts) {
     const sectionLabelData = preprocessLabelData(data)
     data = preprocessData(data)
 
-    console.log(sectionLabelData)
-
     const transitionTime = 500
     const sideLength = getSquareSizing(width, height, data.length)
 
