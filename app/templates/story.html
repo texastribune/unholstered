@@ -10,12 +10,14 @@
 {% block masthead_class %}masthead-story{% endblock %}
 
 {% block content %}
-<section class="sty-header">
+<section class="sty-header {{ context.header_type }}">
   <div class="sty-header__wrapper wrapper">
-    <div class="sty-header__bar">
-      Section {{ context.section_number }}
+    <div class="sty-header__top-text">
+      <div class="sty-header__bar">
+        Section {{ context.section_number }}
+      </div>
+      <h1 class="sty-header__headline">{{ context.headline }}</h1>
     </div>
-    <h1 class="sty-header__headline">{{ context.headline }}</h1>
     <figure class="sty-header__art image">
       {{ inject('assets/images/illustrations/' + context.illustration.svg_url) }}
     </figure>

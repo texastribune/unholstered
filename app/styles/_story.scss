@@ -63,9 +63,31 @@
 
 .sty-header {
   padding: 1em 0;
+    @include clearfix();
 
   @include breakpoint(phablet) {
     padding: 2em 0 1em;
+  }
+
+  @include breakpoint(phablet) {
+    &.tall-head {
+      .sty-header__top-text,
+      .sty-header__byline {
+          float: left;
+          width: 45%;
+          margin-right: 3%;
+      }
+
+      .sty-header__art {
+        float: right;
+        width: 52%;
+
+        svg {
+          margin: 0;
+          width: 100%;
+        }
+      }
+    }
   }
 
   .bg-lightblue & {
@@ -84,6 +106,27 @@
 
   .bg-navy & {
     background-color: $navy;
+    color: $white;
+  }
+
+  .bg-mauve & {
+    background-color: $mauve;
+
+    a {
+      color: $black;
+    }
+  }
+
+  .bg-goldenbrown & {
+    background-color: $goldenbrown;
+
+    a {
+      color: $black;
+    }
+  }
+
+  .bg-firebrick & {
+    background-color: $firebrick;
     color: $white;
   }
 
@@ -143,7 +186,8 @@
 
   &__art {
     svg {
-      width: 100%;
+      width: 80%;
+      margin: 0 10%;
     }
   }
 
@@ -221,7 +265,7 @@
   @include breakpoint(phablet) {
     &--left {
       float: left;
-      margin: 1em 1em 1em 0;
+      margin: 1em 2em 1em 0;
       width: 60%;
 
       @include breakpoint(desktop) {
@@ -231,7 +275,7 @@
 
     &--right {
       float: right;
-      margin: 1em 0 1em 1em;
+      margin: 1em 0 1em 2em;
       width: 60%;
 
       @include breakpoint(desktop) {
