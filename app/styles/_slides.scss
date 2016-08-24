@@ -244,13 +244,20 @@
 .slider-controls__button {
   margin-left: .5rem;
   transition: background-color .3s;
+  background-color: rgba(255, 255, 255, .2);
+
+  .bg-darkgray &,
+  .bg-navy & {
+    background-color: rgba(0, 0, 0, .2);
+  }
 
   &:hover {
-    background-color: rgba(255, 255, 255, .2);
 
-    .bg-gray &,
+    background-color: rgba(255, 255, 255, .4);
+
+    .bg-darkgray &,
     .bg-navy & {
-      background-color: rgba(0, 0, 0, .2);
+      background-color: rgba(0, 0, 0, .4);
     }
   }
 
