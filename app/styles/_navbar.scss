@@ -31,8 +31,24 @@
     padding: 0;
   }
 
-  &__section.read-more__section {
+  &__section {
+    background-color: $orange-red;
+    color: $white;
+    display: inline-block;
+    font-family: $chathura;
+    font-size: 1.4em; //1.5em
+    font-style: normal;
+    letter-spacing: .05em;
+    line-height: .6;
     margin: 0;
+    padding: .25em;
+    text-transform: uppercase;
+  }
+
+  &__headline {
+    font-family: $rubik;
+    font-weight: normal;
+    margin: .5em 0;
   }
 
   &__story {

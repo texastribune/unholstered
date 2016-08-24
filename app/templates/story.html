@@ -21,7 +21,7 @@
     <figure class="sty-header__art image">
       {{ inject('assets/images/illustrations/' + context.illustration.svg_url) }}
     </figure>
-    <div class="sty-header__byline">By {{ authors(context.authors) }} / {{ context.pub_date }}</div>
+    <div class="sty-header__byline">By {{ authors(context.authors) }} <span class="sty-header__date">{{ context.pub_date }}</span></div>
   </div>
 </section>
 <section class="wrapper">
@@ -45,15 +45,11 @@
   <div class="read-more__stories">
     <div class="read-more__story">
       <a href="{{ static( data.findings.slug ) }}">
-        <figure class="image thumbnail">
+        <figure class="image thumbnail bg-lightblue">
           <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data.findings.illustration.svg_url }}">
+          <div class="read-more__section">Data</div>
         </figure>
       </a>
-      <div class="read-more__section">
-        <a href="{{ static( data.findings.slug ) }}">
-          Data
-        </a>
-      </div>
       <h3 class="read-more__headline"><a href="{{ static( data.findings.slug ) }}">{{ data.findings.headline }}</a></h3>
       <p>{{ data.findings.summary }}</p>
     </div>

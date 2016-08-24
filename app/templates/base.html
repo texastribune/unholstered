@@ -53,14 +53,11 @@
         {% for story in data.meta.storylist %}
           <a href="{{ static( story.slug ) }}">
             <li id="nav-{{ story.id }}" class="navbar__story">
-              <!-- <figure class="image thumbnail">
-                <img src="{{ static('assets/images/illustrations/')}}{{ data[story.id].illustration.svg_url }}">
-              </figure> -->
               <div class="navbar__text">
-                <span class="read-more__section navbar__section">
-                  {% if data[story.id].section_number %}Section {{ data[story.id].section_number }}, {{ data[story.id].section_title }}{% else %}Data{% endif %}
+                <span class="navbar__section">
+                  {% if data[story.id].section_number %}{{ data[story.id].section_title }}{% else %}Data{% endif %}
                 </span>
-                <h3 class="read-more__headline">{{ data[story.id].headline }}</h3>
+                <h3 class="navbar__headline">{{ data[story.id].headline }}</h3>
               <div>
             </li>
           </a>

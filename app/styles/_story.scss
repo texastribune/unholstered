@@ -206,6 +206,23 @@
     a {
       color: $white;
     }
+
+    .sty-header__date {
+      &:before {
+        content: "/";
+        padding-right: .25em;
+      }
+
+      .tall-head & {
+        display: block;
+
+        &:before {
+          content: "";
+          padding-right: 0;
+        }
+      }
+
+    }
   }
 }
 
