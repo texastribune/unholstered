@@ -76,14 +76,17 @@
           float: left;
           width: 45%;
           margin-right: 3%;
+          margin-top: 0;
       }
 
       .sty-header__art {
         float: right;
+        margin: 0;
         width: 52%;
 
         svg {
           margin: 0;
+          max-height: 475px;
           width: 100%;
         }
       }
@@ -173,7 +176,7 @@
     font-weight: 400;
     letter-spacing: .02em;
     line-height: 1.1;
-    margin: .5em 0;
+    margin: 0 0 1em 0;
 
     @include breakpoint(phablet) {
       font-size: 2em;
@@ -196,7 +199,7 @@
     font-size: 1.5em;
     letter-spacing: .05em;
     line-height: 1;
-    margin: 0;
+    margin: 1em 0 0 0;
     text-transform: uppercase;
 
     @include breakpoint(phablet) {
@@ -221,9 +224,18 @@
           padding-right: 0;
         }
       }
-
     }
   }
+}
+
+.illustration-credit {
+  font-family: $chathura;
+  font-size: 1.5rem;
+  letter-spacing: .02em;
+  line-height: 1;
+  position: absolute;
+  font-style: italic;
+  right: .5em;
 }
 
 .image {
