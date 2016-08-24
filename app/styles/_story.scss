@@ -117,6 +117,11 @@
 
     a {
       color: $black;
+      box-shadow: $white 0 -2px 0 inset;
+    }
+
+    .sty-header__headline  {
+      font-weight: 500;
     }
   }
 
@@ -125,6 +130,11 @@
 
     a {
       color: $black;
+      box-shadow: $white 0 -2px 0 inset;
+    }
+
+    .sty-header__headline  {
+      font-weight: 500;
     }
   }
 
@@ -138,6 +148,10 @@
 
     a {
       color: $black;
+    }
+
+    .sty-header__headline  {
+      font-weight: 500;
     }
   }
 
