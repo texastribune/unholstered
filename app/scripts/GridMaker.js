@@ -42,6 +42,7 @@ function GridMaker (container) {
 
   function render (data) {
     if (!hasBeenInitialized) init()
+
     data = preprocessData(data)
 
     const transitionTime = 500
@@ -87,7 +88,7 @@ function GridMaker (container) {
     // ENTER
     cells.enter().append('rect').attr('class', 'cell')
       .attr('x', (d, i) => x(i % cols))
-      .attr('y', (d, i) => y(Math.floor(i / cols)))
+      .attr('y', (d, i) => y(Math.floor(i / rows)))
       .attr('width', 0)
       .attr('height', 0)
       .attr('fill', (d) => d.fillColor)
@@ -107,10 +108,7 @@ function GridMaker (container) {
 
   function preprocessData (data) {
     // get the grand total of squares we are working with
-    const total = data.reduce((prev, curr) => {
-      prev += +curr.value
-      return prev
-    }, 0)
+    const total = d3.sum(data, (d) => d.value)
 
     // map data to the format d3 needs
     return d3.range(total).map((i) => {
