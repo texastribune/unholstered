@@ -223,7 +223,13 @@
       display: block;
       height: 100%;
       width: 80%;
-      margin: 0 10%;
+      margin: 1.5em 10%;
+
+
+      .st9,
+      .st1 {
+        stroke-width: 0px;
+      }
     }
   }
 
@@ -325,6 +331,10 @@
       margin: 1em 2em 1em 0;
       width: 60%;
 
+      &.small {
+        width: 40%;
+      }
+
       @include breakpoint(desktop) {
         margin-left: -5em;
       }
@@ -334,6 +344,10 @@
       float: right;
       margin: 1em 0 1em 2em;
       width: 60%;
+
+      &.small {
+        width: 40%;
+      }
 
       @include breakpoint(desktop) {
         margin-right: -5em;
