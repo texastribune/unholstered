@@ -83,6 +83,10 @@
           margin-top: 0;
       }
 
+      .sty-header__headline {
+        margin-bottom: 1em;
+      }
+
       .sty-header__art {
         float: right;
         margin: 0;
@@ -156,7 +160,6 @@
 
     .sty-header__headline  {
       font-weight: 500;
-      margin-bottom: 0;
     }
   }
 
@@ -196,7 +199,7 @@
     font-weight: 400;
     letter-spacing: .02em;
     line-height: 1.1;
-    margin: 0 0 1em 0;
+    margin: 0;
 
     @include breakpoint(phablet) {
       font-size: 2em;
@@ -215,12 +218,10 @@
 
   &__art {
 
-    &.image {
-      margin: 0;
-    }
-
     svg {
       max-height: 325px;
+      display: block;
+      height: 100%;
       width: 80%;
       margin: 0 10%;
     }
