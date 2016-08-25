@@ -405,3 +405,24 @@
   display: inline-block;
   margin: 0 .35em 0.1em 0;
 }
+
+.download {
+  background-color: $light-blue;
+  border: 1px solid $navy;
+  padding: 1em;
+  font-family: 'rubik';
+  font-weight: 500;
+  font-size: 1.25rem;
+  letter-spacing: .02em;
+  margin: 1.5em auto;
+  display: block;
+
+  a {
+    color: $navy;
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: lighten($light-blue, 10);
+  }
+}

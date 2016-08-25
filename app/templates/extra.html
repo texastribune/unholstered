@@ -2,7 +2,11 @@
 
 {% from 'macros/prose.html' import prose %}
 
+<<<<<<< HEAD
 {% block body_class %}about story-body bg-lightblue{% endblock body_class %}
+=======
+{% block body_class %}story-body bg-lightblue about{% endblock %}
+>>>>>>> about-page
 
 {% block masthead_class %}masthead-story{% endblock masthead_class %}
 
@@ -21,3 +25,8 @@
   </article>
 </section>
 {% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ static('scripts/story.js') }}"></script>
+{% endblock scripts %}
