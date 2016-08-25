@@ -63,7 +63,11 @@
 
 .sty-header {
   padding: 1em 0;
-    @include clearfix();
+
+  &.tall-head {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
 
   @include breakpoint(phablet) {
     padding: 2em 0 1em;
@@ -152,6 +156,7 @@
 
     .sty-header__headline  {
       font-weight: 500;
+      margin-bottom: 0;
     }
   }
 
@@ -159,6 +164,7 @@
     margin: 0 auto;
     max-width: $mid-width;
     padding: 2em 1em 0;
+    @include clearfix();
 
     a {
       box-shadow: $light-blue 0 -2px 0 inset;
@@ -208,7 +214,13 @@
   }
 
   &__art {
+
+    &.image {
+      margin: 0;
+    }
+
     svg {
+      max-height: 325px;
       width: 80%;
       margin: 0 10%;
     }
@@ -219,7 +231,6 @@
     font-size: 1.5em;
     letter-spacing: .05em;
     line-height: 1;
-    margin: 1em 0 0 0;
     text-transform: uppercase;
 
     @include breakpoint(phablet) {

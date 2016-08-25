@@ -66,37 +66,35 @@
 
   .image {
     margin: 1em 0 0;
-    padding-top: 1.75em;
     position: relative;
 
     &__img {
-      height: 150px;
       margin: 0 auto;
     }
 
-    &.bg-beige {
-      background-color: $beige;
-    }
-
-    &.bg-lightblue {
-      background-color: $light-blue;
-    }
-
-    &.bg-mauve {
-      background-color: $mauve;
-    }
-
-    &.bg-goldenbrown {
-      background-color: $goldenbrown;
-    }
-
-    &.bg-firebrick {
-      background-color: $firebrick;
-    }
-
-    &.bg-darkgray {
-      background-color: $dark-gray;
-    }
+    // &.bg-beige {
+    //   background-color: $beige;
+    // }
+    //
+    // &.bg-lightblue {
+    //   background-color: $light-blue;
+    // }
+    //
+    // &.bg-mauve {
+    //   background-color: $mauve;
+    // }
+    //
+    // &.bg-goldenbrown {
+    //   background-color: $goldenbrown;
+    // }
+    //
+    // &.bg-firebrick {
+    //   background-color: $firebrick;
+    // }
+    //
+    // &.bg-darkgray {
+    //   background-color: $dark-gray;
+    // }
   }
 
   p {

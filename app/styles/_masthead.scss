@@ -164,6 +164,20 @@
     }
   }
 
+  .bg-navy.story-body & {
+    background-color: $navy;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    &:before,
+    &:after {
+      background-color: $navy;
+    }
+  }
+
   .bg-mauve.story-body & {
     background-color: $mauve;
 
