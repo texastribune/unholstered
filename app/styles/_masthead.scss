@@ -196,6 +196,15 @@
     }
   }
 
+  .bg-lightblue.story-body & {
+    background-color: $light-blue;
+
+    &:before,
+    &:after {
+      background-color: $light-blue;
+    }
+  }
+
 }
 
 .chevron-down {
