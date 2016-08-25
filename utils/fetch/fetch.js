@@ -8,6 +8,10 @@ const TYPES = {
   sheet: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
 }
 
+const RETRY_WITH_BACKOFF_ERRORS = ['userRateLimitExceeded', 'quotaExceeded', 'internalServerError', 'backendError']
+
+// const NUM_OF_RETRIES = [...Array(5).keys()] // hacky range(n)
+
 function fetch (files, cb) {
   if (!Array.isArray(files)) files = [files]
 
@@ -20,11 +24,22 @@ function fetch (files, cb) {
 
       const req = { fileId, mimeType }
 
-      drive.files.export(req, (err, res) => {
-        if (err) cb(err)
-        cb(null, res, file)
-      })
+      tryExportUntilSuccess({drive, req, file, iteration: 0}, cb)
     })
+  })
+}
+
+function tryExportUntilSuccess (opts, cb) {
+  opts.drive.files.export(opts.req, (err, res) => {
+    if (err) {
+      if (err.code === 403 && RETRY_WITH_BACKOFF_ERRORS.some((e) => e === err.errors[0].reason)) {
+        return setTimeout(() => tryExportUntilSuccess(opts, cb), Math.pow(opts.iteration++, 2) * Math.random())
+      } else {
+        return cb(err)
+      }
+    }
+
+    cb(null, res, opts.file)
   })
 }
 
