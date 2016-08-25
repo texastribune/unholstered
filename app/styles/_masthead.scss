@@ -309,6 +309,16 @@
     }
   }
 
+  .bg-darkgray-orange.mainbar-body & {
+    background-color: $dark-gray;
+    color: $orange;
+
+    &:before,
+    &:after {
+      background-color: $dark-gray;
+    }
+  }
+
   .bg-gray.mainbar-body & {
     background-color: $gray;
     color: $tan;

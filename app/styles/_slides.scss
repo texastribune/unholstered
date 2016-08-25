@@ -56,6 +56,10 @@
     background-color: $dark-gray;
   }
 
+  .bg-darkgray-orange & {
+    background-color: $dark-gray;
+  }
+
   .bg-gray & {
     background-color: $gray;
 
@@ -348,26 +352,26 @@ text.label {
   color: $white;
   font-weight: 700;
   transition: color 0.5s;
+}
 
-  .bg-lightblue & {
-    color: $white;
-  }
+.highlight--light-blue {
+  color: $light-blue;
+}
 
-  .bg-darkgray & {
-    color: $orange-red;
-  }
+.highlight--red {
+  color: $orange-red;
+}
 
-  .bg-gray & {
-    color: $tan;
-  }
+.highlight--orange {
+  color: $orange;
+}
 
-  .bg-navy & {
-    color: $goldenbrown;
-  }
+.highlight--yellow {
+  color: $goldenbrown;
+}
 
-  .bg-beige & {
-    color: $orange-red;
-  }
+.highlight--beige {
+  color: $beige;
 }
 
 .highlight--big {
@@ -383,6 +387,10 @@ text.label {
 
   .bg-darkgray & {
     background-color: $orange-red;
+  }
+
+  .bg-darkgray-orange & {
+    background-color: $orange;
   }
 
   .bg-gray & {
