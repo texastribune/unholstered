@@ -10,7 +10,7 @@ const TYPES = {
 
 const RETRY_WITH_BACKOFF_ERRORS = ['userRateLimitExceeded', 'quotaExceeded', 'internalServerError', 'backendError']
 
-// const NUM_OF_RETRIES = [...Array(5).keys()] // hacky range(n)
+const MAX_RETRIES = 5
 
 function fetch (files, cb) {
   if (!Array.isArray(files)) files = [files]
@@ -33,9 +33,10 @@ function tryExportUntilSuccess (opts, cb) {
   opts.drive.files.export(opts.req, (err, res) => {
     if (err) {
       if (err.code === 403 && RETRY_WITH_BACKOFF_ERRORS.some((e) => e === err.errors[0].reason)) {
+        if (opts.iteration > MAX_RETRIES) return cb(new Error(`We tried so hard to get \`${opts.req.fileId}\`, but had no luck.`))
         return setTimeout(() => tryExportUntilSuccess(opts, cb), Math.pow(opts.iteration++, 2) * Math.random())
       } else {
-        return cb(err)
+        cb(err)
       }
     }
 

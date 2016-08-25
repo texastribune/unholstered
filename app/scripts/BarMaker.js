@@ -2,8 +2,8 @@ import * as d3 from 'd3'
 import checkIfMobile from './isMobile'
 
 const barColors = {
-  selected: d3.color('rgba(224, 173, 43, 1)'),
-  unSelected: d3.color('rgba(224, 173, 43, 0.5)')
+  selected: d3.color('rgba(209, 70, 33, 1)'),
+  unSelected: d3.color('rgba(209, 70, 33, 0.5)')
 }
 
 const textColors = {
