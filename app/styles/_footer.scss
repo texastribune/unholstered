@@ -22,6 +22,11 @@
     font-family: $pt;
     font-size: .95em;
     line-height: 1.6;
+
+    a {
+      color: $light-blue;
+      box-shadow: $light-blue 0 -2px 0 inset;
+    }
   }
 
   &__social {
