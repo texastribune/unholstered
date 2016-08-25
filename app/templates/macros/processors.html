@@ -54,3 +54,7 @@
 {% macro disclosure(value) %}
 <p style="font-style: italic">{{ value }}</p>
 {% endmacro %}
+
+{% macro download(value) %}
+<a href="{{ value.link }}">{{ value.text }}</a>
+{% endmacro %}

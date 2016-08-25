@@ -10,16 +10,16 @@ function WholeMaker (container, opts) {
   const sizing = container.node().parentNode.getBoundingClientRect()
 
   const margin = {
-    top: isMobile ? 20 : sizing.height * 0.1,
+    top: isMobile ? 20 : sizing.height * 0.15,
     right: isMobile ? 80 : sizing.width * 0.2,
-    bottom: isMobile ? 40 : sizing.height * 0.1,
-    left: isMobile ? 80 : sizing.width * 0.2
+    bottom: isMobile ? 30 : sizing.height * 0.15,
+    left: isMobile ? 80 : sizing.width * 0.25
   }
 
   const width = sizing.width - margin.right - margin.left
   const height = sizing.height - margin.top - margin.bottom
 
-  const y = d3.scaleLinear()
+  const y1 = d3.scaleLinear()
 
   let hasBeenInitialized = false
 
@@ -35,6 +35,7 @@ function WholeMaker (container, opts) {
     yAxisG = g.append('g')
       .attr('class', 'y axis whole-chart-axis')
       .attr('transform', `translate(${width + 5}, 0)`)
+      .style('opacity', 0)
 
     hasBeenInitialized = true
   }
@@ -44,10 +45,10 @@ function WholeMaker (container, opts) {
 
     data = prepareData(data)
 
-    y.domain([0, 100])
+    y1.domain([0, 100])
       .range([0, height])
 
-    const yAxis = d3.axisRight(y)
+    const yAxis = d3.axisRight(y1)
     yAxis.ticks(3).tickFormat((d) => `${d}%`)
 
     const bars = g.selectAll('.bar').data(data, (d) => d.label)
@@ -55,14 +56,14 @@ function WholeMaker (container, opts) {
     const barsEnter = bars.enter()
       .append('g')
       .attr('class', 'bar')
-      .attr('transform', (d) => `translate(0, ${y(d.offset)})`)
+      .attr('transform', (d) => `translate(0, ${y1(d.offset)})`)
 
     const t = d3.transition().duration(250)
 
     barsEnter.append('rect')
       .attr('class', 'whole-bar')
       .attr('width', width)
-      .attr('height', (d) => y(d.value))
+      .attr('height', (d) => y1(d.value))
       .attr('fill', (d) => d.fillColor)
       .style('opacity', 0)
       .transition(t)
@@ -71,7 +72,7 @@ function WholeMaker (container, opts) {
     barsEnter.append('text')
       .attr('class', 'whole-bar-text')
       .attr('x', -13)
-      .attr('y', (d) => y(d.value) / 2)
+      .attr('y', (d) => y1(d.value) / 2)
       .attr('dx', '.32em')
       .attr('dy', '.32em')
       .attr('text-anchor', 'end')
@@ -82,10 +83,9 @@ function WholeMaker (container, opts) {
       .transition(t)
       .style('opacity', 1)
 
-    yAxisG.call(yAxis)
-    .style('opacity', 0)
-    .transition(t)
-    .style('opacity', 1)
+    yAxisG.transition(t)
+      .call(yAxis)
+      .style('opacity', 1)
   }
 
   function prepareData (data) {

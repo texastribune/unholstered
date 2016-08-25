@@ -12,8 +12,8 @@ function BoxMaker (container) {
   const margin = {
     top: isMobile ? 20 : sizing.height * 0.15,
     right: 40,
-    bottom: isMobile ? 60 : sizing.height * 0.15,
-    left: 30
+    bottom: isMobile ? 50 : sizing.height * 0.15,
+    left: 40
   }
 
   const width = sizing.width - margin.right - margin.left

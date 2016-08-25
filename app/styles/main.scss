@@ -1,44 +1,18 @@
-//fonts
-@import url(https://fonts.googleapis.com/css?family=Chathura:800);
-@import url(https://fonts.googleapis.com/css?family=Rubik:400,500);
-@import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700);
+// fonts
 $rubik: 'Rubik', sans-serif;
 $chathura: 'Chathura', sans-serif;
 $pt: 'PT Serif', serif;
 
 $font-size-base: 16;
 
-//helpers
+// helpers
 @import 'functions';
 @import 'mixins';
 @import 'layout';
 @import 'colors';
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 400;
-}
-
-a {
-  color: $black;
-  text-decoration: none;
-}
-
-//sections
+// sections
+@import 'base';
 @import 'masthead';
 @import 'navbar';
 @import 'story';
