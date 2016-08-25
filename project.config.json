@@ -52,5 +52,12 @@
         "storylist": "table"
       }
     }
+  },{
+    "fileId": "19A-z5q1ziXHL3enqzqscXb4_cEX1vuOCpCcYNztd-wo",
+    "type": "sheet",
+    "name": "mainbar-data",
+    "copytext": {
+      "processor": "table"
+    }
   }]
 }

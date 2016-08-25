@@ -18,6 +18,7 @@
 .graphic-container {
   height: 48%;
   left: 0;
+  // pointer-events: none; // allow things to be clickable again
   position: absolute;
   top: 0;
   width: 100%;
@@ -27,6 +28,11 @@
     height: 100%;
     width: 50%;
   }
+}
+
+.graphic-container--inverted {
+    left: auto;
+    right: 0;
 }
 
 .swiper-slide {
@@ -39,6 +45,11 @@
   .bg-lightblue & {
     background-color: $light-blue;
     color: $black;
+
+    a {
+      box-shadow: $white 0 -2px 0 inset;
+      color: $white;
+    }
   }
 
   .bg-darkgray & {
@@ -47,6 +58,11 @@
 
   .bg-gray & {
     background-color: $gray;
+
+    a {
+      box-shadow: $tan 0 -2px 0 inset;
+      color: $tan;
+    }
   }
 
   .bg-navy & {
@@ -76,8 +92,17 @@
   }
 }
 
+.swiper-slide--graphic-inverted {
+  align-items: flex-end;
+
+  @media (min-width: 56.1875em) {
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
 .slide-content {
-  padding: 1rem;
+  padding: 1.875rem;
 }
 
 .slide-content--flex {
@@ -89,11 +114,11 @@
 }
 
 .slide-content--graphic {
-  height: 50%;
+  height: 49%;
 
   @media (min-width: 56.1875em) {
     height: auto;
-    width: 48%;
+    width: 46%;
   }
 }
 
@@ -149,12 +174,14 @@
 }
 
 .splash-header__subtitle {
-  color: $white;
+  background: $white;
+  display: inline-block;
   font-family: $chathura;
-  font-size: 7.5vw;
-  letter-spacing: .04em;
+  font-size: 7vw;
+  letter-spacing: .05em;
   line-height: 1;
-  margin: 0;
+  padding: 0 .5rem;
+  margin: .25rem 0 0 0;
   text-transform: uppercase;
 
   @media (min-width: 56.1875em) {
@@ -192,8 +219,16 @@
   @include font-size(18);
   font-family: $rubik;
   letter-spacing: .02em;
-  line-height: 1.3;
+  line-height: 1.5;
   margin: 0 0 1rem;
+
+  .highlight {
+    font-weight: 500;
+  }
+
+  .bg-lightblue & {
+    color: $white;
+  }
 
   @media (min-width: 56.1875em) {
     @include font-size(30);
@@ -209,15 +244,28 @@
 }
 
 .slider-controls__button {
+  margin-left: .5rem;
   transition: background-color .3s;
+  background-color: rgba(255, 255, 255, .2);
 
-  &:last-child {
-    margin-left: .5rem;
+  .bg-darkgray &,
+  .bg-navy & {
+    background-color: rgba(0, 0, 0, .2);
   }
 
   &:hover {
-    background-color: rgba(0, 0, 0, .05);
+
+    background-color: rgba(255, 255, 255, .4);
+
+    .bg-darkgray &,
+    .bg-navy & {
+      background-color: rgba(0, 0, 0, .4);
+    }
   }
+
+  // &:focus {
+  //   outline: none;
+  // }
 }
 
 .icon {
@@ -225,10 +273,16 @@
   display: inline-block;
   transition: color 0.5s, color 0.5s;
 
+  &.icon--replay {
+    svg {
+      padding: 0 0 0 .2em;
+    }
+  }
+
   svg {
     fill: currentColor;
     height: 1em;
-    vertical-align: middle;
+    vertical-align: sub;
   }
 
   .bg-lightblue & {
@@ -241,7 +295,10 @@
 }
 
 .icon--animated {
-  animation: bounce 2s infinite;
+  animation-delay: 4s;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: bounce;
   will-change: transform;
 }
 
@@ -251,9 +308,25 @@
  60% {transform: translate3d(0, -15px, 0);}
 }
 
-.axis .domain,
-.axis line {
-  display: none;
+.bar-chart-axis,
+.box-chart-axis {
+   .domain,
+   line {
+    display: none;
+  }
+}
+
+.whole-chart-axis {
+  .domain,
+  line {
+    stroke: $white;
+  }
+
+  text {
+    fill: $white;
+    font-size: .75rem;
+    letter-spacing: .03em;
+  }
 }
 
 .axis text {
@@ -268,6 +341,7 @@ text.label {
 
 .highlight {
   color: $white;
+  font-weight: 700;
   transition: color 0.5s;
 
   .bg-lightblue & {
@@ -275,7 +349,7 @@ text.label {
   }
 
   .bg-darkgray & {
-    color: $goldenbrown;
+    color: $orange-red;
   }
 
   .bg-gray & {
@@ -292,10 +366,9 @@ text.label {
 }
 
 .highlight--big {
-  font-size: 2.25em;
+  font-size: 1.5em;
   font-weight: 500;
-  line-height: 1;
-  vertical-align: middle;
+  line-height: 0;
 }
 
 .swiper-pagination-progressbar {
@@ -304,7 +377,7 @@ text.label {
   }
 
   .bg-darkgray & {
-    background-color: $goldenbrown;
+    background-color: $orange-red;
   }
 
   .bg-gray & {
@@ -323,10 +396,14 @@ text.label {
 .chart-label {
   color: $white;
   font-family: $rubik;
-  font-size: 1rem;
+  font-size: .75rem;
   position: absolute;
   text-align: center;
   width: 100%;
+
+  @media (min-width: 56.1875em) {
+    font-size: 1rem;
+  }
 
   .bg-lightblue & {
     color: $black;
@@ -335,4 +412,39 @@ text.label {
   .bg-beige & {
     color: $black;
   }
+}
+
+.gradient-bar-text {
+  fill: $white;
+  font-family: $rubik;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.whole-bar-text {
+  fill: $white;
+  font-family: $rubik;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.grid-label {
+  fill: $white;
+  font-family: $rubik;
+  font-size: .875rem;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+
+  @media (min-width: 56.1875em) {
+    font-size: 1.2rem;
+  }
+
+  &:before {
+    background-color: red;
+  }
+}
+
+.grid-label-background {
+  fill: rgb(0, 0, 0);
+  opacity: 0.45;
 }

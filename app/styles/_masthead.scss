@@ -141,12 +141,12 @@
     border: 1px solid $orange-red;
   }
 
-  .bg-lightblue.story-body & {
-    background-color: $light-blue;
+  .bg-goldenbrown.story-body & {
+    background-color: $goldenbrown;
 
     &:before,
     &:after {
-      background-color: $light-blue;
+      background-color: $goldenbrown;
     }
   }
 
@@ -164,22 +164,17 @@
     }
   }
 
-  .bg-gray.story-body & {
-    background-color: $gray;
-    color: $white;
-
-    a {
-      color: $white;
-    }
+  .bg-mauve.story-body & {
+    background-color: $mauve;
 
     &:before,
     &:after {
-      background-color: $gray;
+      background-color: $mauve;
     }
   }
 
-  .bg-navy.story-body & {
-    background-color: $navy;
+  .bg-firebrick.story-body & {
+    background-color: $firebrick;
     color: $white;
 
     a {
@@ -188,7 +183,7 @@
 
     &:before,
     &:after {
-      background-color: $navy;
+      background-color: $firebrick;
     }
   }
 
@@ -283,7 +278,7 @@
 
   .bg-darkgray.mainbar-body & {
     background-color: $dark-gray;
-    color: $goldenbrown;
+    color: $orange-red;
 
     &:before,
     &:after {

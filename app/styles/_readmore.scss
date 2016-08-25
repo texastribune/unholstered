@@ -13,22 +13,24 @@
   &__story {
     margin-bottom: 2em;
 
-    @include breakpoint(nonmobile) {
+    // @include breakpoint(nonmobile) {
+    //   float: left;
+    //   margin-right: 2%;
+    //   width: 49%;
+    //
+    //   &:nth-child(2n+2) {
+    //     margin-right: 0;
+    //   }
+    // }
+
+    @include breakpoint(phablet) {
       float: left;
       margin-right: 2%;
-      width: 49%;
-
-      &:nth-child(2n+2) {
-        margin-right: 0;
-      }
-    }
-
-    @include breakpoint(tablet) {
       width: 32%;
 
-      &:nth-child(2n+2) {
-        margin-right: 2%;
-      }
+      // &:nth-child(2n+2) {
+      //   margin-right: 2%;
+      // }
 
       &:nth-child(3n+3) {
         margin-right: 0;
@@ -37,17 +39,19 @@
   }
 
   &__section {
-    background: $orange-red;
-    color: $white;
+    background: $white;
+    color: $black;
     display: inline-block;
     font-family: $chathura;
     font-size: 1.4em; //1.5em
     font-style: normal;
     letter-spacing: .05em;
     line-height: .6;
-    margin: .25em 0;
     padding: .25em;
+    position: absolute;
     text-transform: uppercase;
+    top: 0;
+    left: 0;
 
     a {
       color: $white;
@@ -56,22 +60,42 @@
 
   &__headline {
     font-family: $rubik;
-    font-size: 1.2em;
     font-weight: normal;
-    line-height: 1.4;
     margin: .5em 0;
-
-    a {
-      box-shadow: $light-blue 0 -2px 0 inset;
-    }
   }
 
   .image {
     margin: 1em 0 0;
+    padding-top: 1.75em;
+    position: relative;
 
     &__img {
       height: 150px;
       margin: 0 auto;
+    }
+
+    &.bg-beige {
+      background-color: $beige;
+    }
+
+    &.bg-lightblue {
+      background-color: $light-blue;
+    }
+
+    &.bg-mauve {
+      background-color: $mauve;
+    }
+
+    &.bg-goldenbrown {
+      background-color: $goldenbrown;
+    }
+
+    &.bg-firebrick {
+      background-color: $firebrick;
+    }
+
+    &.bg-darkgray {
+      background-color: $dark-gray;
     }
   }
 

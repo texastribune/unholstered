@@ -10,11 +10,20 @@
       text-decoration: none;
     }
 
-    p {
+    p,
+    ul {
       font-family: $pt;
       font-size: 1.125em;
       line-height: 1.5em;
       margin: .5em 0 1.5em;
+    }
+
+    .numbered-list {
+      font-family: $rubik;
+      font-weight: 500;
+      font-size: 1.5em;
+      margin-right: .25em;
+      color: $orange-red;
     }
 
     .social {
@@ -30,7 +39,7 @@
         background: $light-blue;
         box-shadow: none;
         color: $white;
-        display: inline-block;
+        display: inline-flex;
         margin-left: 1em;
         padding: .5em;
         text-align: center;
@@ -54,9 +63,34 @@
 
 .sty-header {
   padding: 1em 0;
+    @include clearfix();
 
   @include breakpoint(phablet) {
     padding: 2em 0 1em;
+  }
+
+  @include breakpoint(phablet) {
+    &.tall-head {
+      .sty-header__top-text,
+      .sty-header__byline {
+          float: left;
+          width: 45%;
+          margin-right: 3%;
+          margin-top: 0;
+      }
+
+      .sty-header__art {
+        float: right;
+        margin: 0;
+        width: 52%;
+
+        svg {
+          margin: 0;
+          max-height: 475px;
+          width: 100%;
+        }
+      }
+    }
   }
 
   .bg-lightblue & {
@@ -78,11 +112,46 @@
     color: $white;
   }
 
+  .bg-mauve & {
+    background-color: $mauve;
+
+    a {
+      color: $black;
+      box-shadow: $white 0 -2px 0 inset;
+    }
+
+    .sty-header__headline  {
+      font-weight: 500;
+    }
+  }
+
+  .bg-goldenbrown & {
+    background-color: $goldenbrown;
+
+    a {
+      color: $black;
+      box-shadow: $white 0 -2px 0 inset;
+    }
+
+    .sty-header__headline  {
+      font-weight: 500;
+    }
+  }
+
+  .bg-firebrick & {
+    background-color: $firebrick;
+    color: $white;
+  }
+
   .bg-beige & {
     background-color: $beige;
 
     a {
       color: $black;
+    }
+
+    .sty-header__headline  {
+      font-weight: 500;
     }
   }
 
@@ -121,7 +190,7 @@
     font-weight: 400;
     letter-spacing: .02em;
     line-height: 1.1;
-    margin: .5em 0;
+    margin: 0 0 1em 0;
 
     @include breakpoint(phablet) {
       font-size: 2em;
@@ -134,7 +203,8 @@
 
   &__art {
     svg {
-      width: 100%;
+      width: 80%;
+      margin: 0 10%;
     }
   }
 
@@ -143,7 +213,7 @@
     font-size: 1.5em;
     letter-spacing: .05em;
     line-height: 1;
-    margin: 0;
+    margin: 1em 0 0 0;
     text-transform: uppercase;
 
     @include breakpoint(phablet) {
@@ -153,7 +223,33 @@
     a {
       color: $white;
     }
+
+    .sty-header__date {
+      &:before {
+        content: "/";
+        padding-right: .25em;
+      }
+
+      .tall-head & {
+        display: block;
+
+        &:before {
+          content: "";
+          padding-right: 0;
+        }
+      }
+    }
   }
+}
+
+.illustration-credit {
+  font-family: $chathura;
+  font-size: 1.5rem;
+  letter-spacing: .02em;
+  line-height: 1;
+  position: absolute;
+  font-style: italic;
+  right: .5em;
 }
 
 .image {
@@ -168,28 +264,24 @@
   }
 
   &__caption {
-    color: $gray;
-    font-family: $chathura;
-    font-size: 1.4em;
-    letter-spacing: .02em;
-    line-height: .75;
+    color: $dark-gray;
+    font-family: $rubik;
+    font-size: .85em;
 
     @include breakpoint(mobile) {
       margin: 0 1em;
     }
-
-    @include breakpoint(phablet) {
-      font-size: 1.5em;
-    }
   }
 
   &__credit {
-    color: $gray;
+    color: gray;
     display: block;
-    font-family: $pt;
-    font-size: .7em;
-    margin: .25em;
-    text-align: right;
+    font-family: $chathura;
+    font-size: 1.35em;
+    font-style: normal;
+    letter-spacing: .02em;
+    margin: .5em 0;
+    line-height: 0;
   }
 }
 
@@ -212,7 +304,7 @@
   @include breakpoint(phablet) {
     &--left {
       float: left;
-      margin: 1em 1em 1em 0;
+      margin: 1em 2em 1em 0;
       width: 60%;
 
       @include breakpoint(desktop) {
@@ -222,7 +314,7 @@
 
     &--right {
       float: right;
-      margin: 1em 0 1em 1em;
+      margin: 1em 0 1em 2em;
       width: 60%;
 
       @include breakpoint(desktop) {
@@ -261,8 +353,40 @@
       padding-right: .2em;
     }
   }
+
+  .full & {
+    margin: 0 -3em;
+
+    .quote {
+      font-size: 1.75em;
+
+      @include breakpoint(tablet) {
+        font-size: 2em;
+      }
+    }
+  }
 }
 
 .comments {
   padding-bottom: 1em;
+}
+
+.bullet-list {
+  li {
+    list-style-type: square;
+    color: $orange-red;
+    margin: .5em 0 0;
+
+    span {
+      color: $black;
+    }
+  }
+}
+
+.asterisk {
+  width: .5em;
+  height: .5em;
+  background-color: $orange-red;
+  display: inline-block;
+  margin: 0 .35em 0.1em 0;
 }

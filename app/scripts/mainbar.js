@@ -1,28 +1,59 @@
-import BarMaker from './BarMaker'
-import BoxMaker from './BoxMaker'
-import GridMaker from './GridMaker'
 import Swiper from 'swiper'
-import slideData from './data'
+
+import graphic from './graphic'
+
+let STATE = {
+  graphic: graphic('#graphic'),
+  isUpdate: false,
+  slideType: null,
+  slideId: null,
+  slideIndex: null
+}
 
 // global setting
 let animationTimeout = null
-let graphic
-let activeSlideId
 const bgClassPrefix = 'bg-'
 
 // elements
 const body = document.body
+const graphicContainer = document.querySelector('.graphic-container')
 const nextButton = document.querySelector('#next-button')
 const nextButtonText = nextButton.querySelector('.js-next-button-text')
 const prevButton = document.querySelector('#prev-button')
+const replayButton = document.querySelector('#replay-button')
 
+// all actions that take place when a slide change BEGINS
 function onSlideChangeStart (s) {
   const activeIndex = s.activeIndex
   const activeSlide = s.slides[activeIndex]
 
-  const slideId = activeSlide.getAttribute('data-chart-id')
+  // assess next state
+  const currentSlideType = activeSlide.getAttribute('data-slide-type')
+  const currentSlideId = activeSlide.getAttribute('data-slide-id')
+  const currentSlideIndex = activeSlide.getAttribute('data-slide-index')
 
-  // Manage slide colors
+  // manage graphic state
+  if (STATE.graphic.isInitialized()) {
+    const slideTypeIsSame = currentSlideType === STATE.slideType
+    const slideIdIsSame = currentSlideId === STATE.slideId
+
+    // if the slide type or ID changes, wipe the slate
+    if (!slideTypeIsSame || !slideIdIsSame) {
+      STATE.isUpdate = false
+      STATE.graphic.remove()
+    }
+
+    if (slideIdIsSame) {
+      STATE.isUpdate = true
+    }
+  }
+
+  // save new slide state
+  STATE.slideType = currentSlideType || null
+  STATE.slideId = currentSlideId || null
+  STATE.slideIndex = currentSlideIndex || null
+
+  // manage slide colors
   const slideThemeColor = activeSlide.getAttribute('data-primary-color')
 
   if (slideThemeColor) {
@@ -35,12 +66,7 @@ function onSlideChangeStart (s) {
     body.classList.add(`${bgClassPrefix}${slideThemeColor}`)
   }
 
-  // Handle graphic removal
-  if (graphic && (activeSlide.getAttribute('data-type') === 'text-only' || !slideData.hasOwnProperty(slideId))) {
-    graphic.remove()
-  }
-
-  // Icon bounciness toggle
+  // icon bounciness toggle
   const icon = nextButton.querySelector('.icon')
 
   if (activeIndex > 0) {
@@ -50,46 +76,51 @@ function onSlideChangeStart (s) {
   }
 }
 
+// all actions that take place when a slide change ENDS
 function onSlideChangeEnd (s) {
   const activeIndex = s.activeIndex
-  const activeSlide = s.slides[activeIndex]
 
-  const slideType = activeSlide.getAttribute('data-type')
-  const slideId = activeSlide.getAttribute('data-chart-id')
-  const slideIndex = parseInt(activeSlide.getAttribute('data-slide-index'), 10)
-
-  if (slideData.hasOwnProperty(slideId)) {
-    if (graphic && activeSlideId !== slideId) graphic.remove()
-
-    if (slideType === 'grid') {
-      if (!graphic || graphic.type() !== 'grid') graphic = GridMaker('#graphic')
-      graphic.render(slideData[slideId], slideIndex)
-    } else if (slideType === 'box') {
-      if (!graphic || graphic.type() !== 'box') graphic = BoxMaker('#graphic')
-      graphic.render(slideIndex)
-    } else if (slideType === 'bar') {
-      if (!graphic || graphic.type() !== 'bar') graphic = BarMaker('#graphic')
-      graphic.render(slideIndex)
-    }
-
-    activeSlideId = slideId
+  // check for inverted graphic placement and apply class if needed
+  if (STATE.slideId === 'officers') {
+    graphicContainer.classList.add('graphic-container--inverted')
+  } else {
+    graphicContainer.classList.remove('graphic-container--inverted')
   }
 
-  // Manage before/after button states
-  if (activeIndex > 0) {
-    nextButtonText.textContent = 'Next'
-    prevButton.classList.remove('is-hidden')
+  // manage graphic
+  STATE.graphic.render(STATE.slideType, STATE.slideId, STATE.slideIndex, STATE.isUpdate)
 
-    window.clearTimeout(animationTimeout)
-
-    animationTimeout = window.setTimeout(() => {
-      const icon = nextButton.querySelector('.icon')
-      icon.classList.add('icon--animated')
-    }, 1000 * 30)
-  } else {
+  if (s.isBeginning) {
     nextButtonText.textContent = 'Begin'
     prevButton.classList.add('is-hidden')
+  } else if (s.isEnd) {
+    nextButton.classList.add('is-hidden')
+    replayButton.classList.remove('is-hidden')
+  } else {
+    if (activeIndex > 0) {
+      nextButtonText.textContent = 'Next'
+      nextButton.classList.remove('is-hidden')
+      prevButton.classList.remove('is-hidden')
+      replayButton.classList.add('is-hidden')
+
+      window.clearTimeout(animationTimeout)
+
+      animationTimeout = window.setTimeout(() => {
+        const icon = nextButton.querySelector('.icon')
+        icon.classList.add('icon--animated')
+      }, 1000 * 30)
+    }
   }
+}
+
+// all actions that take place when the FINAL slide is reached
+function onReachEnd (s) {
+  replayButton.addEventListener('click', () => {
+    nextButton.classList.remove('is-hidden')
+    replayButton.classList.add('is-hidden')
+
+    s.slideTo(0, 1000)
+  })
 }
 
 Swiper('#swiper-container', {
@@ -103,5 +134,6 @@ Swiper('#swiper-container', {
   simulateTouch: true,
   speed: 500,
   onSlideChangeStart: onSlideChangeStart,
-  onSlideChangeEnd: onSlideChangeEnd
+  onSlideChangeEnd: onSlideChangeEnd,
+  onReachEnd: onReachEnd
 })
