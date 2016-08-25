@@ -387,6 +387,15 @@
       color: $black;
     }
   }
+
+  .about & {
+    li {
+      @include breakpoint(phablet) {
+        display: inline-block;
+        width: 32%;
+      }
+    }
+  }
 }
 
 .asterisk {
