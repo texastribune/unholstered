@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Unholstered | The Texas Tribune</title>
-  <link rel="stylesheet" href="{{ static('styles/main.css') }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@texastribune">
   <meta name="twitter:creator" content="@texastribune">
@@ -14,8 +13,10 @@
   <meta property="og:type" content="article">
   <meta property="og:description" content="{{ context.summary }}">
   <meta property="og:site_name" content="The Texas Tribune">
-  <meta property="og:image" content="{{ staticAbsolute('assets/images/illustrations/' + context.illustration.svg_url) }}">
+  <meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png') }}">
   <meta property="fb:app_id" content="154122474650943">
+  <link href="https://fonts.googleapis.com/css?family=Chathura:800|PT+Serif:400,700|Rubik:400,500" rel="stylesheet">
+  <link rel="stylesheet" href="{{ static('styles/main.css') }}">
   <script src="{{ static('scripts/adLoader.js') }}"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -99,10 +100,11 @@
           The Texas Tribune spent almost a year investigating police shootings in
           Texas’ largest cities. We worked to obtain official records — primarily
           through open records requests — from police departments in the state’s 36
-          cities with a population of 100,000 or more residents. We worked to
-          independently confirm details related to those shootings, and pored over
-          hundreds of incident reports. The Tribune’s Unholstered project offers
-          the most detailed look at the state of police shootings in Texas. </p>
+          cities with a population of 100,000 or more residents. The Tribune’s Unholstered
+          project offers the most detailed look at the state of police shootings in Texas.</p>
+          <p class="footer__text">
+            Learn more <a href="{{ static( 'about' ) }}">about this project</a>
+            or download the full data.</p>
         <div class="footer__social">
           <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
           <ul class="share-links">
@@ -184,7 +186,7 @@
         "@type": "NewsArticle",
         "headline": "{{ context.headline }}",
         "url": "{{ static( context.slug ) }}",
-        "thumbnailUrl": "{{ static ('assets/images/illustrations/') }}{{ context.illustration.svg_url }}",
+        "thumbnailUrl": "{{ static ('assets/images/share-art.png) }}",
         "dateCreated": "2016-08-30T06:00:00-06:00",
         "articleSection": ["front-page", "law-and-order"],
         "creator": ["Jolie McCullough", "Alexa Ura", "Johnathan Silver"]

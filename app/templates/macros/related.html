@@ -5,15 +5,14 @@
     <div class="read-more__story">
       <a href="{{ static( data[item.section_id].slug ) }}">
         <figure class="image thumbnail {{ data[item.section_id].background }}">
-          <img class="image__img" src="{{ static('assets/images/illustrations/')}}{{ data[item.section_id].illustration.svg_url }}">
+          <img class="image__img" src="{{ static('assets/images/')}}{{ data[item.section_id].illustration.svg_url }}">
           <div class="read-more__section">
               Section {{ data[item.section_id].section_number }}
-              <!-- , {{ data[item.section_id].section_title }} -->
           </div>
         </figure>
       </a>
       <h3 class="read-more__headline"><a href="{{ static( data[item.section_id].slug ) }}">{{ data[item.section_id].headline }}</a></h3>
-      <!-- <p>{{ data[item.section_id].summary }}</p> -->
+      <p>{{ data[item.section_id].summary }}</p>
     </div>
   {% endfor %}
 {% endmacro %}
