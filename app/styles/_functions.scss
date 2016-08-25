@@ -18,7 +18,7 @@
     $val: ($val / $base) * 1rem;
   }
 
-  //  0rem into 0
+  // 0rem into 0
   @if $val == 0rem {
     $val: 0;
   }

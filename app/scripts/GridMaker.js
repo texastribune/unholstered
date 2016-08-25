@@ -15,13 +15,6 @@ function GridMaker (container, opts) {
     left: isMobile ? 30 : 40
   }
 
-  // const labelPadding = {
-  //   top: 1,
-  //   right: 2,
-  //   bottom: 1,
-  //   left: 2
-  // }
-
   const labelPadding = 3
 
   const sizing = container.node().parentNode.getBoundingClientRect()

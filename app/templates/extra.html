@@ -2,9 +2,9 @@
 
 {% from 'macros/prose.html' import prose %}
 
-{% block body_class %}about story-body bg-lightblue{% endblock %}
+{% block body_class %}about story-body bg-lightblue{% endblock body_class %}
 
-{% block masthead_class %}masthead-story{% endblock %}
+{% block masthead_class %}masthead-story{% endblock masthead_class %}
 
 {% block content %}
 <section class="sty-header">
@@ -20,4 +20,4 @@
     {{ prose(context.prose) }}
   </article>
 </section>
-{% endblock %}
+{% endblock content %}

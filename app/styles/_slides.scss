@@ -18,7 +18,7 @@
 .graphic-container {
   height: 48%;
   left: 0;
-  // pointer-events: none; // allow things to be clickable again
+  pointer-events: none; // allow things to be clickable again
   position: absolute;
   top: 0;
   width: 100%;
@@ -266,6 +266,10 @@
   // &:focus {
   //   outline: none;
   // }
+}
+
+.icon-text {
+  padding-right: to-rem(4);
 }
 
 .icon {
