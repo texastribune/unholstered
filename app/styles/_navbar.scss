@@ -1,13 +1,13 @@
 .navbar {
   background: $white;
-  border-bottom: .2em solid $black;
+  border-bottom: 2px solid $black;
   display: none;
   width: 100%;
   @include clearfix();
 
   &--desktop {
-    border-left: .2em solid $black;
-    border-right: .2em solid $black;
+    border-left: 2px solid $black;
+    border-right: 2px solid $black;
     position: absolute;
     right: 0;
     width: 21em;
