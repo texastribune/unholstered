@@ -23,7 +23,8 @@
 {% endmacro %}
 
 {% macro image (value) %}
-<figure class="image{% if value.align %} inline--{{ value.align }}{% else %} image--full{% endif %}">
+<figure class="image{% if value.align %} inline--{{ value.align }}{% else %} image--full{% endif %}
+{% if value.size %} {{ value.size}}{%endif%}">
   <img class="image__img" src="{{ static('assets/images/')}}{{ value.photo_url }}">
   {% if value.credit %}<cite class="image__credit">{{ value.credit }}</cite>{% endif %}
   <figcaption class="image__caption">{{ value.caption }}</figcaption>

@@ -331,6 +331,10 @@
       margin: 1em 2em 1em 0;
       width: 60%;
 
+      &.small {
+        width: 40%;
+      }
+
       @include breakpoint(desktop) {
         margin-left: -5em;
       }
@@ -340,6 +344,10 @@
       float: right;
       margin: 1em 0 1em 2em;
       width: 60%;
+
+      &.small {
+        width: 40%;
+      }
 
       @include breakpoint(desktop) {
         margin-right: -5em;
