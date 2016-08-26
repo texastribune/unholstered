@@ -97,6 +97,10 @@
       fill-opacity: .2;
     }
   }
+
+  .bg-image {
+    z-index: 1000;
+  }
 }
 
 .swiper-slide--splash {
