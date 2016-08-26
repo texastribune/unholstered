@@ -57,6 +57,7 @@
       {% endfor %}
       {% for slide in context.slides %}
       <div class="swiper-slide{% if slide.chart_type != 'text-only' %} swiper-slide--graphic{% endif %}{% if slide.id == 'officers' %}-inverted{% endif %}" data-primary-color="{{ slide.color }}" data-slide-type="{{ slide.chart_type }}" data-slide-id="{{ slide.id }}" data-slide-index="{{ slide.index }}">
+        {% if slide.bg_image %}<div class="background-art">{{ inject('assets/images/illustrations/question.svg' ) }}</div>{% endif %}
         <div class="slide-content{% if slide.chart_type != 'text-only' %} slide-content--graphic{% endif %}">
           <div class="slide-prose">
             <h2 class="slide-prose__header">{{ slide.head }}</h2>

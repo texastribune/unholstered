@@ -77,6 +77,26 @@
     background-color: $beige;
     color: $black;
   }
+
+  // &.bg-question {
+  //   background-image: url('/unholstered/raw_assets/images/illustrations/question.svg');
+  //   background-repeat: no-repeat;
+  //   background-position: 50%;
+  //   background-size: 40%;
+  // }
+
+  .background-art {
+    position: absolute;
+    width: 70%;
+
+    @include breakpoint(phablet) {
+      width: 30%;
+    }
+
+    svg {
+      fill-opacity: .2;
+    }
+  }
 }
 
 .swiper-slide--splash {
