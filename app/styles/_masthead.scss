@@ -16,9 +16,13 @@
     text-decoration: none;
   }
 
-  .trib-logo svg {
-    height: 1.2em;
-    margin: .4em;
+  .trib-logo {
+    float: left;
+
+    svg {
+      height: 1.2em;
+      margin: .4em;
+    }
   }
 
   // .mainbar-body & {

@@ -24,6 +24,17 @@
       font-size: 1.125em;
       line-height: 1.5em;
       margin: .5em 0 1.5em;
+
+      &.feedback,
+      &.disclosure {
+        font-family: $rubik;
+        font-size: 1em;
+        color: $gray;
+      }
+
+      &.disclosure {
+        font-style: italic;
+      }
     }
 
     .numbered-list {

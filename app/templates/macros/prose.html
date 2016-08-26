@@ -5,3 +5,11 @@
 {{ processors[item.type](item.value) }}
 {% endfor %}
 {% endmacro %}
+
+{% macro textonly(content) %}
+{% for item in content %}
+  {% if item.type == 'text' %}
+    {{ processors[item.type](item.value) }}
+  {% endif %}
+{% endfor %}
+{% endmacro %}

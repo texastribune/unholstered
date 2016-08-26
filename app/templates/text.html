@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% from 'macros/prose.html' import prose, textonly %}
+
+{% block body_class %}story-body about{% endblock %}
+
+{% block masthead_class %}masthead-story{% endblock masthead_class %}
+
+{% block content %}
+<section class="sty-header">
+  <div class="sty-header__wrapper wrapper">
+    <div class="sty-header__top-text">
+      <h1 class="sty-header__headline">{{ context.headline }}</h1>
+    </div>
+  </div>
+</section>
+
+<section class="wrapper">
+  <article class="wrapper__story">
+    {{ textonly(context.prose) }}
+  </article>
+</section>
+{% endblock content %}
