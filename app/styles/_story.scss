@@ -4,6 +4,14 @@
     max-width: $text-width;
     width: 100%;
 
+    @include breakpoint(tablet) {
+        padding: 0 1em;
+    }
+
+    @include breakpoint(desktop) {
+        padding: 0;
+    }
+
     a {
       box-shadow: $light-blue 0 -2px 0 inset;
       color: $black;
@@ -27,22 +35,42 @@
     }
 
     .social {
-      float: right;
+      text-align: center;
+      margin-bottom: 1em;
 
-      @include breakpoint(mobile) {
-        float: none;
-        margin-top: -1em;
-        text-align: center;
+      @include breakpoint(phablet) {
+        margin: -.5em 1em 1.5em;
+      }
+
+      @include breakpoint(tablet) {
+        margin: 0;
+        position: absolute;
+        left: -0;
       }
 
       &__icon {
         background: $light-blue;
         box-shadow: none;
         color: $white;
-        display: inline-flex;
+        display: inline-block;
+        width: 3em;
+        height: 3em;
         margin-left: 1em;
-        padding: .5em;
+        padding: .75em;
         text-align: center;
+
+        @include breakpoint(tablet) {
+          display: block;
+          width: 3em;
+          height: 3em;
+          padding: .75em;
+          margin: 0;
+          top: 0;
+
+          &:last-child {
+            margin-top: 1em;
+          }
+        }
 
         svg {
           height: 1.5em;
@@ -266,16 +294,6 @@
   }
 }
 
-.illustration-credit {
-  font-family: $chathura;
-  font-size: 1.5rem;
-  letter-spacing: .02em;
-  line-height: 1;
-  position: absolute;
-  font-style: italic;
-  right: .5em;
-}
-
 .image {
   margin: 1em 0;
 
@@ -296,17 +314,23 @@
       margin: 0 1em;
     }
   }
+}
 
-  &__credit {
-    color: gray;
-    display: block;
-    font-family: $chathura;
-    font-size: 1.35em;
-    font-style: normal;
-    letter-spacing: .02em;
-    margin: .5em 0;
-    line-height: 0;
-  }
+.image__credit,
+.illustration-credit {
+  color: gray;
+  display: block;
+  font-family: $chathura;
+  font-size: 1.35em;
+  font-style: normal;
+  letter-spacing: .02em;
+  margin: .5em 0;
+  line-height: 0;
+}
+
+.illustration-credit {
+  position: absolute;
+  right: 0.25em;
 }
 
 .subhead {

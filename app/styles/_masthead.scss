@@ -229,11 +229,7 @@
     width: .5em;
 
     path {
-      fill: $black;
-
-      .masthead-mainbar & {
-        fill: $white;
-      }
+      fill: currentColor;
     }
   }
 }
