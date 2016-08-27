@@ -143,7 +143,7 @@ function GridMaker (container, opts) {
 
     gLabel.text(`${data.length} total ${opts.label}`)
 
-    gLabel.style(isMobile ? 'top' : 'bottom', `${margin.bottom * 0.5}px`)
+    gLabel.style('top', isMobile ? `${margin.top * 0.5}px` : `${height + margin.top}px`)
       .transition()
       .duration(750 + transitionTime)
       .style('opacity', 1)

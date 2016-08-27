@@ -23,6 +23,7 @@ bundler.plugin('done', function (stats) {
 
 module.exports = () => {
   bs.init({
+    ghostMode: false,
     logConnections: true,
     logPrefix: 'IDV',
     middleware: [

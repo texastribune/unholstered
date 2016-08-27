@@ -1,5 +1,16 @@
 import * as d3 from 'd3'
 import checkIfMobile from './isMobile'
+import wordwrap from './wordwrap'
+
+d3.selection.prototype.tspans = function (lines, lh) {
+  return this.selectAll('tspan')
+    .data(lines)
+    .enter()
+    .append('tspan')
+    .text(function (d) { return d })
+    .attr('x', 0)
+    .attr('dy', function (d, i) { return i ? lh || 15 : 0 })
+}
 
 function BoxMaker (container) {
   let svg, g, xAxisG
@@ -13,7 +24,7 @@ function BoxMaker (container) {
   const margin = {
     top: isMobile ? 20 : sizing.height * 0.15,
     right: 40,
-    bottom: isMobile ? 50 : sizing.height * 0.15,
+    bottom: isMobile ? 70 : sizing.height * 0.15,
     left: 40
   }
 
@@ -90,7 +101,7 @@ function BoxMaker (container) {
       .attr('class', 'gradient-bar-text')
       .attr('x', (d) => x(d.label) + x.bandwidth() / 2)
       .attr('y', (d) => y(d.value) + ((height - y(d.value)) / 2))
-      .attr('dx', '.32em')
+      .attr('dx', '.2em')
       .attr('dy', '.32em')
       .attr('text-anchor', 'middle')
       .text((d) => `${d.value}%`)
@@ -101,18 +112,24 @@ function BoxMaker (container) {
     if (!isUpdate) {
       xAxisG.call(xAxis)
         .selectAll('text')
-          .attr('class', 'gradient-bar-text')
-          .style('font-size', isMobile ? '.75rem' : '.875rem')
-          .style('letter-spacing', '0.03em')
-          .style('opacity', 0)
-          .transition(t)
-          .style('opacity', 1)
+        .attr('class', 'gradient-bar-text')
+        .attr('y', 16)
+        .style('font-size', isMobile ? '.75rem' : '.875rem')
+        .style('letter-spacing', '0.03em')
+        .text(null)
+        .tspans((d) => wordwrap(d, 18))
+        .style('opacity', 0)
+        .transition(t)
+        .style('opacity', 1)
     } else {
       xAxisG.call(xAxis)
         .selectAll('text')
-          .attr('class', 'gradient-bar-text')
-          .style('font-size', isMobile ? '.75rem' : '.875rem')
-          .style('letter-spacing', '0.03em')
+        .attr('class', 'gradient-bar-text')
+        .attr('y', 16)
+        .style('font-size', isMobile ? '.75rem' : '.875rem')
+        .style('letter-spacing', '0.03em')
+        .text(null)
+        .tspans((d) => wordwrap(d, 18))
     }
   }
 
@@ -122,8 +139,7 @@ function BoxMaker (container) {
 
   return {
     render,
-    update
-  }
+  update}
 }
 
 export default BoxMaker
