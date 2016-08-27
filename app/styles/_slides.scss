@@ -477,6 +477,10 @@ text.label {
   font-family: $rubik;
   font-size: 1.25rem;
   line-height: 1;
+
+  @media (min-width: 56.1875em) {
+    font-size: 1.5rem;
+  }
 }
 
 .whole-bar-text {

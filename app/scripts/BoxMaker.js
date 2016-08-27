@@ -41,7 +41,7 @@ function BoxMaker (container) {
     hasBeenInitialized = true
   }
 
-  function render (data) {
+  function render (data, isUpdate = false) {
     if (!hasBeenInitialized) init()
 
     x.domain(data.map((d) => d.label))
@@ -98,18 +98,31 @@ function BoxMaker (container) {
       .transition(t)
       .style('opacity', 1)
 
-    xAxisG.call(xAxis)
-      .selectAll('text')
-        .attr('class', 'gradient-bar-text')
-        .style('font-size', isMobile ? '.75rem' : '.875rem')
-        .style('letter-spacing', '0.03em')
-        .style('opacity', 0)
-        .transition(t)
-        .style('opacity', 1)
+    if (!isUpdate) {
+      xAxisG.call(xAxis)
+        .selectAll('text')
+          .attr('class', 'gradient-bar-text')
+          .style('font-size', isMobile ? '.75rem' : '.875rem')
+          .style('letter-spacing', '0.03em')
+          .style('opacity', 0)
+          .transition(t)
+          .style('opacity', 1)
+    } else {
+      xAxisG.call(xAxis)
+        .selectAll('text')
+          .attr('class', 'gradient-bar-text')
+          .style('font-size', isMobile ? '.75rem' : '.875rem')
+          .style('letter-spacing', '0.03em')
+    }
+  }
+
+  function update (data) {
+    render(data, true)
   }
 
   return {
-    render
+    render,
+    update
   }
 }
 

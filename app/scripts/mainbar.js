@@ -90,31 +90,33 @@ function onSlideChangeEnd (s) {
   // manage graphic
   STATE.graphic.render(STATE.slideType, STATE.slideId, STATE.slideIndex, STATE.isUpdate)
 
-  if (s.isBeginning) {
-    nextButtonText.textContent = 'Begin'
-    prevButton.classList.add('is-hidden')
-  } else if (s.isEnd) {
-    nextButton.classList.add('is-hidden')
-    replayButton.classList.remove('is-hidden')
-  } else {
-    if (activeIndex > 0) {
-      nextButtonText.textContent = 'Next'
-      nextButton.classList.remove('is-hidden')
-      prevButton.classList.remove('is-hidden')
-      replayButton.classList.add('is-hidden')
+  if (activeIndex > 0) {
+    nextButtonText.textContent = 'Next'
+    nextButton.classList.remove('is-hidden')
+    prevButton.classList.remove('is-hidden')
+    replayButton.classList.add('is-hidden')
 
-      window.clearTimeout(animationTimeout)
+    window.clearTimeout(animationTimeout)
 
-      animationTimeout = window.setTimeout(() => {
-        const icon = nextButton.querySelector('.icon')
-        icon.classList.add('icon--animated')
-      }, 1000 * 30)
-    }
+    animationTimeout = window.setTimeout(() => {
+      const icon = nextButton.querySelector('.icon')
+      icon.classList.add('icon--animated')
+    }, 1000 * 30)
   }
+}
+
+// all actions that take place when the FIRST slide is reached
+function onReachBeginning (s) {
+  nextButtonText.textContent = 'Begin'
+  nextButton.classList.remove('is-hidden')
+  prevButton.classList.add('is-hidden')
 }
 
 // all actions that take place when the FINAL slide is reached
 function onReachEnd (s) {
+  nextButton.classList.add('is-hidden')
+  replayButton.classList.remove('is-hidden')
+
   replayButton.addEventListener('click', () => {
     nextButton.classList.remove('is-hidden')
     replayButton.classList.add('is-hidden')
@@ -133,7 +135,8 @@ Swiper('#swiper-container', {
   paginationType: 'progress',
   simulateTouch: true,
   speed: 500,
-  onSlideChangeStart: onSlideChangeStart,
-  onSlideChangeEnd: onSlideChangeEnd,
-  onReachEnd: onReachEnd
+  onSlideChangeStart,
+  onSlideChangeEnd,
+  onReachBeginning,
+  onReachEnd
 })
