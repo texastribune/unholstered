@@ -42,9 +42,10 @@ function graphic (container) {
           _isInitialized = true
           break
       }
+      if (isInitialized()) graphic.render(data)
+    } else {
+      graphic.update ? graphic.update(data) : graphic.render(data)
     }
-
-    if (isInitialized()) graphic.render(data)
   }
 
   function remove () {

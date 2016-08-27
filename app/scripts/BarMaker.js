@@ -12,7 +12,7 @@ const textColors = {
 }
 
 function BarMaker (container) {
-  let svg, g, yAxisG
+  let svg, g
   const isMobile = checkIfMobile()
 
   const sizing = container.node().parentNode.getBoundingClientRect()
@@ -27,8 +27,9 @@ function BarMaker (container) {
   const width = sizing.width - margin.right - margin.left
   const height = sizing.height - margin.top - margin.bottom
 
-  const x = d3.scaleLinear()
-  const y = d3.scaleBand()
+  const x = d3.scaleLinear().range([0, width])
+  const y = d3.scaleBand().range([0, height]).padding(isMobile ? 0.4 : 0.3)
+  const yAxis = d3.axisLeft(y)
 
   let hasBeenInitialized = false
 
@@ -41,33 +42,48 @@ function BarMaker (container) {
     g = svg.append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-    yAxisG = g.append('g').attr('class', 'y axis bar-chart-axis')
+    g.append('g')
+      .attr('class', 'y axis bar-chart-axis')
 
     hasBeenInitialized = true
   }
 
-  function render (data) {
+  function render (data, isUpdate = false) {
     if (!hasBeenInitialized) init()
 
     x.domain([0, d3.max(data, (d) => d.value)])
-      .range([0, width])
-
     y.domain(data.map((d) => d.name))
-      .range([0, height])
-      .padding(isMobile ? 0.4 : 0.3)
 
-    const yAxis = d3.axisLeft(y)
+    const t = d3.transition().duration(250)
+
+    if (!isUpdate) {
+      g.selectAll('.y.axis').call(yAxis)
+        .selectAll('text')
+          .attr('fill', (d) => textColors.selected)
+          .style('font-size', isMobile ? '.75rem' : '.875rem')
+          .style('letter-spacing', '0.03em')
+          .style('opacity', 0)
+          .transition(t)
+          .style('opacity', 1)
+    } else {
+      g.selectAll('.y.axis').call(yAxis)
+        .selectAll('text')
+          .attr('fill', (d) => textColors.selected)
+          .style('font-size', isMobile ? '.75rem' : '.875rem')
+          .style('letter-spacing', '0.03em')
+    }
 
     // JOIN
     const bars = g.selectAll('.bar').data(data, (d) => d.name)
 
-    bars.selectAll('rect')
+    // UPDATE
+    bars.selectAll('rect').data(data, (d) => d.name)
+      .transition(t)
       .attr('fill', (d) => d.selected ? barColors.selected : barColors.unSelected)
 
-    bars.selectAll('text')
+    bars.selectAll('text').data(data, (d) => d.name)
+      .transition(t)
       .attr('fill', (d) => d.selected ? textColors.selected : textColors.unSelected)
-
-    const t = d3.transition().duration(250)
 
     // ENTER
     const barsEnter = bars.enter()
@@ -96,16 +112,15 @@ function BarMaker (container) {
       .style('opacity', 0)
       .transition(t)
       .style('opacity', 1)
+  }
 
-    yAxisG.call(yAxis)
-      .selectAll('text')
-        .attr('fill', textColors.selected)
-        .style('font-size', isMobile ? '.75rem' : '.875rem')
-        .style('letter-spacing', '0.03em')
+  function update (data) {
+    render(data, true)
   }
 
   return {
-    render
+    render,
+    update
   }
 }
 
