@@ -155,7 +155,8 @@ function BoxMaker (container) {
 
   return {
     render,
-  update}
+    update
+  }
 }
 
 export default BoxMaker
