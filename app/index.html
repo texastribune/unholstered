@@ -66,6 +66,32 @@
         </div>
       </div>
       {% endfor %}
+      {% for slide in context.related_slide %}
+      <div class="swiper-slide" data-primary-color="lightblue" data-slide-type="text-only">
+        <div class="slide-content">
+          <div class="slide-prose">
+            <div class="slide-prose__story">
+              <h3 class="slide-prose__header">{{ slide.head }}</h3>
+            </div>
+            <div class="slide-prose__related">
+              <p class="label">More in this series</p>
+              {% for story in data.meta.storylist %}
+                {% if story.id != "findings" and story.id != slide.head_link %}
+                  <li>
+                    <a href="{{ static( story.slug ) }}">
+                      <figure class="image thumbnail {{ data[story.id].background }}">
+                        <img class="image__img" src="{{ static('assets/images/')}}{{ story.id }}.png">
+                        <div class="read-more__section">{{ story.id }}</div>
+                      </figure>
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
       {% for slide in context.footer_slides %}
       <div class="swiper-slide" data-primary-color="lightblue" data-slide-type="text-only">
         <div class="slide-content">
