@@ -15,7 +15,7 @@ function GridMaker (container, opts) {
     left: isMobile ? 30 : 40
   }
 
-  const labelPadding = 3
+  const labelPadding = 2
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
@@ -123,7 +123,7 @@ function GridMaker (container, opts) {
       .attr('x', width / 2)
       .attr('y', (d) => y(Math.floor(d.value / cols)) / 2 + y(Math.floor(d.offset / cols)))
       .attr('dx', '.05em')
-      .attr('dy', '.85em')
+      .attr('dy', '.5em')
       .attr('text-anchor', 'middle')
       .text((d) => `${d.value} ${d.label}`)
       .transition()
@@ -143,7 +143,7 @@ function GridMaker (container, opts) {
 
     gLabel.text(`${data.length} total ${opts.label}`)
 
-    gLabel.style('top', isMobile ? `${margin.top * 0.5}px` : `${height + margin.top}px`)
+    gLabel.style('top', isMobile ? `${margin.top * 0.45}px` : `${height + margin.top + yWidth / 2}px`)
       .transition()
       .duration(750 + transitionTime)
       .style('opacity', 1)

@@ -21,7 +21,7 @@ function BarMaker (container) {
     top: isMobile ? 20 : sizing.height * 0.15,
     right: isMobile ? 60 : 80,
     bottom: isMobile ? 30 : sizing.height * 0.15,
-    left: isMobile ? 160 : 200
+    left: isMobile ? 180 : 200
   }
 
   const width = sizing.width - margin.right - margin.left
