@@ -6,6 +6,7 @@ function BoxMaker (container) {
   const isMobile = checkIfMobile()
 
   const fillColor = 'rgba(255, 97, 74, 1)'
+  // const fadedColor = 'rgba(255, 97, 74, 0.5)'
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
