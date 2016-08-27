@@ -17,7 +17,7 @@ function BoxMaker (container) {
   const isMobile = checkIfMobile()
 
   const fillColor = 'rgba(255, 97, 74, 1)'
-  const fadedColor = 'rgba(255, 97, 74, 0.5)'
+  const fadedColor = 'rgba(255, 97, 74, 0.3)'
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
@@ -72,7 +72,8 @@ function BoxMaker (container) {
     bars.selectAll('.gradient-rect')
       .data(data, (d) => d.label)
       .transition(t)
-      .attr('fill', (d) => d.selected ? 'url(#diagonal)' : 'url(#diagonal-faded)')
+      .attr('fill', 'url(#diagonal)')
+      .attr('fill-opacity', (d) => d.selected ? 1 : 0.3)
       .attr('stroke', (d) => d.selected ? fillColor : fadedColor)
 
     bars.selectAll('.filled-rect')
@@ -89,7 +90,8 @@ function BoxMaker (container) {
       .attr('y', 0)
       .attr('width', x.bandwidth)
       .attr('height', height)
-      .attr('fill', (d) => d.selected ? 'url(#diagonal)' : 'url(#diagonal-faded)')
+      .attr('fill', 'url(#diagonal)')
+      .attr('fill-opacity', (d) => d.selected ? 1 : 0.3)
       .attr('stroke', (d) => d.selected ? fillColor : fadedColor)
       .attr('stroke-width', '2')
       .style('opacity', 0)
