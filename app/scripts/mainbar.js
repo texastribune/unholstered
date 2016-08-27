@@ -90,7 +90,7 @@ function onSlideChangeEnd (s) {
   // manage graphic
   STATE.graphic.render(STATE.slideType, STATE.slideId, STATE.slideIndex, STATE.isUpdate)
 
-  if (activeIndex > 0) {
+  if (activeIndex > 0 && !s.isEnd) {
     nextButtonText.textContent = 'Next'
     nextButton.classList.remove('is-hidden')
     prevButton.classList.remove('is-hidden')

@@ -20,7 +20,7 @@ module.exports = () => {
       includePaths: ['node_modules'],
       precision: 10
     }).on('error', sass.logError))
-    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions', 'last 3 iOS versions'] }) ]))
     .pipe(gulp.dest('./.tmp/styles'))
     .pipe(gulpIf(IS_PRODUCTION, cleancss()))
     .pipe(gulpIf(IS_PRODUCTION, gulp.dest('./dist/styles')))
