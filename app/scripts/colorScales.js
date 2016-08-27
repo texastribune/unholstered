@@ -6,7 +6,7 @@ const colorScales = {
     offBase: color('rgba(204, 186, 165, 0.3)'),
     scale: [
       color('rgba(149, 182, 187, 1)'),
-      color('rgba(209, 70, 33, 1)'),
+      color('rgba(255, 97, 74, 1)'),
       color('rgba(249, 128, 1, 1)')
     ]
   },
@@ -21,7 +21,7 @@ const colorScales = {
   'police-race': [
     color('rgba(224, 173, 43, 1)'),
     color('rgba(149, 182, 187, 1)'),
-    color('rgba(209, 70, 33, 1)'),
+    color('rgba(255, 97, 74, 1)'),
     color('#ccbaa5'),
     color('#f0e9d7')
   ],

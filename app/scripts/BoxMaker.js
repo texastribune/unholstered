@@ -5,7 +5,8 @@ function BoxMaker (container) {
   let svg, g, xAxisG
   const isMobile = checkIfMobile()
 
-  const fillColor = 'rgb(209, 70, 33)'
+  const fillColor = 'rgba(255, 97, 74, 1)'
+  // const fadedColor = 'rgba(255, 97, 74, 0.5)'
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
