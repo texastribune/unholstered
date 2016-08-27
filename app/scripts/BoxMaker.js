@@ -17,7 +17,7 @@ function BoxMaker (container) {
   const isMobile = checkIfMobile()
 
   const fillColor = 'rgba(255, 97, 74, 1)'
-  const fadedColor = 'rgba(255, 97, 74, 0.3)'
+  const fadedColor = 'rgba(160, 81, 71, 1)'
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
@@ -129,11 +129,11 @@ function BoxMaker (container) {
       xAxisG.call(xAxis)
         .selectAll('text')
         .attr('class', 'gradient-bar-text')
-        .attr('y', 16)
+        .attr('y', 17)
         .style('font-size', isMobile ? '.75rem' : '.875rem')
         .style('letter-spacing', '0.03em')
         .text(null)
-        .tspans((d) => wordwrap(d, 18))
+        .tspans((d) => wordwrap(d, 18), 17)
         .style('opacity', 0)
         .transition(t)
         .style('opacity', 1)
@@ -141,11 +141,11 @@ function BoxMaker (container) {
       xAxisG.call(xAxis)
         .selectAll('text')
         .attr('class', 'gradient-bar-text')
-        .attr('y', 16)
+        .attr('y', 17)
         .style('font-size', isMobile ? '.75rem' : '.875rem')
         .style('letter-spacing', '0.03em')
         .text(null)
-        .tspans((d) => wordwrap(d, 18))
+        .tspans((d) => wordwrap(d, 18), 17)
     }
   }
 
