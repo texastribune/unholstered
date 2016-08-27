@@ -8,8 +8,7 @@
 
 .masthead {
   background-color: $black;
-  //border-bottom: .65em solid $white;
-  height: 2em; //2.65em.
+  height: 2rem;
 
   a {
     color: inherit;
@@ -24,10 +23,6 @@
       margin: .4em;
     }
   }
-
-  // .mainbar-body & {
-  //   border-bottom: .65em solid $beige;
-  // }
 }
 
 .masthead-sections {
@@ -35,9 +30,9 @@
   color: $white;
   float: right;
   font-family: $chathura;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   letter-spacing: .05em;
-  line-height: 1.35em;
+  line-height: 2rem;
   margin-right: .75rem;
   padding: 0 .7em;
   position: relative;
@@ -45,8 +40,7 @@
   transition: background-color .25s, color .25s;
 
   @include breakpoint(tablet) {
-    font-size: 1.6em;
-    line-height: 1.25em;
+    font-size: 1.6rem;
   }
 
   a {
@@ -96,15 +90,11 @@
   &:after {
     content: '';
     display: block;
-    height: 1.35em;
+    height: 2rem;
     position: absolute;
     top: 0;
     transition: background-color .25s, color .25s;
     width: 15px;
-
-    @include breakpoint(tablet) {
-      height: 1.25em;
-    }
   }
 
   &:before {
@@ -240,34 +230,31 @@
 
 .masthead-title {
   border-radius: .625rem .625rem 0 0;
+  height: 100%;
   float: right;
   font-family: $rubik;
   font-size: 1em;
+  line-height: 2rem;
   letter-spacing: .02em;
   margin-right: .5em;
-  padding: .4em 1em;
+  padding: 0 1em;
   position: relative;
   text-transform: uppercase;
   transition: background-color 0.5s, color 0.5s;
 
   @include breakpoint(tablet) {
     font-size: 1.1em;
-    padding: .35em 1em;
   }
 
   &:before,
   &:after {
     content: '';
     display: block;
-    height: 2em;
+    height: 2rem;
     position: absolute;
     top: 0;
     transition: background-color 0.5s, color 0.5s;
     width: 15px;
-
-    @include breakpoint(tablet) {
-      height: 1.8em;
-    }
   }
 
   &:before {
