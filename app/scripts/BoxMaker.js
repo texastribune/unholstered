@@ -17,7 +17,7 @@ function BoxMaker (container) {
   const isMobile = checkIfMobile()
 
   const fillColor = 'rgba(255, 97, 74, 1)'
-  // const fadedColor = 'rgba(255, 97, 74, 0.5)'
+  const fadedColor = 'rgba(255, 97, 74, 0.5)'
 
   const sizing = container.node().parentNode.getBoundingClientRect()
 
@@ -65,19 +65,32 @@ function BoxMaker (container) {
 
     const xAxis = d3.axisBottom(x)
 
-    const bars = g.selectAll('rect').data(data, (d) => d.label)
-
-    const barsGroup = bars.enter().append('g').attr('class', 'gradient-bar')
+    const bars = g.selectAll('.gradient-bar').data(data, (d) => d.label)
 
     const t = d3.transition().duration(250)
 
+    bars.selectAll('.gradient-rect')
+      .data(data, (d) => d.label)
+      .transition(t)
+      .attr('fill', (d) => d.selected ? 'url(#diagonal)' : 'url(#diagonal-faded)')
+      .attr('stroke', (d) => d.selected ? fillColor : fadedColor)
+
+    bars.selectAll('.filled-rect')
+      .data(data, (d) => d.label)
+      .transition(t)
+      .attr('fill', (d) => d.selected ? fillColor : fadedColor)
+      .attr('stroke', (d) => d.selected ? fillColor : fadedColor)
+
+    const barsGroup = bars.enter().append('g').attr('class', 'gradient-bar')
+
     barsGroup.append('rect')
+      .attr('class', 'gradient-rect')
       .attr('x', (d) => x(d.label))
       .attr('y', 0)
       .attr('width', x.bandwidth)
       .attr('height', height)
-      .attr('fill', 'url(#diagonal)')
-      .attr('stroke', fillColor)
+      .attr('fill', (d) => d.selected ? 'url(#diagonal)' : 'url(#diagonal-faded)')
+      .attr('stroke', (d) => d.selected ? fillColor : fadedColor)
       .attr('stroke-width', '2')
       .style('opacity', 0)
       .transition(t)
@@ -86,12 +99,13 @@ function BoxMaker (container) {
     const barGroup = barsGroup.append('g')
 
     barGroup.append('rect')
+      .attr('class', 'filled-rect')
       .attr('x', (d) => x(d.label))
       .attr('y', (d) => y(d.value))
       .attr('width', x.bandwidth)
       .attr('height', (d) => height - y(d.value))
-      .attr('fill', fillColor)
-      .attr('stroke', fillColor)
+      .attr('fill', (d) => d.selected ? fillColor : fadedColor)
+      .attr('stroke', (d) => d.selected ? fillColor : fadedColor)
       .attr('stroke-width', '2')
       .style('opacity', 0)
       .transition(t)
