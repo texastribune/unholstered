@@ -236,9 +236,33 @@
     line-height: 1.4;
     margin: 0 0 1rem;
 
+    .swiper-slide:last-child & {
+      @include font-size(14);
+      text-align: center;
+
+      &.first {
+        @include font-size(18);
+        margin-bottom: 2em;
+      }
+
+      &.label {
+        font-size: 1em;
+        text-transform: uppercase;
+        margin-bottom: .25em;
+      }
+    }
+
     @media (min-width: 56.1875em) {
       @include font-size(24);
       line-height: 1.5;
+
+      .swiper-slide:last-child & {
+        @include font-size(16);
+
+        &.first {
+          @include font-size(20);
+        }
+      }
     }
   }
 }
