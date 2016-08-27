@@ -3,6 +3,7 @@
     margin: 2em auto;
     max-width: $text-width;
     width: 100%;
+    @include clearfix();
 
     @include breakpoint(tablet) {
         padding: 0 1em;
@@ -42,7 +43,7 @@
       font-weight: 500;
       font-size: 1.5em;
       margin-right: .25em;
-      color: $orange-red;
+      color: $goldenbrown;
     }
 
     .social {
@@ -64,11 +65,15 @@
         box-shadow: none;
         color: $white;
         display: inline-block;
-        width: 3em;
-        height: 3em;
-        margin-left: 1em;
-        padding: .75em;
+        width: 5em;
+        height: 2.5em;
+        margin: 0;
+        padding: .5em;
         text-align: center;
+
+        &:last-child {
+          margin-left: 2em;
+        }
 
         @include breakpoint(tablet) {
           display: block;
@@ -80,6 +85,7 @@
 
           &:last-child {
             margin-top: 1em;
+            margin-left: 0;
           }
         }
 
@@ -105,7 +111,6 @@
 
   &.tall-head {
     padding-bottom: 0;
-    margin-bottom: 0;
   }
 
   @include breakpoint(phablet) {
@@ -262,7 +267,7 @@
       display: block;
       height: 100%;
       width: 80%;
-      margin: 1.5em 10%;
+      margin: 1em 10%;
 
 
       .st9,
@@ -276,7 +281,7 @@
     font-family: $chathura;
     font-size: 1.5em;
     letter-spacing: .05em;
-    line-height: 1;
+    line-height: .9;
     text-transform: uppercase;
 
     @include breakpoint(phablet) {
@@ -288,17 +293,28 @@
     }
 
     .sty-header__date {
-      &:before {
-        content: "/";
-        padding-right: .25em;
-      }
+      display: block;
+      margin-top: .25em;
 
       .tall-head & {
-        display: block;
+        margin-bottom: .5em;
+      }
+
+      @include breakpoint(phablet) {
+        display: inline-block;
 
         &:before {
-          content: "";
-          padding-right: 0;
+          content: "/";
+          padding-right: .25em;
+        }
+
+        .tall-head & {
+          display: block;
+
+          &:before {
+            content: "";
+            padding-right: 0;
+          }
         }
       }
     }
@@ -309,7 +325,7 @@
   margin: 1em 0;
 
   @include breakpoint(mobile) {
-    margin: 1em -1em;
+    margin: 1em -10px;
   }
 
   &__img {
@@ -322,7 +338,7 @@
     font-size: .85em;
 
     @include breakpoint(mobile) {
-      margin: 0 1em;
+      margin: 0 .5em;
     }
   }
 }
@@ -335,7 +351,7 @@
   font-size: 1.35em;
   font-style: normal;
   letter-spacing: .02em;
-  margin: .5em 0;
+  margin: .5em;
   line-height: 0;
 }
 
@@ -422,13 +438,12 @@
   }
 
   .full & {
-    margin: 0 -3em;
-
     .quote {
       font-size: 1.75em;
 
       @include breakpoint(tablet) {
         font-size: 2em;
+        margin: 0 -3em;
       }
     }
   }
@@ -441,7 +456,7 @@
 .bullet-list {
   li {
     list-style-type: square;
-    color: $orange-red;
+    color: $light-blue;
     margin: .5em 0 0;
 
     span {
@@ -462,7 +477,7 @@
 .asterisk {
   width: .5em;
   height: .5em;
-  background-color: $orange-red;
+  background-color: $light-blue;
   display: inline-block;
   margin: 0 .35em 0.1em 0;
 }
