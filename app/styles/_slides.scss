@@ -247,12 +247,6 @@
         @include font-size(18);
         margin-bottom: 2em;
       }
-
-      &.label {
-        font-size: 1em;
-        text-transform: uppercase;
-        margin-bottom: .25em;
-      }
     }
 
     @media (min-width: 56.1875em) {
@@ -267,6 +261,12 @@
         }
       }
     }
+  }
+
+  .label {
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-bottom: .25em;
   }
 }
 
@@ -288,6 +288,33 @@
 
   @media (min-width: 56.1875em) {
     @include font-size(30);
+  }
+}
+
+.slide-prose__story {
+  text-align: center;
+}
+
+.slide-prose__related {
+  display: none;
+  margin-top: 4em;
+
+  li {
+    display: inline-block;
+    width: 18.5%;
+    padding-right: 1%;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    .thumbnail {
+      position: relative;
+    }
+  }
+
+  @media (min-width: 56.1875em) {
+    display: block;
   }
 }
 
