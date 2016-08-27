@@ -56,7 +56,7 @@
             <li id="nav-{{ story.id }}" class="navbar__story">
               <div class="navbar__text">
                 <span class="navbar__section">
-                  {% if data[story.id].section_number %}{{ data[story.id].section_title }}{% else %}Data{% endif %}
+                  {% if data[story.id].section_number %}{{ data[story.id].section_title }}{% else %}Findings{% endif %}
                 </span>
                 <h3 class="navbar__headline">{{ data[story.id].headline }}</h3>
               <div>
@@ -76,7 +76,7 @@
               </span>
               {{ data[story.id].section_title }}
               {% else %}
-                Data
+                Findings
               </span>
               {% endif %}
             </a>
