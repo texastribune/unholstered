@@ -104,7 +104,7 @@ function GridMaker (container, opts) {
         .attr('height', yWidth)
 
     // LABELS JOIN
-    const labels = labelsGroup.selectAll('text').data(sectionLabelData, (d) => d.label)
+    const labels = labelsGroup.selectAll('.label-group').data(sectionLabelData, (d) => d.label)
 
     // LABELS EXIT
     labels.exit()
@@ -114,8 +114,12 @@ function GridMaker (container, opts) {
       .remove()
 
     // LABELS ENTER
-    labels.enter()
-      .append('text').attr('class', 'grid-label')
+    const labelsEnter = labels.enter()
+      .append('g')
+      .attr('class', 'label-group')
+
+    labelsEnter.append('text')
+      .attr('class', 'grid-label')
       .attr('x', width / 2)
       .attr('y', (d) => y(Math.floor(d.value / cols)) / 2 + y(Math.floor(d.offset / cols)))
       .attr('dx', '.05em')
@@ -124,16 +128,18 @@ function GridMaker (container, opts) {
       .text((d) => `${d.value} ${d.label}`)
       .transition()
       .duration(750 + transitionTime)
-      .each(function () {
-        const dims = d3.select(this).node().getBBox()
 
-        labelsGroup.insert('rect', 'text')
-          .attr('class', 'grid-label-background')
-          .attr('x', dims.x - labelPadding)
-          .attr('y', dims.y - labelPadding)
-          .attr('width', dims.width + labelPadding * 2)
-          .attr('height', dims.height + labelPadding * 2)
-      })
+    labelsEnter.each(function () {
+      const sel = d3.select(this)
+      const dims = sel.select('text').node().getBBox()
+
+      sel.insert('rect', 'text')
+        .attr('class', 'grid-label-background')
+        .attr('x', dims.x - labelPadding)
+        .attr('y', dims.y - labelPadding)
+        .attr('width', dims.width + labelPadding * 2)
+        .attr('height', dims.height + labelPadding * 2)
+    })
 
     gLabel.text(`${data.length} total ${opts.label}`)
 
