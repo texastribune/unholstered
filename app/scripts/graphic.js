@@ -42,24 +42,36 @@ function graphic (container) {
           _isInitialized = true
           break
       }
-      if (isInitialized()) graphic.render(data)
+      if (isInitialized()) {
+        graphic.render(data)
+      }
     } else {
       graphic.update ? graphic.update(data) : graphic.render(data)
     }
   }
 
-  function remove () {
-    const t = d3.transition().duration(250)
+  function remove (instant = false) {
+    if (instant) {
+      containerEl.select('svg')
+        .style('opacity', 1e-6)
+        .remove()
 
-    containerEl.select('svg')
-      .transition(t)
-      .style('opacity', 1e-6)
-      .remove()
+      containerEl.select('div')
+        .style('opacity', 1e-6)
+        .remove()
+    } else {
+      const t = d3.transition().duration(250)
 
-    containerEl.select('div')
-      .transition(t)
-      .style('opacity', 1e-6)
-      .remove()
+      containerEl.select('svg')
+        .transition(t)
+        .style('opacity', 1e-6)
+        .remove()
+
+      containerEl.select('div')
+        .transition(t)
+        .style('opacity', 1e-6)
+        .remove()
+    }
 
     _isInitialized = false
   }

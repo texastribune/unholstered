@@ -1,6 +1,8 @@
 import Swiper from 'swiper'
 
+import debounce from './debounce'
 import graphic from './graphic'
+import resizeWatcher from './resizeWatcher'
 
 let STATE = {
   graphic: graphic('#graphic'),
@@ -124,6 +126,13 @@ function onReachEnd (s) {
     s.slideTo(0, 1000)
   })
 }
+
+function onResize () {
+  STATE.graphic.remove(true)
+  STATE.graphic.render(STATE.slideType, STATE.slideId, STATE.slideIndex, false)
+}
+
+resizeWatcher.add(debounce(onResize, 250))
 
 Swiper('#swiper-container', {
   direction: 'vertical',
