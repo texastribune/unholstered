@@ -1,42 +1,50 @@
-import $ from 'jquery'
+// elements
+const body = document.body
+const navbar = document.querySelector('.masthead-sections')
+const navbarDesktop = document.querySelector('.navbar--desktop')
+const navbarMobile = document.querySelector('.navbar--mobile')
+const navbarDesktopStories = navbarDesktop.querySelectorAll('.navbar__story')
+const navbarMobileStories = navbarMobile.querySelectorAll('.navbar__story')
+const desktopMastheadSection = document.querySelector('.masthead-sections__desktop')
+const mobileMastheadSection = document.querySelector('.masthead-sections__mobile')
 
-//opens navbar, sizes it and shows the right story
-$('.masthead-sections__desktop ul li').mouseenter(function () {
-  $('.navbar--desktop .navbar__story').hide()
+// states
+const isStory = body.classList.contains('story-body')
 
-  var navbarWidth = $('.masthead-sections').outerWidth(true);
-  $('.mainbar-body .navbar--desktop').css('width', navbarWidth);
-  $('.story-body .navbar--desktop').css('width', navbarWidth + 12);
+// desktop masthead listener for nav trigger
+desktopMastheadSection.addEventListener('mouseover', (e) => {
+  if (e.target === e.currentTarget || e.target.nodeName !== 'LI') return
 
-  $('.navbar--desktop #nav-' + this.id).show()
-  $('.navbar--desktop').show()
+  for (let i = 0; i < navbarDesktopStories.length; i++) {
+    navbarDesktopStories[i].classList.add('is-hidden')
+  }
+
+  const navbarWidth = navbar.getBoundingClientRect().width
+  navbarDesktop.style.width = isStory ? `${navbarWidth + 12}px` : `${navbarWidth}px`
+
+  const id = e.target.id
+  navbarDesktop.querySelector(`#nav-${id}`).classList.remove('is-hidden')
+  navbarDesktop.classList.remove('is-hidden')
 })
 
-//closes navbar if it goes out of ul but not into navbar.
-//if it goes into navbar then it waits to close until it leaves navbar
-$('.masthead-sections__desktop').mouseleave( function(e) {
-    if( $(e.toElement).hasClass('navbar__story') ) {
-        $('.navbar__story').mouseleave( function() {
-          $('.navbar--desktop').hide()
-        })
-    } else {
-      $('.navbar--desktop').hide()
-    }
+// desktop masthead trigger for when the mouse leaves the nav
+desktopMastheadSection.addEventListener('mouseleave', (e) => {
+  const nextEl = document.elementFromPoint(e.clientX, e.clientY)
+
+  if (nextEl.classList.contains('navbar__story')) {
+    const nextElLeave = nextEl.addEventListener('mouseleave', (e) => {
+      navbarDesktop.classList.add('is-hidden')
+      nextEl.removeEventListener('mouseleave', nextElLeave)
+    })
+  } else {
+    navbarDesktop.classList.add('is-hidden')
+  }
 })
 
-//simple mobile nav on click
-$('.masthead-sections__mobile').click(function () {
-  $('.navbar--mobile .navbar__story').toggle()
-  $('.navbar--mobile').toggle()
-})
+mobileMastheadSection.addEventListener('click', () => {
+  navbarMobile.classList.toggle('is-hidden')
 
-//resize to switch from mobile to desktop nav if you resize
-$(window).resize(function() {
-  var windowWidth = $(window).width()
-  var mobilenav = $('.navbar--mobile').css('display') == 'block' ? true : false
-
-  if(windowWidth > 767 && mobilenav ) {
-    $('.navbar--mobile .navbar__story').toggle()
-    $('.navbar--mobile').toggle()
+  for (let i = 0; i < navbarMobileStories.length; i++) {
+    navbarMobileStories[i].classList.toggle('is-hidden')
   }
 })

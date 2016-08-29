@@ -1,24 +1,34 @@
-import $ from 'jquery'
+import resizeWatcher from './resizeWatcher'
+import scrollWatcher from './scrollWatcher'
 
-//swaps color of masthead sections when you scroll past the header block
-var storyHeaderHt = $('.sty-header').height()
+// constants
+const bgClassPrefix = 'bg-'
 
-var styHeader = $('.story-body').attr('class')
-var bgColor = '';
-if (styHeader) {
-  bgColor = styHeader.split(" ")
-}
+// elements
+const body = document.body
+const storyHeader = document.querySelector('.sty-header')
 
-$(window).on('scroll', function() {
-    var y_scroll_pos = window.pageYOffset;
+// store
+const backgroundColorClass = body.className.split(' ').filter((cls) => cls.substr(0, bgClassPrefix.length) === bgClassPrefix)[0]
+let storyHeaderHeight = storyHeader.getBoundingClientRect().height
+let yOffset = window.scrollY || window.pageYOffset
 
-    if(y_scroll_pos > storyHeaderHt) {
-      $('.story-body').removeClass((function (index, css) {
-        return (css.match (/(^|\s)bg-\S+/g) || []).join(' ');
-      }))
-    }
+resizeWatcher.add((d) => {
+  storyHeaderHeight = storyHeader.getBoundingClientRect().height
 
-    if(y_scroll_pos < storyHeaderHt) {
-      $('.story-body').addClass(bgColor[1]);
-    }
-});
+  if (yOffset > storyHeaderHeight) {
+    body.classList.remove(backgroundColorClass)
+  } else {
+    body.classList.add(backgroundColorClass)
+  }
+})
+
+scrollWatcher.add((d) => {
+  yOffset = d.offset
+
+  if (yOffset > storyHeaderHeight) {
+    body.classList.remove(backgroundColorClass)
+  } else {
+    body.classList.add(backgroundColorClass)
+  }
+})

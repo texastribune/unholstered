@@ -240,24 +240,28 @@
     margin: 0 0 1rem;
 
     .swiper-slide:last-child & {
-      @include font-size(14);
-      text-align: center;
+      @include font-size(16);
+      line-height: 1.5;
 
       &.first {
-        @include font-size(18);
-        margin-bottom: 2em;
+        @include font-size(20);
+        margin-bottom: 1em;
+      }
+
+      &.first,
+      &.label {
+        text-align: center;
       }
     }
 
     @media (min-width: 56.1875em) {
       @include font-size(24);
-      line-height: 1.5;
 
       .swiper-slide:last-child & {
-        @include font-size(16);
+        @include font-size(18);
 
         &.first {
-          @include font-size(20);
+          @include font-size(24);
         }
       }
     }

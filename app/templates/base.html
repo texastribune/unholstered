@@ -49,11 +49,11 @@
       </div>
     </div>
     {% block swiper_bar %}{% endblock %}
-    <nav class="navbar navbar--desktop">
+    <nav class="navbar navbar--desktop is-hidden">
       <ul>
         {% for story in data.meta.storylist %}
           <a href="{{ static( story.slug ) }}">
-            <li id="nav-{{ story.id }}" class="navbar__story">
+            <li id="nav-{{ story.id }}" class="navbar__story is-hidden">
               <div class="navbar__text">
                 <span class="navbar__section">
                   {% if data[story.id].section_number %}{{ data[story.id].section_title }}{% else %}Findings{% endif %}
@@ -65,10 +65,10 @@
         {% endfor %}
       </ul>
     </nav>
-    <nav class="navbar navbar--mobile">
+    <nav class="navbar navbar--mobile is-hidden">
       <ul>
         {% for story in data.meta.storylist %}
-          <li id="nav-{{ story.id }}" class="navbar__story">
+          <li id="nav-{{ story.id }}" class="navbar__story is-hidden">
             <a href="{{ static( story.slug ) }}">
               <span class="navbar__sectionnum">
               {% if data[story.id].section_number %}

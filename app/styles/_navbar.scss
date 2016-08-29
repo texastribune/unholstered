@@ -1,7 +1,6 @@
 .navbar {
   background: $white;
   border-bottom: 2px solid $black;
-  display: none;
   width: 100%;
   @include clearfix();
 
@@ -52,7 +51,6 @@
   }
 
   &__story {
-    display: none;
     padding: 1em;
     @include clearfix();
 
@@ -73,5 +71,11 @@
         border-top: 0;
       }
     }
+  }
+}
+
+.navbar--mobile {
+  @media (min-width: 47.9375em) {
+    display: none;
   }
 }
