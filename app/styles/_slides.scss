@@ -16,7 +16,7 @@
 }
 
 .graphic-container {
-  height: 48%;
+  height: 49%;
   left: 0;
   pointer-events: none; // allow things to be clickable again
   position: absolute;
@@ -145,7 +145,7 @@
 }
 
 .slide-content--graphic {
-  height: 49%;
+  height: 48%;
 
   @media (min-width: 56.1875em) {
     height: auto;
@@ -274,8 +274,8 @@
   @include font-size(18);
   font-family: $rubik;
   letter-spacing: .02em;
-  line-height: 1.5;
-  margin: 0 0 1rem;
+  line-height: 1.38;
+  margin: 0 0 .75rem;
 
   .highlight {
     font-weight: 500;
@@ -288,6 +288,8 @@
 
   @media (min-width: 56.1875em) {
     @include font-size(30);
+    line-height: 1.5;
+    margin: 0 0 1rem;
   }
 }
 
@@ -450,9 +452,13 @@ text.label {
 }
 
 .highlight--big {
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 500;
   line-height: 0;
+
+  @media (min-width: 56.1875em) {
+    font-size: 1.5em;
+  }
 }
 
 .swiper-pagination-progressbar {

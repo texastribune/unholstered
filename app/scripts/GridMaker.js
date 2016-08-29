@@ -9,7 +9,7 @@ function GridMaker (container, opts) {
   const colorScale = opts.colorScale || { base: d3.color('rgba(204, 186, 165, 1)'), scale: [] }
 
   const margin = {
-    top: isMobile ? 40 : 60,
+    top: isMobile ? 30 : 60,
     right: isMobile ? 30 : 40,
     bottom: isMobile ? 30 : 60 + opts.extraMarginBottom,
     left: isMobile ? 30 : 40
@@ -143,7 +143,7 @@ function GridMaker (container, opts) {
 
     gLabel.text(`${data.length} total ${opts.label}`)
 
-    gLabel.style('top', isMobile ? `${margin.top * 0.45}px` : `${height + margin.top + yWidth / 2}px`)
+    gLabel.style('top', isMobile ? `${margin.top * 0.35}px` : `${height + margin.top + (yWidth * 0.1)}px`)
       .transition()
       .duration(750 + transitionTime)
       .style('opacity', 1)
