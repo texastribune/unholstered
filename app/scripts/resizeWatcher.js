@@ -8,13 +8,13 @@ import raf from './raf'
  */
 function resizeWatcher () {
   var observer = new EventObserver()
-  // var width = 0
-  // var height = 0
+  var width = 0
+  var height = 0
   var active = false
 
   function onWindowResize () {
-    // width = window.innerWidth || document.documentElement.clientWidth
-    // height = window.innerHeight || document.documentElement.clientHeight
+    width = window.innerWidth || document.documentElement.clientWidth
+    height = window.innerHeight || document.documentElement.clientHeight
 
     requestTick()
   }
@@ -27,7 +27,7 @@ function resizeWatcher () {
   }
 
   function update () {
-    observer.trigger('resize', null)
+    observer.trigger('resize', { width: width, height: height })
 
     active = false
   }
