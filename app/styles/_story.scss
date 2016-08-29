@@ -351,11 +351,19 @@
   font-size: 1.35em;
   font-style: normal;
   letter-spacing: .02em;
-  margin: .5em;
   line-height: 0;
+  }
+
+.image__credit {
+  margin: .5em 0;
+
+  @include breakpoint(mobile) {
+    margin: .5em;
+  }
 }
 
 .illustration-credit {
+  margin: .5em;
   position: absolute;
   right: 0.25em;
 }
@@ -438,12 +446,15 @@
   }
 
   .full & {
+    @include breakpoint(tablet) {
+      margin: 0 -3em;
+    }
+
     .quote {
-      font-size: 1.75em;
+      font-size: 1.75rem;
 
       @include breakpoint(tablet) {
         font-size: 2em;
-        margin: 0 -3em;
       }
     }
   }

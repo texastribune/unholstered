@@ -78,7 +78,7 @@
                     <a href="{{ static( story.slug ) }}">
                       <figure class="image thumbnail {{ data[story.id].background }}">
                         <img class="image__img" src="{{ static('assets/images/')}}{{ story.id }}.png">
-                        <div class="read-more__section">{{ story.id }}</div>
+                        <div class="read-more__section">{{ data[story.id].section_title }}</div>
                       </figure>
                     </a>
                   </li>
