@@ -28,7 +28,7 @@
 <section class="wrapper">
   <article class="wrapper__story">
     <div class="social">
-      <a class="social__icon" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text, 'Unholstered') }}">
+      <a class="social__icon" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}">
         {{ inject('assets/images/twitter.svg') }}
       </a>
       <a class="social__icon" href="{{ shares.facebook(staticAbsolute(context.slug), staticAbsolute(context.slug)) }}"  target="_blank">
