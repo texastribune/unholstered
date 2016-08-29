@@ -13,12 +13,6 @@
         padding: 0;
     }
 
-    a {
-      box-shadow: $light-blue 0 -2px 0 inset;
-      color: $black;
-      text-decoration: none;
-    }
-
     p,
     ul {
       font-family: $pt;
@@ -35,6 +29,17 @@
 
       &.disclosure {
         font-style: italic;
+      }
+
+      a {
+        box-shadow: $light-blue 0 -2px 0 inset;
+        color: $black;
+        text-decoration: none;
+
+        &:hover {
+          box-shadow: none;
+          background-color: $light-blue;
+        }
       }
     }
 
@@ -218,6 +223,11 @@
       color: $black;
       display: inline-block;
       text-decoration: none;
+
+      &:hover {
+        box-shadow: none;
+        background-color: $light-blue;
+      }
     }
   }
 

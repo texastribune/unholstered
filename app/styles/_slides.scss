@@ -49,6 +49,12 @@
     a {
       box-shadow: $white 0 -2px 0 inset;
       color: $white;
+
+      &:hover {
+        box-shadow: none;
+        color: $navy;
+        background-color: $white;
+      }
     }
   }
 

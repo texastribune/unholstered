@@ -26,6 +26,12 @@
     a {
       color: $light-blue;
       box-shadow: $light-blue 0 -2px 0 inset;
+
+      &:hover {
+        box-shadow: none;
+        color: $white;
+        background-color: $light-blue;
+      }
     }
   }
 
@@ -44,6 +50,11 @@
 
     a {
       color: $light-blue;
+
+      &:hover {
+        color: $white;
+        background: $light-blue;
+      }
     }
 
     @include breakpoint(nonmobile) {
@@ -70,6 +81,10 @@
 
       path {
         fill: $light-blue;
+
+        &:hover {
+          fill: $white;
+        }
       }
     }
 
@@ -106,6 +121,11 @@
       color: $white;
       display: inline-block;
       text-decoration: none;
+
+      &:hover {
+        box-shadow: none;
+        background: $light-blue;
+      }
     }
 
     &__name {
@@ -134,7 +154,6 @@
 
   a {
     color: $white;
-    text-decoration: underline;
   }
 
   &__left {
@@ -177,7 +196,6 @@
 
     a {
       color: $goldenbrown;
-      text-decoration: none;
     }
   }
 
