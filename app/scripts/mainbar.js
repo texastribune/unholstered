@@ -23,14 +23,17 @@ const percentEventCache = {}
 // global setting
 let animationTimeout = null
 const bgClassPrefix = 'bg-'
+let windowHeight
 
 // elements
 const body = document.body
+const mainbarContainer = document.querySelector('.mainbar-container')
 const graphicContainer = document.querySelector('.graphic-container')
 const nextButton = document.querySelector('#next-button')
 const nextButtonText = nextButton.querySelector('.js-next-button-text')
 const prevButton = document.querySelector('#prev-button')
 const replayButton = document.querySelector('#replay-button')
+const swiperSlides = document.querySelectorAll('.swiper-slide')
 
 // fires on swiper init
 function onInit (s) {
@@ -181,6 +184,16 @@ replayButton.addEventListener('click', () => {
 function onResize () {
   STATE.graphic.remove(true)
   STATE.graphic.render(STATE.slideType, STATE.slideId, STATE.slideIndex, false)
+
+  windowHeight = window.innerHeight
+
+  mainbarContainer.style['max-height'] = Math.min(windowHeight, document.documentElement.clientHeight) + 'px'
+
+  for (let i = 0; i < swiperSlides.length; i++) {
+    swiperSlides[i].style['max-height'] = `${windowHeight}px`
+  }
+
+  swiper.update(true)
 }
 
 resizeWatcher.add(debounce(onResize, 250))
@@ -201,3 +214,13 @@ const swiper = Swiper('#swiper-container', {
   onReachBeginning,
   onReachEnd
 })
+
+windowHeight = window.innerHeight
+
+mainbarContainer.style['max-height'] = Math.min(windowHeight, document.documentElement.clientHeight) + 'px'
+
+for (let i = 0; i < swiperSlides.length; i++) {
+  swiperSlides[i].style['max-height'] = `${windowHeight}px`
+}
+
+swiper.update(true)
