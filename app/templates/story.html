@@ -28,10 +28,10 @@
 <section class="wrapper">
   <article class="wrapper__story">
     <div class="social">
-      <a class="social__icon" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}">
+      <a class="social__icon" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}" ga-on="click" ga-hit-type='social' ga-social-network="Twitter" ga-social-action="tweet" ga-social-url="{{ staticAbsolute(context.slug) }}" target="_blank">
         {{ inject('assets/images/twitter.svg') }}
       </a>
-      <a class="social__icon" href="{{ shares.facebook(staticAbsolute(context.slug), staticAbsolute(context.slug)) }}"  target="_blank">
+      <a class="social__icon" href="{{ shares.facebook(staticAbsolute(context.slug), staticAbsolute(context.slug)) }}" ga-on="click" ga-hit-type='social' ga-social-network="Facebook" ga-social-action="share" ga-social-url="{{ staticAbsolute(context.slug) }}" target="_blank">
         {{ inject('assets/images/facebook.svg') }}
       </a>
     </div>

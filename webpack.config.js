@@ -7,6 +7,7 @@ module.exports = {
     mainbar: './mainbar.js',
     story: './story.js',
     commons: [
+      './polyfills.js',
       './nav.js',
       './tracking.js'
     ]

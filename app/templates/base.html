@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Unholstered | The Texas Tribune</title>
+  <title>{{ context.headline }} | Unholstered</title>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@texastribune">
   <meta name="twitter:creator" content="@texastribune">
@@ -120,10 +120,10 @@
             Learn more <a href="{{ static( 'about' ) }}">about this project and download our data</a>.</p>
         <div class="footer__social">
           <ul class="share-links">
-            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}">
+            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}" ga-on="click" ga-hit-type='social' ga-social-network="Twitter" ga-social-action="tweet" ga-social-url="{{ staticAbsolute(context.slug) }}" target="_blank">
               {{ inject('assets/images/twitter.svg') }}
             </a></li>
-            <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(staticAbsolute(context.slug), staticAbsolute(context.slug)) }}"  target="_blank">
+            <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(staticAbsolute(context.slug), staticAbsolute(context.slug)) }}" ga-on="click" ga-hit-type='social' ga-social-network="Facebook" ga-social-action="share" ga-social-url="{{ staticAbsolute(context.slug) }}" target="_blank">
               {{ inject('assets/images/facebook.svg') }}
             </a></li>
           </ul>
@@ -176,7 +176,7 @@
         <li><a href="https://www.texastribune.org/terms-of-service/">Terms of Service</a></li>
         <li><a href="https://www.texastribune.org/ethics/">Code of Ethics</a></li>
         <li><a href="https://www.texastribune.org/privacy/">Privacy Policy</a></li>
-        <li class="donate"><a href="https://support.texastribune.org/">Donate</a></li>
+        <li class="donate"><a class="js-donate-outbound" href="https://support.texastribune.org/">Donate</a></li>
       </ul>
     </div>
   </footer>
