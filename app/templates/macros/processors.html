@@ -35,9 +35,9 @@
 </figure>
 {% endmacro %}
 
-{% macro video(value) %}
+{% macro video(value, context) %}
 <figure class="video image{% if value.align %} inline--{{ value.align }}{% else %} image--full{% endif %}">
-  <iframe width="100%" height="358" src="{{ value.src_url }}" frameborder="0" allowfullscreen></iframe>
+  <iframe id="video-player" width="100%" height="358" src="{{ value.src_url }}?enablejsapi=1&origin={{ staticAbsolute(context.slug)|urlencode }}" frameborder="0" allowfullscreen></iframe>
   {% if value.credit %}<cite class="image__credit">{{ value.credit }}</cite>{% endif %}
   <figcaption class="image__caption">{{ value.caption }}</figcaption>
 </figure>
