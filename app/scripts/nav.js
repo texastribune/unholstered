@@ -20,7 +20,7 @@ desktopMastheadSection.addEventListener('mouseover', (e) => {
   }
 
   const navbarWidth = navbar.scrollWidth
-  navbarDesktop.style.width = isStory ? `${navbarWidth + 14}px` : `${navbarWidth}px`
+  navbarDesktop.style.width = isStory ? `${navbarWidth + 14}px` : `${navbarWidth + 3}px`
 
   const id = e.target.id
   navbarDesktop.querySelector(`#nav-${id}`).classList.remove('is-hidden')
