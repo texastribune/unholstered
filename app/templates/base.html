@@ -8,16 +8,32 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@texastribune">
   <meta name="twitter:creator" content="@texastribune">
-  <meta property="og:url" content="{{ staticAbsolute( context.slug ) }}">
+  <meta property="og:url" content="{{ staticAbsolute(context.slug) }}">
   <meta property="og:title" content="{{ context.headline }} | Unholstered">
   <meta property="og:type" content="article">
+  <meta property="article:publisher" content="https://www.facebook.com/texastribune">
+  <meta property="article:published_time" content="2016-08-30">
   <meta property="og:description" content="{{ context.summary }}">
   <meta property="og:site_name" content="The Texas Tribune">
   <meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png') }}">
   <meta property="fb:app_id" content="154122474650943">
   <link href="https://fonts.googleapis.com/css?family=Chathura:800|PT+Serif:400,700|Rubik:400,500" rel="stylesheet">
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;</script>
   <script src="{{ static('scripts/adLoader.js') }}"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "{{ context.headline }}",
+    "url": "{{ staticAbsolute(context.slug) }}",
+    "thumbnailUrl": "{{ staticAbsolute('assets/images/' + context.id + '.png') }}",
+    "dateCreated": "2016-08-30T06:00:00-06:00",
+    "articleSection": ["front-page", "law-and-order"],
+    "creator": ["Jolie McCullough", "Alexa Ura", "Johnathan Silver", "Ryan Murphy"]
+  }
+  </script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
   <header class="header">
@@ -172,24 +188,7 @@
   {% block scripts %}
   <script src="{{ static('scripts/commons.js') }}"></script>
   {% endblock scripts %}
-  <script async src='https://www.google-analytics.com/analytics.js'></script>
-  <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-9827490-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "headline": "{{ context.headline }}",
-        "url": "{{ static( context.slug ) }}",
-        "thumbnailUrl": "{{ staticAbsolute('assets/images/' + context.id + '.png') }}",
-        "dateCreated": "2016-08-30T06:00:00-06:00",
-        "articleSection": ["front-page", "law-and-order"],
-        "creator": ["Jolie McCullough", "Alexa Ura", "Johnathan Silver"]
-      }
-  </script>
+  {% block analytics %}
   <!-- START Parse.ly Include: Standard -->
   <div id="parsely-root" style="display: none">
     <span id="parsely-cfg" data-parsely-site="texastribune.org"></span>
@@ -206,5 +205,14 @@
   })("script", "parsely", document);
   </script>
   <!-- END Parse.ly Include: Standard -->
+  <script>
+    // MIP Google Tag
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','mipData','GTM-NBBG35');
+  </script>
+  {% endblock analytics %}
 </body>
 </html>
