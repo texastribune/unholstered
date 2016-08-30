@@ -175,6 +175,11 @@
     a {
       color: $black;
       box-shadow: $white 0 -2px 0 inset;
+
+      &:hover {
+        box-shadow: none;
+        background-color: $white;
+      }
     }
 
     .sty-header__headline  {
@@ -188,6 +193,11 @@
     a {
       color: $black;
       box-shadow: $white 0 -2px 0 inset;
+
+      &:hover {
+        box-shadow: none;
+        background-color: $white;
+      }
     }
 
     .sty-header__headline  {
