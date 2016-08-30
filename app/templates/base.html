@@ -26,8 +26,8 @@
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     "headline": "{{ context.headline }}",
-    "url": "{{ staticAbsolute(context.slug) }}",
-    "thumbnailUrl": "{{ staticAbsolute('assets/images/' + context.id + '.png', true) }}",
+    "url": "https://apps.texastribune.org/unholstered{{ '' if context.slug == '/' else '/' }}{{ context.slug }}{{ '' if context.slug == '/' else '/' }}",
+    "thumbnailUrl": "https://apps.texastribune.org/unholstered/assets/images/{{ context.id }}.png",
     "dateCreated": "2016-08-30T06:00:00-06:00",
     "articleSection": ["front-page", "law-and-order"],
     "creator": ["Jolie McCullough", "Alexa Ura", "Johnathan Silver", "Ryan Murphy"]

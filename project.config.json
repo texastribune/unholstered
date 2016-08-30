@@ -1,5 +1,5 @@
 {
-  "bucket": "apps.texastribune.org",
+  "bucket": "moose.texastribune.org",
   "folder": "unholstered",
   "rawAssetsFolder": "raw_assets",
   "dataDir": "./data",
