@@ -12,11 +12,12 @@ function scrollWatcher () {
   var active = false
 
   function onWindowScroll () {
-    lastScrollPosition = window.scrollY || window.pageYOffset
     requestTick()
   }
 
   function requestTick () {
+    lastScrollPosition = window.scrollY || window.pageYOffset
+
     if (!active) {
       raf(update)
       active = true
