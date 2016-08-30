@@ -24,7 +24,7 @@ function graphic (container) {
         case 'grid':
           graphic = GridMaker(containerEl, {
             colorScale: colorScales[graphicId],
-            extraMarginBottom: graphicId === 'officers' ? 40 : 0,
+            extraMarginBottom: graphicId === 'officers' ? 45 : 0,
             label: graphicId === 'officers' ? 'officers' : 'shootings by police'
           })
           _isInitialized = true
