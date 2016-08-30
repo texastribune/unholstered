@@ -29,7 +29,9 @@ env.addGlobal('static', (p) => {
 /*
 Creates an absolute path URL.
  */
-env.addGlobal('staticAbsolute', (p, noSlash = false) => {
+env.addGlobal('staticAbsolute', (p, noSlash) => {
+  noSlash = noSlash || false
+
   if (p === '/') {
     noSlash = true
     p = ''
