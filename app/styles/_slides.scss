@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.swiper-progress {
+  pointer-events: none;
+}
+
 .graphic-container {
   height: 49%;
   left: 0;
