@@ -29,7 +29,14 @@ env.addGlobal('static', (p) => {
 /*
 Creates an absolute path URL.
  */
-env.addGlobal('staticAbsolute', (p) => url.resolve(PROJECT_URL, p) + '/')
+env.addGlobal('staticAbsolute', (p, noSlash = false) => {
+  if (p === '/') {
+    noSlash = true
+    p = ''
+  }
+
+  return url.resolve(PROJECT_URL, p === '/' ? '' : p) + (noSlash ? '' : '/')
+})
 
 /*
 Lets you inject the contents of a file into a template. Good for things like
