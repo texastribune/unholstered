@@ -4,6 +4,7 @@ import 'autotrack'
 
 ga('create', 'UA-9827490-1', 'auto')
 
+ga('require', 'linkid')
 ga('require', 'eventTracker')
 
 ga('require', 'cleanUrlTracker', {

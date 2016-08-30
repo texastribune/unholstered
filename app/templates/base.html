@@ -42,7 +42,7 @@
         <span class="trib-logo mobile">{{ inject('assets/images/tt-bug.svg') }}</span>
       </a>
       <div class="masthead-sections {{ context.background }}">
-        <div class="masthead-sections__desktop">
+        <div id="masthead-sections-desktop" class="masthead-sections__desktop">
           Section:
           <ul>
             {% for story in data.meta.storylist %}
@@ -64,7 +64,7 @@
       </div>
     </div>
     {% block swiper_bar %}{% endblock %}
-    <nav class="navbar navbar--desktop is-hidden">
+    <nav id="navbar-desktop" class="navbar navbar--desktop is-hidden">
       <ul>
         {% for story in data.meta.storylist %}
           <a href="{{ static( story.slug ) }}">
@@ -80,7 +80,7 @@
         {% endfor %}
       </ul>
     </nav>
-    <nav class="navbar navbar--mobile is-hidden">
+    <nav id="navbar-mobile" class="navbar navbar--mobile is-hidden">
       <ul>
         {% for story in data.meta.storylist %}
           <li id="nav-{{ story.id }}" class="navbar__story is-hidden">
@@ -119,7 +119,7 @@
           project offers the most detailed look at the state of police shootings in Texas.
             Learn more <a href="{{ static( 'about' ) }}">about this project and download our data</a>.</p>
         <div class="footer__social">
-          <ul class="share-links">
+          <ul id="footer-socials" class="share-links">
             <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}" ga-on="click" ga-hit-type='social' ga-social-network="Twitter" ga-social-action="tweet" ga-social-url="{{ staticAbsolute(context.slug) }}" target="_blank">
               {{ inject('assets/images/twitter.svg') }}
             </a></li>

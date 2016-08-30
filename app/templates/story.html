@@ -13,9 +13,6 @@
 <section class="sty-header {{ context.header_type }}">
   <div class="sty-header__wrapper wrapper">
     <div class="sty-header__top-text">
-      <!-- <div class="sty-header__bar">
-        Section {{ context.section_number }}
-      </div> -->
       <h1 class="sty-header__headline">{{ context.headline }}</h1>
     </div>
     <figure class="sty-header__art image">
@@ -27,7 +24,7 @@
 <div class="illustration-credit">Illustration by {{ context.illustration.credit }}</div>
 <section class="wrapper">
   <article class="wrapper__story">
-    <div class="social">
+    <div id="story-social" class="social">
       <a class="social__icon" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}" ga-on="click" ga-hit-type='social' ga-social-network="Twitter" ga-social-action="tweet" ga-social-url="{{ staticAbsolute(context.slug) }}" target="_blank">
         {{ inject('assets/images/twitter.svg') }}
       </a>
@@ -56,7 +53,7 @@
           <div class="read-more__section">Findings</div>
         </figure>
       </a>
-      <h3 class="read-more__headline"><a href="{{ static( data.findings.slug ) }}">{{ data.findings.headline }}</a></h3>
+      <h3 class="read-more__headline"><a href="{{ static( data.findings.slug) }}">{{ data.findings.headline }}</a></h3>
       <p>{{ data.findings.summary }}</p>
     </div>
     {{ related(context.related, data) }}
