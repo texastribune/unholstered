@@ -16,7 +16,7 @@
   <meta property="og:description" content="{{ context.summary }}">
   <meta property="og:description" content="{{ context.facebook_text }}">
   <meta property="og:site_name" content="The Texas Tribune">
-  <meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png') }}">
+  <meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png', true) }}">
   <meta property="fb:app_id" content="154122474650943">
   <link href="https://fonts.googleapis.com/css?family=Chathura:800|PT+Serif:400,700|Rubik:400,500" rel="stylesheet">
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
@@ -29,7 +29,7 @@
     "@type": "NewsArticle",
     "headline": "{{ context.headline }}",
     "url": "{{ staticAbsolute(context.slug) }}",
-    "thumbnailUrl": "{{ staticAbsolute('assets/images/' + context.id + '.png') }}",
+    "thumbnailUrl": "{{ staticAbsolute('assets/images/' + context.id + '.png', true) }}",
     "dateCreated": "2016-08-30T06:00:00-06:00",
     "articleSection": ["front-page", "law-and-order"],
     "creator": ["Jolie McCullough", "Alexa Ura", "Johnathan Silver", "Ryan Murphy"]
