@@ -9,7 +9,7 @@ function GridMaker (container, opts) {
   const colorScale = opts.colorScale || { base: d3.color('rgba(204, 186, 165, 1)'), scale: [] }
 
   const margin = {
-    top: isMobile ? 30 : 60,
+    top: isMobile ? 35 : 60,
     right: isMobile ? 30 : 40,
     bottom: isMobile ? 30 : 60 + opts.extraMarginBottom,
     left: isMobile ? 30 : 40
