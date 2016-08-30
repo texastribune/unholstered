@@ -1,3 +1,7 @@
+import './adLoader'
+import './gascrolldepth'
+import './YouTubeTracker'
+
 import resizeWatcher from './resizeWatcher'
 import scrollWatcher from './scrollWatcher'
 

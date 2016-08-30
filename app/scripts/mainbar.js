@@ -1,9 +1,12 @@
+/* global ga */
+
 import Swiper from 'swiper'
 
 import debounce from './debounce'
 import graphic from './graphic'
 import resizeWatcher from './resizeWatcher'
 
+// global states
 let STATE = {
   graphic: graphic('#graphic'),
   isUpdate: false,
@@ -11,6 +14,11 @@ let STATE = {
   slideId: null,
   slideIndex: null
 }
+
+// event tracking
+const eventPercents = [10, 25, 50, 75, 90, 100]
+const absoluteEventCache = {}
+const percentEventCache = {}
 
 // global setting
 let animationTimeout = null
@@ -23,6 +31,20 @@ const nextButton = document.querySelector('#next-button')
 const nextButtonText = nextButton.querySelector('.js-next-button-text')
 const prevButton = document.querySelector('#prev-button')
 const replayButton = document.querySelector('#replay-button')
+
+// fires on swiper init
+function onInit (s) {
+  const normalizedIndex = s.activeIndex + 1
+
+  absoluteEventCache[normalizedIndex] = true
+
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'Interactive',
+    eventAction: 'Absolute - Slide Depth',
+    eventLabel: normalizedIndex
+  })
+}
 
 // all actions that take place when a slide change BEGINS
 function onSlideChangeStart (s) {
@@ -81,6 +103,7 @@ function onSlideChangeStart (s) {
 // all actions that take place when a slide change ENDS
 function onSlideChangeEnd (s) {
   const activeIndex = s.activeIndex
+  const numSlides = s.slides.length
 
   // check for inverted graphic placement and apply class if needed
   if (STATE.slideId === 'officers') {
@@ -105,6 +128,34 @@ function onSlideChangeEnd (s) {
       icon.classList.add('icon--animated')
     }, 1000 * 30)
   }
+
+  // manage absolute slide depth events
+  const normalizedIndex = s.activeIndex + 1
+  const percentComplete = normalizedIndex / numSlides * 100
+
+  if (!absoluteEventCache[normalizedIndex]) {
+    absoluteEventCache[normalizedIndex] = true
+
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Interactive',
+      eventAction: 'Absolute - Slide Depth',
+      eventLabel: `${normalizedIndex}/${numSlides}`
+    })
+  }
+
+  eventPercents.forEach((p) => {
+    if (percentComplete >= p && !percentEventCache[p]) {
+      percentEventCache[p] = true
+
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Interactive',
+        eventAction: 'Percent - Slide Depth',
+        eventLabel: `${p}%`
+      })
+    }
+  })
 }
 
 // all actions that take place when the FIRST slide is reached
@@ -118,14 +169,14 @@ function onReachBeginning (s) {
 function onReachEnd (s) {
   nextButton.classList.add('is-hidden')
   replayButton.classList.remove('is-hidden')
-
-  replayButton.addEventListener('click', () => {
-    nextButton.classList.remove('is-hidden')
-    replayButton.classList.add('is-hidden')
-
-    s.slideTo(0, 1000)
-  })
 }
+
+replayButton.addEventListener('click', () => {
+  nextButton.classList.remove('is-hidden')
+  replayButton.classList.add('is-hidden')
+
+  swiper.slideTo(0, 1000)
+})
 
 function onResize () {
   STATE.graphic.remove(true)
@@ -134,7 +185,7 @@ function onResize () {
 
 resizeWatcher.add(debounce(onResize, 250))
 
-Swiper('#swiper-container', {
+const swiper = Swiper('#swiper-container', {
   direction: 'vertical',
   keyboardControl: true,
   mousewheelControl: true,
@@ -144,6 +195,7 @@ Swiper('#swiper-container', {
   paginationType: 'progress',
   simulateTouch: true,
   speed: 500,
+  onInit,
   onSlideChangeStart,
   onSlideChangeEnd,
   onReachBeginning,

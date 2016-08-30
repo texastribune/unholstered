@@ -1,8 +1,8 @@
 {% import 'macros/processors.html' as processors %}
 
-{% macro prose(content) %}
+{% macro prose(content, context, data) %}
 {% for item in content %}
-{{ processors[item.type](item.value) }}
+{{ processors[item.type](item.value, context, data) }}
 {% endfor %}
 {% endmacro %}
 
