@@ -1,3 +1,7 @@
+.mainbar-body {
+  overflow: hidden;
+}
+
 // sets up the full width/height mainbar container, where all slides and
 // graphics live
 .mainbar-container {
@@ -12,6 +16,8 @@
 // tells the swiper container to fill the space provided by .mainbar-container
 .swiper-container {
   height: 100%;
+  max-height: 100%;
+  max-width: 100%;
   width: 100%;
 }
 
@@ -43,8 +49,12 @@
   align-items: center;
   color: $white;
   display: flex;
+  height: 100%;
   justify-content: center;
+  max-height: 100%;
+  max-width: 100%;
   transition: background-color 0.5s, color 0.5s;
+  width: 100%;
 
   .bg-lightblue & {
     background-color: $light-blue;
