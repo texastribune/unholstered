@@ -26,6 +26,12 @@
     a {
       color: $light-blue;
       box-shadow: $light-blue 0 -2px 0 inset;
+
+      &:hover {
+        box-shadow: none;
+        color: $white;
+        background-color: $light-blue;
+      }
     }
   }
 
@@ -35,24 +41,29 @@
     @include clearfix();
   }
 
-  &__hashtag {
-    font-family: 'Rubik', serif;
-    font-size: 1.35em;
-    line-height: 1.4;
-    text-align: center;
-    text-transform: uppercase;
-
-    a {
-      color: $light-blue;
-    }
-
-    @include breakpoint(nonmobile) {
-      float: left;
-      padding-right: 1em;
-      text-align: right;
-      width: 50%;
-    }
-  }
+  // &__hashtag {
+  //   font-family: 'Rubik', serif;
+  //   font-size: 1.35em;
+  //   line-height: 1.4;
+  //   text-align: center;
+  //   text-transform: uppercase;
+  //
+  //   a {
+  //     color: $light-blue;
+  //
+  //     &:hover {
+  //       color: $white;
+  //       background: $light-blue;
+  //     }
+  //   }
+  //
+  //   @include breakpoint(nonmobile) {
+  //     float: left;
+  //     padding-right: 1em;
+  //     text-align: right;
+  //     width: 50%;
+  //   }
+  // }
 
   .share-links {
     margin: 1em 0;
@@ -70,15 +81,20 @@
 
       path {
         fill: $light-blue;
+
+        &:hover {
+          fill: $white;
+          cursor: pointer;
+        }
       }
     }
 
-    @include breakpoint(nonmobile) {
-      float: right;
-      margin: 0;
-      text-align: left;
-      width: 50%;
-    }
+    // @include breakpoint(nonmobile) {
+    //   float: right;
+    //   margin: 0;
+    //   text-align: left;
+    //   width: 50%;
+    // }
   }
 
   .contribs {
@@ -106,6 +122,11 @@
       color: $white;
       display: inline-block;
       text-decoration: none;
+
+      &:hover {
+        box-shadow: none;
+        background: $light-blue;
+      }
     }
 
     &__name {
@@ -134,7 +155,6 @@
 
   a {
     color: $white;
-    text-decoration: underline;
   }
 
   &__left {
@@ -177,7 +197,6 @@
 
     a {
       color: $goldenbrown;
-      text-decoration: none;
     }
   }
 

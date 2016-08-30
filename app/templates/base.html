@@ -14,6 +14,7 @@
   <meta property="article:publisher" content="https://www.facebook.com/texastribune">
   <meta property="article:published_time" content="2016-08-30">
   <meta property="og:description" content="{{ context.summary }}">
+  <meta property="og:description" content="{{ context.facebook_text }}">
   <meta property="og:site_name" content="The Texas Tribune">
   <meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png') }}">
   <meta property="fb:app_id" content="154122474650943">
@@ -120,12 +121,11 @@
           project offers the most detailed look at the state of police shootings in Texas.
             Learn more <a href="{{ static( 'about' ) }}">about this project and download our data</a>.</p>
         <div class="footer__social">
-          <div class="footer__hashtag"><a href="https://twitter.com/search?q=%23unholstered">#Unholstered</a></div>
           <ul class="share-links">
-            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(staticAbsolute(''), mainbar.twitter_text, 'unholstered') }}">
+            <li class="share-links__icon"><a class="twitter-button" href="{{ shares.twitter(staticAbsolute(context.slug), context.twitter_text) }}">
               {{ inject('assets/images/twitter.svg') }}
             </a></li>
-            <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(staticAbsolute(''), staticAbsolute('')) }}"  target="_blank">
+            <li class="share-links__icon"><a class="facebook-button" href="{{ shares.facebook(staticAbsolute(context.slug), staticAbsolute(context.slug)) }}"  target="_blank">
               {{ inject('assets/images/facebook.svg') }}
             </a></li>
           </ul>
@@ -170,7 +170,7 @@
       </div>
     </div>
     <div class="footer-links">
-      <div class="footer-links__left">&#xa9; <script>document.write(new Date().getFullYear())</script> <a href="https://www.texastribune.org">The Texas Tribune</a></div>
+      <div class="footer-links__left">&copy;2016 <a href="https://www.texastribune.org">The Texas Tribune</a></div>
       <ul class="links">
         <li><a href="https://www.texastribune.org/about/">About Us</a></li>
         <li><a href="https://www.texastribune.org/contact/">Contact Us</a></li>

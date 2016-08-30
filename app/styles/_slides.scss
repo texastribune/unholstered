@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.swiper-progress {
+  pointer-events: none;
+}
+
 .graphic-container {
   height: 49%;
   left: 0;
@@ -49,6 +53,12 @@
     a {
       box-shadow: $white 0 -2px 0 inset;
       color: $white;
+
+      &:hover {
+        box-shadow: none;
+        color: $navy;
+        background-color: $white;
+      }
     }
   }
 
@@ -307,8 +317,9 @@
 
   li {
     display: inline-block;
-    width: 18.5%;
+    width: 18%;
     padding-right: 1%;
+    }
 
     &:last-child {
       padding-right: 0;
@@ -316,8 +327,12 @@
 
     .thumbnail {
       position: relative;
+      border: 2px solid $light-blue;
+
+      &:hover {
+        border: 2px solid $white;
+      }
     }
-  }
 
   @media (min-width: 56.1875em) {
     display: block;
