@@ -329,12 +329,10 @@
       position: relative;
       border: 2px solid $light-blue;
 
-      a & {
-        &:hover {
-          border: 2px solid $navy;
-        }
+      &:hover {
+        border: 2px solid $white;
+      }
     }
-  }
 
   @media (min-width: 56.1875em) {
     display: block;
