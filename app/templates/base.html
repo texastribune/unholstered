@@ -15,7 +15,7 @@
   <meta property="article:published_time" content="2016-08-30">
   <meta property="og:description" content="{{ context.facebook_text }}">
   <meta property="og:site_name" content="The Texas Tribune">
-  <meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png', true) }}">
+  <meta property="og:image" content="{% if context.slug == '/' %}{{ staticAbsolute('assets/images/share-art.png', true) }}{% else %}{{ staticAbsolute('assets/images/' + context.id + '/share.png', true) }}{% endif %}">
   <meta property="fb:app_id" content="154122474650943">
   <link href="https://fonts.googleapis.com/css?family=Chathura:800|PT+Serif:400,700|Rubik:400,500" rel="stylesheet">
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
