@@ -56,6 +56,16 @@
 <div class="{{ value.adtype }}-ad" id="{{ value.id }}"></div>
 {% endmacro %}
 
+{% macro top_related(value) %}
+<aside class="inline inline--left small">
+  <div class="top-related">
+    <h3>Related Content</h3>
+    <p>{{ value.refer }}</p>
+    <p><a href="/unholstered/{{ value.slug }}">{{ value.link }}</a></p>
+  </div>
+</aside>
+{% endmacro %}
+
 {% macro list(value) %}
 <ul class="bullet-list">
   {% for item in value %}

@@ -433,6 +433,32 @@
       }
     }
   }
+
+  .top-related {
+    border-top: 2px solid $goldenbrown;
+    border-bottom: 2px solid $goldenbrown;
+    padding: 1em 0;
+
+    @include breakpoint(phablet) {
+      border-right: 2px solid $goldenbrown;
+      border-top: 0;
+      border-bottom: 0;
+      padding: 0 1em;
+    }
+
+    h3 {
+      line-height: .75;
+      font-family: $chathura;
+      font-size: 2em;
+      margin: 0 0 .5em;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin-bottom: .75em;
+      font-family: $rubik;
+    }
+  }
 }
 
 .blockquote {
