@@ -1,4 +1,4 @@
-import './adLoader'
+import { AdLoader } from './adLoader'
 import './gascrolldepth'
 import './YouTubeTracker'
 
@@ -36,3 +36,5 @@ scrollWatcher.add((d) => {
     body.classList.add(backgroundColorClass)
   }
 })
+
+AdLoader.init()
