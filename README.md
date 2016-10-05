@@ -1,6 +1,6 @@
 # Unholstered
 
-*The Texas Tribune's Unholstered project on police shootings in Texas. Built by [https://github.com/rdmurphy](Ryan Murphy) and [https://github.com/joliesky](Jolie McCullough).*
+*The Texas Tribune's Unholstered project on police shootings in Texas. Built by [Ryan Murphy](https://github.com/rdmurphy) and [Jolie McCullough](https://github.com/joliesky).*
 
 This project was built using the Tribune's data visuals kit. We used the javascript libraries D3 and Swiper to enhance the landing page of our project.
 
