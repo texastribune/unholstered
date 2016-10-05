@@ -1,8 +1,8 @@
-# Data Visuals Kit
+# Unholstered
 
-*A work in progress. Do not use yet.*
+*The Texas Tribune's Unholstered project on police shootings in Texas. Built by (https://github.com/rdmurphy)[Ryan Murphy] and (https://github.com/joliesky)[Jolie McCullough].*
 
-I don't know if this will be the final resting place for this, but it needs somewhere to live.
+This project was built using the Tribune's data visuals kit. We used the javascript libraries D3 and Swiper to enhance the landing page of our project.
 
 ## Quickstart
 
