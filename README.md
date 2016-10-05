@@ -8,6 +8,6 @@ This project was produced by [Ryan Murphy](https://github.com/rdmurphy) and [Jol
 
 _Please note - some static assets required to make this project work are only accessible to Texas Tribune developers._
 
-Clone the project, then run `npm install`. Then pull down the assets with `npm run assets:pull`. Use `npm run serve` to run the local development server.
+Clone the project, then run `npm install`. Then pull down the assets with `npm run assets:pull`, and the data with `npm run data:fetch`. Use `npm run serve` to run the local development server.
 
 Now, get to work!
